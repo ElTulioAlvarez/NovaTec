@@ -1,18 +1,19 @@
 ---
 import Navbar from "../componentes/navbar.astro";
 import CircuitBG from "../componentes/CircuitBG.astro";
+import Footer from "../componentes/footer.astro";
 ---
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/novatec-logo.webp" />
     <title>NovaTec — Soluciones de Software y Marketing</title>
   </head>
 
   <body class="min-h-screen bg-slate-950 text-slate-200 antialiased">
-    <Navbar logoSrc="/favicon.png" />
+    <Navbar logoSrc="/novatec-logo.webp" />
 
     <!-- Fondo de circuito -->
     <CircuitBG />
@@ -68,5 +69,7 @@ import CircuitBG from "../componentes/CircuitBG.astro";
         </div>
       </section>
     </main>
+ <Footer logoSrc="/novatec-logo.webp" />
   </body>
+  
 </html>
