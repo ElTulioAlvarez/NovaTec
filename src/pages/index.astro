@@ -1,0 +1,72 @@
+---
+import Navbar from "../componentes/navbar.astro";
+import CircuitBG from "../componentes/CircuitBG.astro";
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>NovaTec — Soluciones de Software y Marketing</title>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-200 antialiased">
+    <Navbar logoSrc="/favicon.png" />
+
+    <!-- Fondo de circuito -->
+    <CircuitBG />
+
+    <main class="relative">
+      <!-- HERO -->
+      <section class="relative mx-auto max-w-6xl px-4 pt-14 sm:pt-20">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+            Tecnología que impulsa tu negocio
+          </h1>
+          <p class="mt-4 text-slate-300 sm:text-lg">
+            Desarrollo web y de software, marketing digital y automatización. Rendimiento, seguridad y resultados medibles.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/contacto" class="rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 px-4 py-2.5 font-semibold text-white shadow ring-1 ring-inset ring-white/10 transition hover:opacity-95">
+              Cotiza tu proyecto
+            </a>
+            <a href="/servicios" class="rounded-xl border border-white/10 px-4 py-2.5 text-slate-200 hover:bg-white/5">
+              Ver servicios
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICIOS -->
+      <section class="relative mx-auto max-w-6xl px-4 py-12 sm:py-16">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            {t: "Desarrollo Web", d: "Sitios y landings ultra rápidas con Astro/React, SEO-ready y escalables."},
+            {t: "Software a medida", d: "Sistemas de escritorio y backend con C#/.NET, Python o Node."},
+            {t: "Marketing Digital", d: "Estrategia, contenido y pauta. Medición con GA4 y dashboards."},
+            {t: "Cloud & Soporte", d: "Deploy en Vercel/AWS, integraciones, mantenimiento y hardening."},
+          ].map((c) => (
+            <article class="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:border-cyan-400/30 hover:bg-white/10">
+              <h3 class="text-white">{c.t}</h3>
+              <p class="mt-2 text-sm text-slate-300">{c.d}</p>
+              <div class="mt-4 h-1 w-16 origin-left scale-x-0 rounded bg-cyan-400/80 transition group-hover:scale-x-100"></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- CLIENTES -->
+      <section class="relative mx-auto max-w-6xl px-4 pb-16">
+        <h2 class="text-xl font-semibold text-white">Clientes y aliados</h2>
+        <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+          {["New Vitta", "Autopista Segura", "AntimatterMX", "MuscleMan", "Local Partner", "Startup"].map(n => (
+            <div class="flex h-16 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 backdrop-blur">
+              <span class="text-sm">{n}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

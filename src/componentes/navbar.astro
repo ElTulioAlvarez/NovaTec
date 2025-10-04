@@ -1,0 +1,325 @@
+---
+/** Navbar.astro — NovaTec Business Solutions
+ *  Moderno, responsivo, accesible, con sombra al scroll y botón WhatsApp móvil.
+ */
+import "../styles/global.css";
+
+export interface Props {
+  logoSrc?: string;
+  logoAlt?: string;
+}
+const {
+  logoSrc = "/", // <- ajusta esta ruta
+  logoAlt = "Novatec Business Solutions",
+} = Astro.props;
+
+const links = [
+  { href: "/", label: "Inicio" },
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/servicios", label: "Servicios" },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<nav
+  id="site-nav"
+  class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/60 backdrop-blur supports-[backdrop-filter]:bg-slate-950/40 transition-shadow"
+  aria-label="Barra de navegación"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo / Marca -->
+      <a href="/" class="group flex items-center gap-3">
+        <img
+          src={logoSrc}
+          alt={logoAlt}
+          width="36"
+          height="36"
+          class="h-9 w-9 rounded-md shadow-sm ring-1 ring-white/10 transition group-hover:scale-[1.02]"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="leading-tight">
+          <span class="block text-sm font-semibold tracking-wide text-white"
+            >NOVATEC</span
+          >
+          <span class="hidden text-[11px] text-slate-300/80 sm:block"
+            >Business Solutions</span
+          >
+        </div>
+      </a>
+
+      <!-- Links escritorio -->
+      <div class="hidden items-center gap-1 md:flex">
+        {
+          links.map((l) => {
+            const active =
+              pathname === l.href ||
+              (l.href !== "/" && pathname.startsWith(l.href));
+            return (
+              <a
+                href={l.href}
+                aria-current={active ? "page" : undefined}
+                class="group relative rounded-lg px-3 py-2 text-sm font-medium text-slate-300 transition hover:text-white"
+              >
+                {l.label}
+                <span
+                  class={`absolute inset-x-1 -bottom-[2px] block h-[2px] origin-left rounded-full transition
+                ${active ? "scale-x-100 bg-cyan-400/90" : "scale-x-0 bg-white/40 group-hover:scale-x-100"}`}
+                  aria-hidden="true"
+                />
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <!-- CTA escritorio -->
+      <div class="hidden md:flex">
+        <a
+          href="/contacto"
+          class="rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 px-3 py-2 text-sm font-semibold text-white shadow ring-1 ring-inset ring-white/10 transition hover:opacity-95 active:opacity-90"
+        >
+          Cotizar
+        </a>
+      </div>
+
+      <!-- Botón hamburguesa (móvil) -->
+      <button
+        id="nav-toggle"
+        class="inline-flex items-center justify-center rounded-lg p-2 text-slate-200 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 md:hidden"
+        aria-label="Abrir menú"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Abrir menú</span>
+        <span class="burger" aria-hidden="true">
+          <span class="line line-1"></span>
+          <span class="line line-2"></span>
+          <span class="line line-3"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="md:hidden">
+    <div
+      class="pointer-events-none max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out"
+      data-menu-panel
+    >
+      <div
+        class="pointer-events-auto border-t border-white/10 bg-slate-950/95 px-4 pb-4 pt-2"
+      >
+        <div class="flex items-center justify-between pb-2">
+          <span class="text-sm text-slate-200/80">Menú</span>
+          <button
+            id="nav-close"
+            class="rounded-lg p-2 text-slate-200 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            aria-label="Cerrar menú"
+          >
+            <svg
+              class="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          {
+            links.map((l) => {
+              const active =
+                pathname === l.href ||
+                (l.href !== "/" && pathname.startsWith(l.href));
+              return (
+                <a
+                  href={l.href}
+                  class={`rounded-lg px-3 py-2 text-base transition
+                ${active ? "bg-white/10 text-white" : "text-slate-300 hover:text-white hover:bg-white/5"}`}
+                >
+                  {l.label}
+                </a>
+              );
+            })
+          }
+          <a
+            href="/contacto"
+            class="mt-1 rounded-lg bg-gradient-to-tr from-blue-600 to-cyan-500 px-3 py-2 text-base font-semibold text-white ring-1 ring-inset ring-white/10 transition hover:opacity-95 active:opacity-90"
+          >
+            Cotizar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Botón flotante WhatsApp (solo móvil) -->
+<a
+  href="https://wa.me/524433934469?text=Hola%20quiero%20más%20información%20acerca%20de%20NovaTec!"
+  class="fixed bottom-4 right-4 z-50 md:hidden inline-flex items-center justify-center rounded-full p-3 shadow-lg ring-1 ring-black/10 transition hover:scale-105"
+  aria-label="Abrir WhatsApp"
+  rel="noopener noreferrer"
+  target="_blank"
+  style="background: radial-gradient(circle at 30% 30%, #25D366 0%, #128C7E 70%);"
+>
+  <!-- Ícono WhatsApp -->
+  <svg viewBox="0 0 24 24" class="h-7 w-7" role="img" aria-label="WhatsApp" focusable="false">
+  <defs>
+    <!-- Fondo -->
+    <linearGradient id="waGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#25D366"/>
+      <stop offset="1" stop-color="#128C7E"/>
+    </linearGradient>
+    <!-- Brillo -->
+    <radialGradient id="waGloss" cx="30%" cy="25%" r="60%">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".88"/>
+      <stop offset=".6" stop-color="#FFFFFF" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="waClip">
+      <circle cx="12" cy="12" r="11"/>
+    </clipPath>
+  </defs>
+
+  <!-- Fondo gradiente + borde -->
+  <circle cx="12" cy="12" r="11" fill="url(#waGrad)"/>
+  <circle cx="12" cy="12" r="11" fill="none" stroke="#FFFFFF" stroke-width="1.8"/>
+
+  <!-- Brillo -->
+  <g clip-path="url(#waClip)">
+    <ellipse cx="9" cy="7" rx="8.5" ry="5.2" fill="url(#waGloss)"/>
+  </g>
+
+  <!-- Símbolo centrado (ajustado con transform) -->
+  <g transform="translate(12 12) scale(0.78) translate(-15 -15) translate(0.10 0.20)">
+    <path fill="#FFFFFF" d="M19.11 17.32c-.27-.14-1.57-.77-1.81-.85-.24-.09-.42-.14-.6.14-.18.27-.69.85-.84 1.03-.15.18-.31.2-.58.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.86-.15-.27-.02-.41.11-.54.11-.11.24-.27.36-.4.12-.13.16-.22.24-.36.08-.14.04-.27-.02-.4-.06-.14-.6-1.45-.82-1.99-.22-.53-.44-.46-.6-.46h-.51c-.17 0-.44.06-.67.31-.23.27-.88.86-.88 2.1 0 1.24.9 2.45 1.02 2.62.12.18 1.77 2.72 4.29 3.81.6.26 1.06.41 1.42.53.6.19 1.15.16 1.58.1.48-.07 1.57-.64 1.79-1.26.22-.63.22-1.17.15-1.29-.06-.11-.24-.18-.5-.31z"/>
+  </g>
+</svg>
+
+</a>
+
+<script lang="ts" is:inline>
+  /** @type {HTMLElement|null} */
+  const nav = document.getElementById("site-nav");
+  /** @type {HTMLButtonElement|null} */
+  const toggleBtn = document.getElementById("nav-toggle");
+  /** @type {HTMLButtonElement|null} */
+  const closeBtn = document.getElementById("nav-close");
+  /** @type {HTMLDivElement|null} */
+  const panel = document.querySelector("[data-menu-panel]");
+  /** @type {HTMLDivElement|null} */
+  const mobileWrap = document.getElementById("mobile-menu");
+
+  const onScroll = () => {
+    if (!nav) return;
+    const scrolled = window.scrollY > 6;
+    nav.classList.toggle("shadow-lg", scrolled);
+    nav.classList.toggle("ring-1", scrolled);
+    nav.classList.toggle("ring-white/10", scrolled);
+    nav.classList.toggle("bg-slate-950/80", scrolled);
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  const onEsc = (e) => {
+    if (e.key === "Escape") closeMenu();
+  };
+
+  function openMenu() {
+    if (!toggleBtn || !panel) return;
+    toggleBtn.setAttribute("aria-expanded", "true");
+    panel.style.maxHeight = panel.scrollHeight + "px";
+    document.addEventListener("keydown", onEsc);
+  }
+  function closeMenu() {
+    if (!toggleBtn || !panel) return;
+    toggleBtn.setAttribute("aria-expanded", "false");
+    panel.style.maxHeight = "0px";
+    document.removeEventListener("keydown", onEsc);
+  }
+
+  toggleBtn?.addEventListener("click", () => {
+    const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
+    isOpen ? closeMenu() : openMenu();
+  });
+  closeBtn?.addEventListener("click", closeMenu);
+
+  mobileWrap?.addEventListener("click", (e) => {
+    const t = /** @type {HTMLElement} */ (e.target);
+    if (t?.tagName === "A") closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) closeMenu();
+  });
+</script>
+
+<style is:global>
+  @media (prefers-reduced-motion: reduce) {
+    @media (prefers-reduced-motion: reduce) {
+      [data-menu-panel] {
+        transition: none !important;
+      }
+    }
+  }
+  /* Fix: eliminar @media duplicado anterior */
+  @media (prefers-reduced-motion: reduce) {
+    [data-menu-panel] {
+      transition: none !important;
+    }
+  }
+
+  /* Animación hamburguesa → X */
+  #nav-toggle .burger {
+    position: relative;
+    width: 24px;
+    height: 18px;
+    display: inline-block;
+  }
+  #nav-toggle .line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease,
+      top 0.2s ease,
+      bottom 0.2s ease;
+  }
+  #nav-toggle .line-1 {
+    top: 0;
+  }
+  #nav-toggle .line-2 {
+    top: 8px;
+  }
+  #nav-toggle .line-3 {
+    bottom: 0;
+  }
+
+  /* Estado abierto (aria-expanded="true") */
+  #nav-toggle[aria-expanded="true"] .line-1 {
+    top: 8px;
+    transform: rotate(45deg);
+  }
+  #nav-toggle[aria-expanded="true"] .line-2 {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  #nav-toggle[aria-expanded="true"] .line-3 {
+    bottom: 8px;
+    transform: rotate(-45deg);
+  }
+</style>

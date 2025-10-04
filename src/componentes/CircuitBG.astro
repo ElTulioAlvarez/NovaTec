@@ -1,0 +1,136 @@
+---
+/** CircuitBG.astro
+ * Fondo animado de “circuito” con SVG + glow + trazo animado.
+ * Colócalo en posición absoluta detrás del contenido.
+ */
+---
+<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+  <!-- gradiente base -->
+  <div class="absolute inset-0 bg-slate-950">
+    <div class="absolute inset-0 opacity-80 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(59,130,246,.18),transparent_70%),radial-gradient(70%_50%_at_50%_100%,rgba(8,145,178,.18),transparent_70%)]"></div>
+  </div>
+
+  <svg viewBox="0 0 1440 900" class="absolute inset-0 h-full w-full" id="circuit-svg">
+    <defs>
+      <!-- Glow sutil -->
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+
+      <!-- Gradiente para trazos -->
+      <linearGradient id="wire" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.8"/>
+      </linearGradient>
+
+      <!-- Patrón de rejilla muy tenue -->
+      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(148,163,184,.08)" stroke-width="1"/>
+      </pattern>
+    </defs>
+
+    <!-- Rejilla -->
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+
+    <!-- Wires principales (con dash animado) -->
+    <g filter="url(#glow)" stroke="url(#wire)" stroke-width="2" fill="none" stroke-linecap="round">
+      <!-- nivel superior -->
+      <path class="wire a" d="M80 140 H520 Q560 140 560 180 V260 Q560 300 600 300 H1000" />
+      <path class="wire b" d="M160 200 H460 Q500 200 500 240 V380 Q500 420 540 420 H1240" />
+      <path class="wire c" d="M60 320 H380 Q420 320 420 360 V520 Q420 560 460 560 H1100" />
+      <!-- verticales con codos -->
+      <path class="wire d" d="M840 80 V220 Q840 260 880 260 H1280" />
+      <path class="wire e" d="M1080 140 V300 Q1080 340 1120 340 H1360" />
+      <path class="wire f" d="M700 260 V480 Q700 520 740 520 H1280" />
+    </g>
+
+    <!-- Spark que recorre wireA y wireC -->
+<g class="spark" filter="url(#glow)">
+  <circle r="3" fill="#a5f3fc">
+    <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#wireA" />
+    </animateMotion>
+  </circle>
+  <circle r="3" fill="#67e8f9" opacity="0.9">
+    <animateMotion dur="12s" begin="2s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#wireC" />
+    </animateMotion>
+  </circle>
+</g>
+
+    <!-- Nodos (puntos con pulso) -->
+    <g class="nodes" fill="#22d3ee" filter="url(#glow)">
+      <circle class="node" cx="560" cy="180" r="4"/>
+      <circle class="node" cx="600" cy="300" r="4"/>
+      <circle class="node" cx="500" cy="240" r="4"/>
+      <circle class="node" cx="540" cy="420" r="4"/>
+      <circle class="node" cx="420" cy="360" r="4"/>
+      <circle class="node" cx="460" cy="560" r="4"/>
+      <circle class="node" cx="840" cy="220" r="4"/>
+      <circle class="node" cx="1080" cy="300" r="4"/>
+      <circle class="node" cx="700" cy="480" r="4"/>
+    </g>
+  </svg>
+  <script is:inline>
+  const svg = document.getElementById('circuit-svg');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (svg && !reduce) {
+    let tx = 0, ty = 0, targetX = 0, targetY = 0, rafId = 0;
+    const tick = () => {
+      tx += (targetX - tx) * 0.08;
+      ty += (targetY - ty) * 0.08;
+      svg.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      rafId = requestAnimationFrame(tick);
+    };
+    const onMove = (e) => {
+      const w = window.innerWidth, h = window.innerHeight;
+      const p = 'touches' in e ? e.touches[0] : e;
+      targetX = ((p.clientX / w) - 0.5) * 10; // rango ±10px
+      targetY = ((p.clientY / h) - 0.5) * 8;  // rango ±8px
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    };
+    window.addEventListener('mousemove', onMove, { passive: true });
+    window.addEventListener('touchmove', onMove, { passive: true });
+  }
+</script>
+
+</div>
+
+<style>
+    /* Spark más visible */
+.spark circle { filter: drop-shadow(0 0 6px rgba(34,211,238,.8)); }
+
+/* Parallax: mejor rendimiento */
+#circuit-svg { will-change: transform; }
+
+  /* Trazo en movimiento */
+  .wire {
+    stroke-dasharray: 8 10;
+    animation: dash 8s linear infinite;
+    opacity: .9;
+  }
+  .wire.b { animation-duration: 11s; opacity: .8; }
+  .wire.c { animation-duration: 9s;  opacity: .7; }
+  .wire.d { animation-duration: 10s; opacity: .8; }
+  .wire.e { animation-duration: 12s; opacity: .75; }
+  .wire.f { animation-duration: 14s; opacity: .7;  }
+
+  @keyframes dash { to { stroke-dashoffset: -400; } }
+
+  /* Pulso de los nodos */
+  .node {
+    animation: pulse 2.4s ease-in-out infinite;
+    transform-origin: center;
+  }
+  .node:nth-child(2n){ animation-delay: .6s; }
+  .node:nth-child(3n){ animation-delay: 1.2s; }
+
+  @keyframes pulse {
+    0%,100% { opacity: .5; r: 4; }
+    50%     { opacity: 1;  r: 5.5; }
+  }
+</style>
