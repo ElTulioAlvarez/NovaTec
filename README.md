@@ -35,6 +35,7 @@ npm run preview
 ```
 
 📁 Estructura del proyecto
+```
 /
 ├─ public/
 │  ├─ favicon.png
@@ -56,6 +57,7 @@ npm run preview
 ├─ tailwind.config.mjs
 ├─ postcss.config.cjs
 └─ package.json
+```
 
 
 ✨ Componentes clave
