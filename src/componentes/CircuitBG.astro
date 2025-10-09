@@ -1,136 +1,136 @@
 ---
-/** CircuitBG.astro
- * Fondo animado de “circuito” con SVG + glow + trazo animado.
- * Colócalo en posición absoluta detrás del contenido.
- */
+// BackgroundBusiness.astro (v2 — limpio y ordenado)
+// Fondo empresarial/tech con composición más estable
+// Props compatibles + nuevos toggles
+interface Props {
+  background?: string;
+  primary?: string;
+  accent?: string;
+  glow?: string;
+  opacity?: number;
+  speed?: number;
+  // Nuevos
+  showGrid?: boolean;     // malla corporativa
+  showHex?: boolean;      // patrón hex (apagado por defecto)
+  showCards?: boolean;    // wireframes tipo dashboard
+}
+const {
+  background = "#0b1020",
+  primary = "#1a9cff",
+  accent = "#6ad8ff",
+  glow = "#ffffff",
+  opacity = 0.5,
+  speed = 14,
+  showGrid = true,
+  showHex = false,
+  showCards = true,
+} = Astro.props as Props;
 ---
-<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-  <!-- gradiente base -->
-  <div class="absolute inset-0 bg-slate-950">
-    <div class="absolute inset-0 opacity-80 bg-[radial-gradient(80%_60%_at_50%_0%,rgba(59,130,246,.18),transparent_70%),radial-gradient(70%_50%_at_50%_100%,rgba(8,145,178,.18),transparent_70%)]"></div>
-  </div>
 
-  <svg viewBox="0 0 1440 900" class="absolute inset-0 h-full w-full" id="circuit-svg">
+<div aria-hidden="true" style={`position:fixed;inset:0;z-index:-1;background:${background};overflow:hidden;`}>
+  <svg
+    viewBox="0 0 1600 900"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="xMidYMid slice"
+    role="img"
+  >
     <defs>
-      <!-- Glow sutil -->
-      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
+      <!-- Malla corporativa basada en columnas de 8 (alineación fuerte) -->
+      <pattern id="gridCols" width="200" height="200" patternUnits="userSpaceOnUse">
+        <path d="M 0 0 L 0 200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <path d="M 25 0 L 25 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+        <path d="M 50 0 L 50 200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <path d="M 75 0 L 75 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+        <path d="M 100 0 L 100 200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <path d="M 125 0 L 125 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+        <path d="M 150 0 L 150 200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        <path d="M 175 0 L 175 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+        <path d="M 0 0 L 200 0" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+        <path d="M 0 100 L 200 100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      </pattern>
+
+      <!-- Hex sutil (opcional) -->
+      <pattern id="hex" width="60" height="52" patternUnits="userSpaceOnUse">
+        <path d="M30 0 L60 15 L60 37 L30 52 L0 37 L0 15 Z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      </pattern>
+
+      <linearGradient id="topGlow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(102,225,255,0.12)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+      </linearGradient>
+      <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+        <stop offset="60%" stop-color="rgba(0,0,0,0)" />
+        <stop offset="100%" stop-color="rgba(0,0,0,0.42)" />
+      </radialGradient>
+
+      <filter id="softGlow" x="-200%" y="-200%" width="400%" height="400%">
+        <feGaussianBlur stdDeviation="3.5" result="b1"/>
         <feMerge>
-          <feMergeNode in="blur"/>
+          <feMergeNode in="b1"/>
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
 
-      <!-- Gradiente para trazos -->
-      <linearGradient id="wire" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
-        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.8"/>
-      </linearGradient>
-
-      <!-- Patrón de rejilla muy tenue -->
-      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(148,163,184,.08)" stroke-width="1"/>
-      </pattern>
+      <style>
+        @keyframes floatX { 0%{transform:translateX(0)} 50%{transform:translateX(-20px)} 100%{transform:translateX(0)} }
+        @keyframes floatY { 0%{transform:translateY(0)} 50%{transform:translateY(-12px)} 100%{transform:translateY(0)} }
+        @keyframes dash { to { stroke-dashoffset: -900; } }
+        @keyframes shimmer { 0%{opacity:.12} 50%{opacity:.28} 100%{opacity:.12} }
+        .parallax-slow{ animation: floatX calc(var(--speed,14s)*5) ease-in-out infinite; }
+        .parallax-med { animation: floatY calc(var(--speed,14s)*4.5) ease-in-out infinite; }
+        .metric-line { stroke-dasharray: 12 20; animation: dash calc(var(--speed,14s)*1.1) linear infinite; filter:url(#softGlow) }
+        .metric-line2{ stroke-dasharray: 10 18; animation: dash calc(var(--speed,14s)*0.9) linear infinite; filter:url(#softGlow) }
+        .shimmer{ animation: shimmer calc(var(--speed,14s)*2) ease-in-out infinite; }
+      </style>
     </defs>
 
-    <!-- Rejilla -->
-    <rect width="100%" height="100%" fill="url(#grid)"/>
+    <!-- Capas base -->
+    {showGrid && <rect width="100%" height="100%" fill="url(#gridCols)" opacity="0.28"/>}
+    {showHex && <rect width="100%" height="100%" fill="url(#hex)" opacity="0.16"/>}
+    <rect width="100%" height="100%" fill="url(#topGlow)" />
+    <rect width="100%" height="100%" fill="url(#vignette)" />
 
-    <!-- Wires principales (con dash animado) -->
-    <g filter="url(#glow)" stroke="url(#wire)" stroke-width="2" fill="none" stroke-linecap="round">
-      <!-- nivel superior -->
-      <path class="wire a" d="M80 140 H520 Q560 140 560 180 V260 Q560 300 600 300 H1000" />
-      <path class="wire b" d="M160 200 H460 Q500 200 500 240 V380 Q500 420 540 420 H1240" />
-      <path class="wire c" d="M60 320 H380 Q420 320 420 360 V520 Q420 560 460 560 H1100" />
-      <!-- verticales con codos -->
-      <path class="wire d" d="M840 80 V220 Q840 260 880 260 H1280" />
-      <path class="wire e" d="M1080 140 V300 Q1080 340 1120 340 H1360" />
-      <path class="wire f" d="M700 260 V480 Q700 520 740 520 H1280" />
+    <!-- Sección KPI: una sola familia de líneas + pocas barras alineadas a columna -->
+    <g style={`--speed:${speed}s`} opacity={opacity}>
+      <!-- Barras (alineadas a columnas cada 50px) -->
+      <g class="parallax-slow" fill={primary} opacity="0.5">
+        <rect x="150" y="560" width="22" height="220" rx="6" />
+        <rect x="200" y="600" width="22" height="180" rx="6" />
+        <rect x="250" y="520" width="22" height="260" rx="6" />
+        <rect x="300" y="580" width="22" height="200" rx="6" />
+      </g>
+
+      <!-- Línea principal (KPI) -->
+      <g class="parallax-med" fill="none" stroke={accent} stroke-width="2">
+        <path class="metric-line" d="M120 700 C 300 650, 520 620, 760 600 S 1120 560, 1460 520" />
+      </g>
+
+      <!-- Línea secundaria (proyección) más tenue -->
+      <g fill="none" stroke={primary} stroke-width="1.6" opacity="0.7">
+        <path class="metric-line2" d="M120 740 C 320 700, 600 670, 900 650 S 1200 630, 1520 610" />
+      </g>
     </g>
 
-    <!-- Spark que recorre wireA y wireC -->
-<g class="spark" filter="url(#glow)">
-  <circle r="3" fill="#a5f3fc">
-    <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
-      <mpath href="#wireA" />
-    </animateMotion>
-  </circle>
-  <circle r="3" fill="#67e8f9" opacity="0.9">
-    <animateMotion dur="12s" begin="2s" repeatCount="indefinite" rotate="auto">
-      <mpath href="#wireC" />
-    </animateMotion>
-  </circle>
-</g>
+    <!-- Puntos de datos (mínimos, jerárquicos) -->
+    <g opacity={Math.min(opacity + 0.18, 0.85)}>
+      <circle cx="760" cy="600" r="4" fill={accent} filter="url(#softGlow)"/>
+      <circle cx="1120" cy="560" r="3.6" fill={primary} filter="url(#softGlow)"/>
+      <circle cx="1460" cy="520" r="4.2" fill={glow} filter="url(#softGlow)"/>
+    </g>
 
-    <!-- Nodos (puntos con pulso) -->
-    <g class="nodes" fill="#22d3ee" filter="url(#glow)">
-      <circle class="node" cx="560" cy="180" r="4"/>
-      <circle class="node" cx="600" cy="300" r="4"/>
-      <circle class="node" cx="500" cy="240" r="4"/>
-      <circle class="node" cx="540" cy="420" r="4"/>
-      <circle class="node" cx="420" cy="360" r="4"/>
-      <circle class="node" cx="460" cy="560" r="4"/>
-      <circle class="node" cx="840" cy="220" r="4"/>
-      <circle class="node" cx="1080" cy="300" r="4"/>
-      <circle class="node" cx="700" cy="480" r="4"/>
+    <!-- Tarjetas fantasma (opcionales, alineadas al grid) -->
+    {showCards && (
+      <g opacity="0.26">
+        <rect x="1000" y="140" width="460" height="210" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+        <rect x="1000" y="370" width="460" height="150" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+        <rect x="1000" y="540" width="460" height="120" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+      </g>
+    )}
+
+    <!-- Brillo superior sutil -->
+    <g class="shimmer">
+      <ellipse cx="800" cy="-60" rx="900" ry="200" fill={accent} opacity="0.12"/>
     </g>
   </svg>
-  <script is:inline>
-  const svg = document.getElementById('circuit-svg');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (svg && !reduce) {
-    let tx = 0, ty = 0, targetX = 0, targetY = 0, rafId = 0;
-    const tick = () => {
-      tx += (targetX - tx) * 0.08;
-      ty += (targetY - ty) * 0.08;
-      svg.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
-      rafId = requestAnimationFrame(tick);
-    };
-    const onMove = (e) => {
-      const w = window.innerWidth, h = window.innerHeight;
-      const p = 'touches' in e ? e.touches[0] : e;
-      targetX = ((p.clientX / w) - 0.5) * 10; // rango ±10px
-      targetY = ((p.clientY / h) - 0.5) * 8;  // rango ±8px
-      if (!rafId) rafId = requestAnimationFrame(tick);
-    };
-    window.addEventListener('mousemove', onMove, { passive: true });
-    window.addEventListener('touchmove', onMove, { passive: true });
-  }
-</script>
-
 </div>
-
-<style>
-    /* Spark más visible */
-.spark circle { filter: drop-shadow(0 0 6px rgba(34,211,238,.8)); }
-
-/* Parallax: mejor rendimiento */
-#circuit-svg { will-change: transform; }
-
-  /* Trazo en movimiento */
-  .wire {
-    stroke-dasharray: 8 10;
-    animation: dash 8s linear infinite;
-    opacity: .9;
-  }
-  .wire.b { animation-duration: 11s; opacity: .8; }
-  .wire.c { animation-duration: 9s;  opacity: .7; }
-  .wire.d { animation-duration: 10s; opacity: .8; }
-  .wire.e { animation-duration: 12s; opacity: .75; }
-  .wire.f { animation-duration: 14s; opacity: .7;  }
-
-  @keyframes dash { to { stroke-dashoffset: -400; } }
-
-  /* Pulso de los nodos */
-  .node {
-    animation: pulse 2.4s ease-in-out infinite;
-    transform-origin: center;
-  }
-  .node:nth-child(2n){ animation-delay: .6s; }
-  .node:nth-child(3n){ animation-delay: 1.2s; }
-
-  @keyframes pulse {
-    0%,100% { opacity: .5; r: 4; }
-    50%     { opacity: 1;  r: 5.5; }
-  }
-</style>

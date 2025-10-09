@@ -220,16 +220,6 @@ const pathname = Astro.url.pathname;
   /** @type {HTMLDivElement|null} */
   const mobileWrap = document.getElementById("mobile-menu");
 
-  const onScroll = () => {
-    if (!nav) return;
-    const scrolled = window.scrollY > 6;
-    nav.classList.toggle("shadow-lg", scrolled);
-    nav.classList.toggle("ring-1", scrolled);
-    nav.classList.toggle("ring-white/10", scrolled);
-    nav.classList.toggle("bg-slate-950/80", scrolled);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
 
   const onEsc = (e) => {
     if (e.key === "Escape") closeMenu();
