@@ -1,0 +1,99 @@
+---
+// componentes/seo.astro
+// Componente SEO con metadatos OG/Twitter + JSON‑LD (Organization, WebSite)
+// Uso sugerido en páginas:
+// <SEO
+//   title="NovaTec Business Solutions — Software, Hardware y Servicios"
+//   description="Soluciones integrales: POS, CRM/ERP, facturación, hardware, inventarios y marketing."
+//   type="website"
+//   locale="es_MX"
+//   url="https://novatec.mx/"              // actualiza al dominio real
+//   siteName="NovaTec Business Solutions"
+//   ogImage="/og-default.png"
+//   logo="/logo-novatec.png"               // ruta a tu logotipo
+//   phone="+52 443 000 0000"
+//   email="contacto@novatec.mx"
+//   address={{
+//     streetAddress: "Av. Principal 123",
+//     addressLocality: "Morelia",
+//     addressRegion: "Michoacán",
+//     postalCode: "58000",
+//     addressCountry: "MX"
+//   }}
+// />
+
+const {
+  title = "NovaTec Business Solutions",
+  description = "Soluciones tecnológicas para negocios.",
+  type = "website",
+  locale = "es_MX",
+  url,
+  siteName = "NovaTec Business Solutions",
+  ogImage = "/og-default.png",
+  twitterHandle,
+  logo,
+  phone,
+  email,
+  address,
+} = Astro.props;
+
+const canonical = url ?? undefined;
+const hasAbsOg = ogImage?.startsWith("http") ? ogImage : (url && ogImage ? new URL(ogImage, url).toString() : undefined);
+const hasAbsLogo = logo?.startsWith("http") ? logo : (url && logo ? new URL(logo, url).toString() : undefined);
+
+// JSON‑LD Organization
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: url,
+  logo: hasAbsLogo,
+  sameAs: [],
+  contactPoint: (phone || email) ? [{
+    "@type": "ContactPoint",
+    telephone: phone,
+    email: email,
+    contactType: "customer support",
+    areaServed: "MX",
+    availableLanguage: ["es", "en"],
+  }] : undefined,
+  address: address ? { "@type": "PostalAddress", ...address } : undefined,
+};
+
+// JSON‑LD WebSite con SearchAction opcional (si hay url)
+const siteJsonLd = url ? {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: url,
+} : null;
+---
+
+<!-- Título y descripción -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:locale" content={locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}
+<meta property="og:site_name" content={siteName} />
+{hasAbsOg && <meta property="og:image" content={hasAbsOg} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+{twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{hasAbsOg && <meta name="twitter:image" content={hasAbsOg} />}
+
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">{JSON.stringify(orgJsonLd)}</script>
+
+<!-- JSON-LD: WebSite -->
+{siteJsonLd && (
+  <script type="application/ld+json">{JSON.stringify(siteJsonLd)}</script>
+)}

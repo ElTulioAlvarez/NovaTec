@@ -1,0 +1,158 @@
+---
+import Navbar from "../componentes/navbar.astro";
+import Footer from "../componentes/footer.astro";
+import SEO from "../componentes/seo.astro";
+import CircuitBG from "../componentes/CircuitBG.astro";
+import "../styles/global.css";
+
+const title = "Servicios — NovaTec Business Solutions";
+const description =
+  "Catálogo de servicios y productos: software (POS, CRM/ERP, facturación), hardware, inventarios físicos, social media/web/apps y proceso de ventas.";
+
+const icons = {
+  pos: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14a2 2 0 012 2v9H3V6a2 2 0 012-2zm-2 13h18v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1z"/></svg>`,
+  tools: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19.3l-6.4-6.4a6 6 0 11-3-3l6.4 6.4 3-3V19.3zM8 14a4 4 0 104-4 4.005 4.005 0 00-4 4z"/></svg>`,
+  list: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h16v2H4z"/></svg>`,
+  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v14H3zM5 7v10h14V7zM9 9l6 3-6 3z"/></svg>`,
+  flow: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10v4H7zM4 10h7v4H4zM13 16h7v4h-7z"/></svg>`,
+};
+
+const oferta = {
+  software: ["Punto de venta (POS)", "Sistema administrativo", "CRM / ERP", "Facturación electrónica", "Desarrollo a la medida"],
+  hardware: ["Equipos de cómputo y tabletas", "Impresoras y cajones de dinero", "Lectores de códigos de barras", "Terminales para cobro con tarjeta"],
+  inventarios: ["Realización de inventarios físicos", "Consultoría y asesoría", "Creación y depuración de bases de datos"],
+  social: ["Creación de perfiles corporativos", "Diseño de logotipos e identidad", "Páginas web, tienda en línea y apps", "Contenido y campañas de publicidad digital"],
+  ventas: ["Consultoría de proceso comercial", "Asesoría y capacitación para el área de ventas", "Auditoría de embudos y seguimiento"],
+};
+const servicios = [
+  {
+    key: "software",
+    titulo: "Software",
+    icon: icons.pos,
+    img: "/images/servicios/software.jpg", // <-- tu imagen de fondo
+    items: oferta.software,
+  },
+  {
+    key: "hardware",
+    titulo: "Hardware",
+    icon: icons.tools,
+    img: "/images/servicios/hardware.jpg",
+    items: oferta.hardware,
+  },
+  {
+    key: "inventarios",
+    titulo: "Gestión de inventarios físicos",
+    icon: icons.list,
+    img: "/images/servicios/inventarios.jpg",
+    items: oferta.inventarios,
+  },
+  {
+    key: "social",
+    titulo: "Social media, web y apps",
+    icon: icons.media,
+    img: "/images/servicios/social.jpg",
+    items: oferta.social,
+  },
+  {
+    key: "ventas",
+    titulo: "Proceso de ventas",
+    icon: icons.flow,
+    img: "/images/servicios/ventas.jpg",
+    items: oferta.ventas,
+  },
+];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO title={title} description={description} type="website" locale="es_MX" />
+    <title>{title}</title>
+  </head>
+
+  <!-- Offset del navbar aplicado al BODY -->
+  <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+    <Navbar logoSrc="/novatec-logo.webp" />
+    <CircuitBG />
+
+    <main class="relative z-10  overflow-x-clip">
+  <!-- HERO -->
+  <header class="relative min-h-[0svh] flex items-center pt-28 sm:pt-32 pb-12">
+    <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 pb-10">
+      <div class="flex flex-col items-start gap-4">
+        <span class="inline-flex items-center rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs tracking-wide text-cyan-200">
+          Nuestro catálogo
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+          Servicios y productos para profesionalizar tu operación
+        </h1>
+        <p class="max-w-3xl text-slate-300/90">
+          Paquetes flexibles con implementación, soporte y capacitación. Integramos software, hardware,
+          inventarios y presencia digital para acelerar resultados.
+        </p>
+      </div>
+    </section>
+    <!-- Fondo decorativo (una sola vez) -->
+    <div aria-hidden class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_70%_at_50%_10%,rgba(99,102,241,0.16)_0%,rgba(15,23,42,0)_60%)]"></div>
+  </header>
+
+  <!-- OFERTA COMERCIAL -->
+  <section id="oferta" class="scroll-mt-[160px] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+  <!-- Encabezado discreto, sin "Oferta comercial" -->
+  <header class="mb-8">
+    <h2 class="text-2xl sm:text-3xl font-extrabold">Servicios y productos</h2>
+    <p class="mt-2 text-slate-300/90">
+      Paquetes ajustables con implementación, soporte y capacitación según alcance.
+    </p>
+  </header>
+
+  <div class="grid gap-6 lg:grid-cols-2">
+    {servicios.map((s, idx) => (
+      <article class="relative group overflow-hidden rounded-2xl">
+        {/* Capa: imagen de fondo */}
+        <img
+          src={s.img}
+          alt={s.titulo}
+          class="absolute  h-full w-full object-cover opacity-50 transition-transform duration-500 group-hover:scale-[1.03]"
+          loading="lazy"
+        />
+        {/* Capa: degradado para legibilidad */}
+       
+
+        {/* Panel glass (contenido) */}
+        <div class="relative m-[1px] min-h-[28svh] rounded-2xl border border-white/15 bg-white/10  p-5  shadow-[0_0_0_1px_rgba(255,255,255,1)_inset] ">
+          <div class="mb-3 flex items-center gap-3 text-slate-100">
+            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-950/30 ring-1 ring-white/15" set:html={s.icon}></span>
+            <h3 class="text-lg font-bold">
+              {idx + 1}) {s.titulo}
+            </h3>
+          </div>
+
+          <ul class="mt-3 space-y-2 text-slate-100/90 list-disc list-inside">
+            {s.items.map(i => <li>{i}</li>)}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <div class="mt-10 flex flex-col items-start gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-slate-200">
+      ¿Necesitas una solución específica (ej. POS + terminal + facturación)? Diseñamos un paquete a tu medida.
+    </p>
+    <a href="/cotizar" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500/90 px-5 py-3 font-semibold text-slate-900 hover:bg-cyan-400">
+      Solicitar propuesta
+    </a>
+  </div>
+</section>
+</main>
+
+
+
+    <Footer logoSrc="/novatec-logo.webp" />
+  </body>
+</html>
+
+

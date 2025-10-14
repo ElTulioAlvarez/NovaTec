@@ -1,0 +1,592 @@
+---
+import Navbar from "../componentes/navbar.astro";
+import Footer from "../componentes/footer.astro";
+import SEO from "../componentes/seo.astro";
+import CircuitBG from "../componentes/CircuitBG.astro";
+import "../styles/global.css";
+
+const title = "Cotizar — NovaTec Business Solutions";
+const description =
+  "Cuéntanos sobre tu proyecto: software a medida, web, e-commerce o social media. Te respondemos con una propuesta clara.";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO
+      title={title}
+      description={description}
+      type="website"
+      locale="es_MX"
+    />
+    <title>{title}</title>
+  </head>
+
+  <body
+    class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white"
+  >
+    <Navbar logoSrc="/novatec-logo.webp" />
+    <CircuitBG />
+
+    <main class="relative z-10 overflow-x-clip">
+      <!-- HERO / Intro -->
+      <header class="relative pt-28 pb-10 sm:pt-32 sm:pb-12 lg:pt-40 lg:pb-14">
+        <section class="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div class="space-y-4 sm:space-y-5">
+            <span
+              class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] sm:text-xs tracking-wide text-cyan-200"
+            >
+              Solicita una propuesta
+            </span>
+            <h1
+              class="font-extrabold leading-tight tracking-tight text-[clamp(1.9rem,2.4vw+1rem,3.2rem)]"
+            >
+              Cuéntanos tu proyecto
+            </h1>
+            <p class="measure text-[15.8px] sm:text-[16.2px] text-slate-200/90">
+              Integramos <em>software</em>, <em>web</em> y <em>social media</em
+              >. Completa el formulario y te contactamos con los siguientes
+              pasos.
+            </p>
+          </div>
+        </section>
+      </header>
+
+      <!-- Grid: Formulario + Mapa/Contacto -->
+      <section class="section-space pt-0">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div
+            class="grid gap-8 sm:gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:gap-12"
+          >
+            <!-- Formulario -->
+            <article class="holo-card">
+              <div class="holo-inner p-6 sm:p-8 lg:p-10">
+                <h2 class="text-xl font-semibold mb-6">
+                  Formulario de cotización
+                </h2>
+
+                <form
+                  id="cotizarForm"
+                  class="grid gap-5"
+                  enctype="multipart/form-data"
+                  novalidate
+                >
+                  <!-- Honeypot anti-bots -->
+                  <div class="hidden">
+                    <label
+                      >Empresa (no llenar)
+                      <input
+                        type="text"
+                        name="company"
+                        tabindex="-1"
+                        autocomplete="off"
+                        class="ui-input"
+                      />
+                    </label>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Nombre completo*</span
+                      >
+                      <input
+                        required
+                        name="nombre"
+                        type="text"
+                        autocomplete="name"
+                        placeholder="Ej. Ana Pérez"
+                        class="ui-input"
+                      />
+                    </label>
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Empresa</span
+                      >
+                      <input
+                        name="empresa"
+                        type="text"
+                        placeholder="Opcional"
+                        class="ui-input"
+                      />
+                    </label>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Email*</span
+                      >
+                      <input
+                        required
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        inputmode="email"
+                        placeholder="tu@empresa.com"
+                        class="ui-input"
+                      />
+                    </label>
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Teléfono</span
+                      >
+                      <input
+                        name="telefono"
+                        type="tel"
+                        autocomplete="tel"
+                        inputmode="tel"
+                        placeholder="Ej. +52 443 123 4567"
+                        class="ui-input"
+                      />
+                    </label>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Tipo de proyecto*</span
+                      >
+                      <select required name="tipo" class="ui-input">
+                        <option value="">Selecciona una opción</option>
+                        <option>Sitio web</option>
+                        <option>Software a medida</option>
+                        <option>E-commerce</option>
+                        <option>Social media</option>
+                        <option>POS / ERP</option>
+                        <option>Otro</option>
+                      </select>
+                    </label>
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Horizonte / Entrega</span
+                      >
+                      <select name="tiempo" class="ui-input">
+                        <option value="">Flexible</option>
+                        <option>2–4 semanas</option>
+                        <option>1–2 meses</option>
+                        <option>3–4 meses</option>
+                        <option>+4 meses</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <fieldset>
+                    <legend class="block text-sm text-slate-200/90 mb-2"
+                      >Rango de presupuesto (MXN)</legend
+                    >
+                    <div class="flex flex-wrap gap-2.5">
+                      {
+                        [
+                          "< 10,000",
+                          "10,000 – 30,000",
+                          "30,000 – 60,000",
+                          "60,000 – 120,000",
+                          "> 120,000",
+                        ].map((p) => (
+                          <label class="chip cursor-pointer">
+                            <input
+                              type="radio"
+                              name="presupuesto"
+                              value={p}
+                              class="sr-only peer"
+                            />
+                            <span class="peer-checked:font-semibold">{p}</span>
+                          </label>
+                        ))
+                      }
+                    </div>
+                  </fieldset>
+
+                  <label class="block">
+                    <span class="block text-sm text-slate-200/90 mb-1"
+                      >Descripción del proyecto*</span
+                    >
+                    <textarea
+                      required
+                      name="descripcion"
+                      rows="6"
+                      placeholder="Cuéntanos objetivos, funcionalidades clave, referencias…"
+                      class="ui-input resize-y"></textarea>
+                  </label>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <label class="block">
+                      <span class="block text-sm text-slate-200/90 mb-1"
+                        >Adjuntar archivo (opcional)</span
+                      >
+                      <input
+                        name="archivo"
+                        type="file"
+                        class="ui-input file:mr-3 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-2 file:text-sm file:text-slate-100 hover:file:bg-white/20"
+                      />
+                    </label>
+                    <label class="flex items-center gap-3 mt-6 sm:mt-8">
+                      <input
+                        type="checkbox"
+                        name="privacidad"
+                        required
+                        class="h-4 w-4 rounded border-white/20 bg-white/10"
+                      />
+                      <span class="text-sm text-slate-300/90"
+                        >Acepto el uso de mis datos para contactarme sobre esta
+                        solicitud.</span
+                      >
+                    </label>
+                  </div>
+
+                  <div class="pt-1">
+                    <button
+                      id="submitBtn"
+                      class="btn-primary w-full sm:w-auto"
+                      type="submit">Enviar solicitud</button
+                    >
+                    <p
+                      id="formMsg"
+                      class="mt-3 text-sm text-slate-300/90"
+                      aria-live="polite"
+                    >
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </article>
+            <article class="holo-card">
+              <div class="holo-inner p-6 sm:p-8 lg:p-10">
+                <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+                <ul class="space-y-3 text-slate-300/95">
+                  <li>
+                    <span class="font-medium text-slate-100">Email:</span>
+                    <a
+                      class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
+                      href="antimattermx@pm.me">antimattermx@pm.me</a
+                    >
+                  </li>
+                  <li>
+                    <span class="font-medium text-slate-100">WhatsApp:</span>
+                    <a
+                      class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
+                      href="https://wa.me/524433711589"
+                      target="_blank"
+                      rel="noopener">+52 4433711589</a
+                    >
+                  </li>
+                  <li class="text-slate-300/90">Morelia, Michoacán — México</li>
+                </ul>
+                <p class="mt-5 text-sm text-slate-400/90">
+                  ¿Prefieres agendar llamada? Escríbenos por WhatsApp y
+                  coordinamos horario.
+                </p>
+              </div>
+            </article>
+            <!-- Mapa + contacto -->
+            <aside class="grid gap-8">
+              <article class="holo-card">
+                <div class="holo-inner overflow-hidden p-0">
+                  <div class="aspect-[4/3] sm:aspect-[16/10]">
+                    <!-- OpenStreetMap embed | Morelia, Michoacán -->
+                    <iframe
+                      title="Ubicación — Morelia, Michoacán"
+                      loading="lazy"
+                      class="w-full h-full rounded-[1.05rem]"
+                      src="https://www.openstreetmap.org/export/embed.html?bbox=-101.235%2C19.675%2C-101.160%2C19.735&layer=mapnik&marker=19.705%2C-101.194"
+                    >
+                    </iframe>
+                  </div>
+                </div>
+              </article>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <section class="section-space">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div
+            class="rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-white/5 to-fuchsia-500/10 p-8 sm:p-10 lg:p-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur"
+          >
+            <div class="space-y-2">
+              <h2 class="font-bold text-[clamp(1.1rem,0.7vw+1rem,1.55rem)]">
+                ¿Listo para empezar?
+              </h2>
+              <p class="measure-sm text-slate-100/90">
+                Compártenos los detalles y te respondemos con una propuesta
+                clara.
+              </p>
+            </div>
+            <a
+              href="#"
+              onclick="document.getElementById('cotizarForm')?.scrollIntoView({behavior: 'smooth'})"
+              class="btn-primary w-full sm:w-auto">Ir al formulario</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer logoSrc="/novatec-logo.webp" />
+
+    <script is:inline>
+      const form = document.getElementById("cotizarForm");
+      const btn = document.getElementById("submitBtn");
+      const msg = document.getElementById("formMsg");
+
+      function getPayload(fd) {
+        // No mandamos el archivo por email. Se podría subir a storage si lo deseas.
+        const entries = [...fd.entries()].filter(([k]) => k !== "archivo");
+        return Object.fromEntries(entries);
+      }
+
+      function validateMinimal(payload) {
+        if (
+          !payload.nombre ||
+          !payload.email ||
+          !payload.tipo ||
+          !payload.descripcion
+        ) {
+          return "Por favor completa Nombre, Email, Tipo y Descripción.";
+        }
+        return null;
+      }
+
+      form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        msg.textContent = "";
+        btn.disabled = true;
+        btn.textContent = "Enviando…";
+
+        const fd = new FormData(form);
+        const payload = getPayload(fd);
+
+        const err = validateMinimal(payload);
+        if (err) {
+          msg.textContent = err;
+          btn.disabled = false;
+          btn.textContent = "Enviar solicitud";
+          return;
+        }
+
+        try {
+          const res = await fetch("/api/cotizar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || !data.ok) throw new Error(data.error || "Error");
+
+          msg.textContent =
+            "¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.";
+          form.reset();
+        } catch (err) {
+          msg.textContent =
+            "No se pudo enviar. Intenta de nuevo o escríbenos a contacto@novatec.mx";
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Enviar solicitud";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* ====== Medida y ritmo ====== */
+  .measure {
+    max-width: 65ch;
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+  .measure-sm {
+    max-width: 72ch;
+    line-height: 1.65;
+  }
+  .section-space {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+  @media (min-width: 640px) {
+    .section-space {
+      padding-top: 4.25rem;
+      padding-bottom: 4.25rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-space {
+      padding-top: 5.25rem;
+      padding-bottom: 5.25rem;
+    }
+  }
+
+  /* ====== Input base (holo) ====== */
+  .ui-input {
+    width: 100%;
+    border-radius: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.8rem 0.95rem;
+    color: #eaf2ff;
+    outline: none;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .ui-input::placeholder {
+    color: rgba(226, 232, 240, 0.6);
+  }
+  .ui-input:focus {
+    border-color: rgba(103, 232, 249, 0.65);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.15);
+  }
+
+  /* ====== Chips / radios invisibles ====== */
+  .chip {
+    font-size: 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+    padding: 0.5rem 0.95rem;
+    color: rgba(236, 244, 255, 0.92);
+  }
+  .peer:checked + span {
+    text-decoration: none;
+  }
+
+  /* ====== Botones reutilizados ====== */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border-radius: 0.95rem;
+    background: rgba(6, 182, 212, 0.95);
+    padding: 0.95rem 1.7rem;
+    font-weight: 800;
+    color: #0f172a;
+    transition:
+      background 0.2s ease,
+      transform 0.08s ease,
+      box-shadow 0.2s ease;
+    box-shadow: 0 8px 24px rgba(34, 211, 238, 0.18);
+  }
+  .btn-primary:hover {
+    background: rgba(103, 232, 249, 1);
+    box-shadow: 0 10px 28px rgba(103, 232, 249, 0.22);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  /* ====== Holo ====== */
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes holo-spin {
+    0% {
+      --angle: 0deg;
+    }
+    100% {
+      --angle: 360deg;
+    }
+  }
+  .holo-card {
+    position: relative;
+    display: grid;
+    border-radius: 1.05rem;
+    overflow: hidden;
+    isolation: isolate;
+    transition:
+      transform 0.28s ease,
+      box-shadow 0.28s ease,
+      filter 0.28s ease;
+  }
+  .holo-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.6px;
+    background: conic-gradient(
+      from var(--angle),
+      #22d3ee 0deg,
+      #a855f7 60deg,
+      #60a5fa 120deg,
+      #14b8a6 180deg,
+      #a855f7 240deg,
+      #22d3ee 300deg,
+      #22d3ee 360deg
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: holo-spin 12s linear infinite;
+    z-index: -1;
+    opacity: 0.85;
+  }
+  .holo-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: repeating-linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.06) 0px,
+        rgba(255, 255, 255, 0.06) 1px,
+        transparent 2px,
+        transparent 7px
+      ),
+      linear-gradient(45deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .holo-inner {
+    position: relative;
+    height: 100%;
+    border-radius: inherit;
+    background: rgba(15, 23, 42, 0.64);
+    backdrop-filter: blur(14px) saturate(1.35);
+    -webkit-backdrop-filter: blur(14px) saturate(1.35);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 10px 26px rgba(0, 0, 0, 0.36);
+    z-index: 2;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .holo-card:hover {
+      transform: translateY(-6px) scale(1.012);
+      filter: saturate(1.05);
+    }
+    .holo-card:hover::before {
+      animation-duration: 8s;
+      opacity: 0.98;
+      filter: brightness(1.12);
+    }
+    .holo-card:hover::after {
+      opacity: 0.48;
+    }
+  }
+</style>
+
+<!--
+===================== API ROUTE (archivo separado) =====================
+Archivo: src/pages/api/cotizar.ts
+Descripción: Función de API para Vercel que envía correo usando Resend.
+Requiere: RESEND_API_KEY, CONTACT_TO, CONTACT_FROM en Vercel.
+=======================================================================
+-->

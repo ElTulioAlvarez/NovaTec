@@ -1,0 +1,1 @@
+Coloca aquí tus SVG/íconos de lucide o personalizados.

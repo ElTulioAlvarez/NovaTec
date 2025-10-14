@@ -1,0 +1,303 @@
+---
+import Navbar from "../componentes/navbar.astro";
+import Footer from "../componentes/footer.astro";
+import SEO from "../componentes/seo.astro";
+import CircuitBG from "../componentes/CircuitBG.astro";
+import "../styles/global.css";
+
+const title = "Nosotros — NovaTec Business Solutions";
+const description =
+  "Empresa tecnológica mexicana que integra software a medida y social media para profesionalizar operaciones y crecer marcas.";
+
+const icons = {
+  spark: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6h6l-5 3.5 2 6-5-3.5L7 17.5l2-6L4 8h6z"/></svg>`,
+  cube: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l10 5v10l-10 5L2 17V7l10-5z"/></svg>`,
+  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v14H3zM5 7v10h14V7zM9 9l6 3-6 3z"/></svg>`,
+  people: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0H5z"/></svg>`,
+  rocket: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3l7 7-4 1-3 3-1 4-7-7 4-1 3-3 1-4zM5 18l3 1-4 2 1-3z"/></svg>`,
+  check: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17l-3.88-3.88L3.7 13.7 9 19l12-12-1.41-1.41z"/></svg>`,
+};
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO title={title} description={description} type="website" locale="es_MX" />
+    <title>{title}</title>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+    <Navbar logoSrc="/novatec-logo.webp" />
+    <CircuitBG />
+
+    <main class="relative z-10 overflow-x-clip">
+      <!-- HERO :: más aire y jerarquía -->
+      <header class="relative pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
+        <section class="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div class="grid items-start gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-[1.1fr,0.9fr]">
+            <!-- Texto -->
+            <div class="space-y-6 sm:space-y-7">
+              <span class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] sm:text-xs tracking-wide text-cyan-200">
+                Acerca de nosotros
+              </span>
+
+              <h1 class="font-extrabold leading-tight tracking-tight text-[clamp(1.9rem,2.5vw+1rem,3.4rem)]">
+                Estrategia para hacer crecer tu negocio
+              </h1>
+
+              <p class="measure text-[15.8px] sm:text-[16.2px] text-slate-200/90">
+                En <strong>NovaTec</strong> integramos <em>software a medida</em> y <em>social media para negocios</em>:
+                construimos sistemas que ordenan la operación y campañas que posicionan tu marca y generan demanda.
+              </p>
+
+              <!-- Bullets -->
+              <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
+                {[
+                  "Software a medida",
+                  "Social media con performance",
+                  "Implementación + capacitación",
+                ].map((t) => (
+                  <li class="flex items-center gap-2 text-[13.8px] sm:text-sm text-slate-100/90">
+                    <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                      <span aria-hidden="true" set:html={icons.check}></span>
+                    </span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="flex flex-col gap-3 sm:flex-row sm:gap-4 pt-1">
+                <a href="/cotizar" class="btn-primary w-full sm:w-auto">
+                  <span aria-hidden="true" set:html={icons.rocket}></span> Comencemos
+                </a>
+                <a href="/productos" class="btn-ghost w-full sm:w-auto">
+                  Ver soluciones
+                </a>
+              </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="relative">
+              <div aria-hidden class="absolute -inset-10 rounded-[28px] bg-[radial-gradient(60%_50%_at_70%_30%,rgba(34,211,238,0.28),rgba(2,6,23,0))] blur-3xl opacity-80"></div>
+              <div class="relative grid gap-6 sm:gap-7">
+                <article class="holo-card will-change-transform">
+                  <div class="holo-inner p-7 sm:p-9 lg:p-10">
+                    <div class="mb-4 flex items-center gap-3">
+                      <span class="icon"><span aria-hidden="true" set:html={icons.cube}></span></span>
+                      <h3 class="font-semibold text-[17px]">Soluciones de software</h3>
+                    </div>
+                    <p class="measure-sm text-[15px] text-slate-300/95">
+                      POS, administración, plataformas web y herramientas a medida para digitalizar procesos y tener control real.
+                    </p>
+                  </div>
+                </article>
+
+                <article class="holo-card will-change-transform">
+                  <div class="holo-inner p-7 sm:p-9 lg:p-10">
+                    <div class="mb-4 flex items-center gap-3">
+                      <span class="icon"><span aria-hidden="true" set:html={icons.media}></span></span>
+                      <h3 class="font-semibold text-[17px]">Social media para negocios</h3>
+                    </div>
+                    <p class="measure-sm text-[15px] text-slate-300/95">
+                      Gestión de redes, contenido y campañas publicitarias enfocadas en visibilidad, confianza y ventas.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </header>
+
+      <!-- Bloque doble: Software / Social -->
+      <section class="section-space">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div class="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+            <article class="holo-card">
+              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
+                <div class="mb-5 flex items-center gap-3">
+                  <span class="icon"><span aria-hidden="true" set:html={icons.cube}></span></span>
+                  <h2 class="font-semibold text-[clamp(1.1rem,0.6vw+1rem,1.5rem)]">Soluciones de software</h2>
+                </div>
+                <p class="measure text-slate-100/90">
+                  Sistemas que conectan áreas clave y eliminan fricción operativa: precisión, trazabilidad y velocidad.
+                </p>
+                <ul class="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+                  {["POS", "Administrativo", "Plataformas web", "Integraciones", "A medida"].map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+
+            <article class="holo-card">
+              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
+                <div class="mb-5 flex items-center gap-3">
+                  <span class="icon"><span aria-hidden="true" set:html={icons.media}></span></span>
+                  <h2 class="font-semibold text-[clamp(1.1rem,0.6vw+1rem,1.5rem)]">Social media para negocios</h2>
+                </div>
+                <p class="measure text-slate-100/90">
+                  Presencia que vende: estrategia, branding, contenido y ads medibles para crecer con intención.
+                </p>
+                <ul class="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+                  {["Estrategia", "Branding", "Contenido", "Ads", "Reporting"].map((t) => (
+                    <li class="chip">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visión + (Equipo / Enfoque) -->
+      <section class="section-space">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <article class="holo-card mb-10 sm:mb-12">
+            <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
+              <div class="mb-4 sm:mb-6 flex items-center gap-3">
+                <span class="icon"><span aria-hidden="true" set:html={icons.spark}></span></span>
+                <h2 class="font-semibold text-[clamp(1.25rem,0.8vw+1rem,1.75rem)]">Nuestra visión</h2>
+              </div>
+              <p class="measure text-slate-100/90">
+                Ser tu aliado estratégico: un mismo equipo que unifica tecnología y comunicación para impulsar la evolución digital de tu negocio.
+              </p>
+            </div>
+          </article>
+
+          <div class="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+            <article class="holo-card">
+              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
+                <div class="mb-5 flex items-center gap-3">
+                  <span class="icon"><span aria-hidden="true" set:html={icons.people}></span></span>
+                  <h3 class="font-semibold text-[1.1rem]">Equipo</h3>
+                </div>
+                <p class="measure text-slate-100/90">
+                  Desarrollo, marketing y diseño trabajando en sintonía para entregar soluciones reales y medibles.
+                </p>
+              </div>
+            </article>
+
+            <article class="holo-card">
+              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
+                <div class="mb-5 flex items-center gap-3">
+                  <span class="icon"><span aria-hidden="true" set:html={icons.rocket}></span></span>
+                  <h3 class="font-semibold text-[1.1rem]">Enfoque</h3>
+                </div>
+                <p class="measure text-slate-100/90">
+                  Resultados por encima del ruido: eficiencia operativa + crecimiento de marca con propósito.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <section class="section-space">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div class="rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-white/5 to-fuchsia-500/10 p-8 sm:p-10 lg:p-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur">
+            <div class="space-y-2">
+              <h2 class="font-bold text-[clamp(1.15rem,0.7vw+1rem,1.6rem)]">Impulsa tu negocio con tecnología y estrategia</h2>
+              <p class="measure-sm text-slate-100/90">
+                Hablemos de cómo integrar software y social media para tu siguiente salto.
+              </p>
+            </div>
+            <a href="/cotizar" class="btn-primary w-full sm:w-auto">
+              <span aria-hidden="true" set:html={icons.rocket}></span> Cotizar proyecto
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer logoSrc="/novatec-logo.webp" />
+  </body>
+</html>
+
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+/* ====== Tipografía y medida ====== */
+.measure { max-width: 65ch; line-height: 1.75; font-size: 1rem; }
+.measure-sm { max-width: 72ch; line-height: 1.65; }
+
+/* ====== Secciones con mejor ritmo vertical ====== */
+.section-space { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+@media (min-width:640px){ .section-space{ padding-top: 4.5rem; padding-bottom: 4.5rem; } }
+@media (min-width:1024px){ .section-space{ padding-top: 5.75rem; padding-bottom: 5.75rem; } }
+
+/* ====== Chips ====== */
+.chip{
+  font-size:.85rem; border-radius:9999px; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07); padding:.5rem .95rem; color:rgba(236,244,255,.92);
+}
+
+/* ====== Botones ====== */
+.btn-primary{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  border-radius:.95rem; background:rgba(6,182,212,.95);
+  padding:.95rem 1.7rem; font-weight:800; color:#0f172a;
+  transition:background .2s ease, transform .08s ease, box-shadow .2s ease;
+  box-shadow: 0 8px 24px rgba(34,211,238,.18);
+}
+.btn-primary:hover{ background:rgba(103,232,249,1); box-shadow: 0 10px 28px rgba(103,232,249,.22); }
+.btn-primary:active{ transform:translateY(1px); }
+
+.btn-ghost{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-weight:800; color:#fff;
+  border-radius:.95rem; background:rgba(255,255,255,.09);
+  padding:.95rem 1.7rem; border:1px solid rgba(255,255,255,.15);
+  transition:background .2s ease, transform .08s ease, border-color .2s ease;
+}
+.btn-ghost:hover{ background:rgba(255,255,255,.18); border-color: rgba(255,255,255,.22); }
+.btn-ghost:active{ transform:translateY(1px); }
+
+/* ====== Icon wrapper ====== */
+.icon{
+  display:flex; width:2.5rem; height:2.5rem; align-items:center; justify-content:center;
+  border-radius:.8rem; background:rgba(2,6,23,.68); box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
+}
+
+/* ====== Holo (borde iridiscente + vidrio) ====== */
+@property --angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+@keyframes holo-spin { 0% { --angle: 0deg; } 100% { --angle: 360deg; } }
+
+.holo-card{
+  position:relative; display:grid; border-radius:1.05rem; overflow:hidden; isolation:isolate;
+  transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+}
+.holo-card::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; padding:1.6px;
+  background: conic-gradient(from var(--angle),
+    #22d3ee 0deg, #a855f7 60deg, #60a5fa 120deg,
+    #14b8a6 180deg, #a855f7 240deg, #22d3ee 300deg, #22d3ee 360deg);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  animation: holo-spin 12s linear infinite; z-index:-1; opacity:.85;
+}
+.holo-card::after{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.06) 0px, rgba(255,255,255,.06) 1px, transparent 2px, transparent 7px),
+    linear-gradient(45deg, rgba(255,255,255,.08), rgba(255,255,255,0));
+  mix-blend-mode:overlay; opacity:.35; pointer-events:none; z-index:1;
+}
+.holo-inner{
+  position:relative; height:100%; border-radius:inherit;
+  background:rgba(15,23,42,.64); backdrop-filter:blur(14px) saturate(1.35);
+  -webkit-backdrop-filter:blur(14px) saturate(1.35);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 10px 26px rgba(0,0,0,.36);
+  z-index:2;
+}
+@media (prefers-reduced-motion:no-preference){
+  .holo-card:hover{ transform:translateY(-6px) scale(1.012); filter: saturate(1.05); }
+  .holo-card:hover::before{ animation-duration:8s; opacity:.98; filter:brightness(1.12); }
+  .holo-card:hover::after{ opacity:.48; }
+}
+</style>

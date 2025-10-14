@@ -1,0 +1,147 @@
+---
+const links = [
+  { href: '/', label: 'Inicio' },
+  { href: '/productos', label: 'Productos' },
+  { href: '/nosotros', label: 'Nosotros' },
+];
+
+const { pathname } = Astro.url;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+
+<nav
+  id="nv-navbar"
+  class="fixed inset-x-0 top-0 z-50 transition-all"
+  aria-label="Main"
+>
+  <div
+    class="mx-auto px-4 sm:px-6 lg:px-8
+           mt-3 rounded-2xl border
+           backdrop-blur-xl
+           bg-[color:var(--bg-1,rgba(11,18,32,0.35))]
+           border-[color:var(--border,#1f2937)]
+           shadow-[0_8px_30px_rgba(25,170,255,0.08)]
+           ring-1 ring-inset ring-white/5
+           transition-all duration-300 will-change-transform"
+  >
+    <div class="flex h-14 items-center justify-between">
+      <!-- Brand -->
+      <a href="/" class="group inline-flex items-center gap-3" aria-label="NovaTec">
+        <!-- Logo placeholder (puedes sustituir por tu SVG) -->
+        <img src="/novatec-logo.webp" alt="">
+        <span class="font-semibold tracking-wide text-[color:var(--text,#e8f3ff)]">
+          NovaTec
+          <span class="text-[color:var(--primary,#19aaff)]">Business</span>
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-1">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class={[
+              "px-3 py-2 text-sm rounded-lg transition",
+              "text-[color:var(--muted,#9fb6c9)] hover:text-[color:var(--text,#e8f3ff))]",
+              "hover:bg-white/5 hover:ring-1 hover:ring-white/10",
+              isActive(l.href) &&
+                "text-[color:var(--text,#e8f3ff)] bg-white/[0.06] ring-1 ring-white/10 relative after:absolute after:left-3 after:right-3 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[color:var(--primary,#19aaff)] after:shadow-[0_0_12px_rgba(25,170,255,0.65)]",
+            ].join(" ")}
+          >
+            {l.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA + Mobile -->
+      <div class="flex items-center gap-2">
+        <a
+          href="/cotizar"
+          class="hidden md:inline-flex items-center rounded-xl px-4 py-2 text-sm
+                 bg-[color:var(--primary,#19aaff)] text-slate-900 font-semibold
+                 shadow-[0_10px_30px_rgba(25,170,255,0.35)]
+                 hover:shadow-[0_10px_38px_rgba(25,170,255,0.50)]
+                 transition"
+        >
+          Cotizar
+        </a>
+
+        <button
+          id="nv-menu-btn"
+          class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-xl
+                 bg-white/5 ring-1 ring-white/10"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               class="opacity-80"><path d="M4 7h16M4 12h16M4 17h16"
+               stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Sheet -->
+    <div
+      id="nv-mobile"
+      class="md:hidden max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out"
+    >
+      <div class="pb-3 pt-2 space-y-1">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class={[
+              "block rounded-xl px-3 py-2 text-[15px] transition",
+              "text-[color:var(--muted,#9fb6c9)] hover:text-[color:var(--text,#e8f3ff)]",
+              "hover:bg-white/5 hover:ring-1 hover:ring-white/10",
+              isActive(l.href) &&
+                "text-[color:var(--text,#e8f3ff)] bg-white/[0.06] ring-1 ring-white/10",
+            ].join(" ")}
+          >
+            {l.label}
+          </a>
+        ))}
+        <a
+          href="/cotizar"
+          class="block rounded-xl px-3 py-2 text-[15px] font-semibold
+                 bg-[color:var(--primary,#19aaff)] text-slate-900
+                 shadow-[0_10px_30px_rgba(25,170,255,0.35)]"
+        >
+          Cotizar
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  // Intensifica la transparencia al hacer scroll y controla el menú móvil
+  const navbar = document.getElementById('nv-navbar');
+  const sheet = document.getElementById('nv-mobile');
+  const btn = document.getElementById('nv-menu-btn');
+
+  const onScroll = () => {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    navbar?.classList.toggle('translate-y-[-2px]', y > 8);
+    navbar?.classList.toggle('backdrop-saturate-150', y > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  let open = false;
+  btn?.addEventListener('click', () => {
+    open = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    sheet.style.maxHeight = open ? sheet.scrollHeight + 'px' : '0px';
+  });
+</script>
+
+<style>
+  .group img{
+    width: 7%;
+  }
+
+  .mx-auto{
+    width: 80%;
+  }
+</style>

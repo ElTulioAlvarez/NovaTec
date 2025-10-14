@@ -1,0 +1,141 @@
+---
+// src/pages/index.astro
+import Navbar from "../componentes/navbar.astro";
+import Footer from "../componentes/footer.astro";
+import SEO from "../componentes/seo.astro";
+import CircuitBG from "../componentes/CircuitBG.astro";
+import "../styles/global.css";
+
+const title = "NovaTec Business Solutions — Soluciones integrales para PYMES";
+const description =
+  "Proveemos soluciones tecnológicas integrales para PYMES: POS, sistemas administrativos, CRM/ERP, facturación, hardware, inventarios, social media y capacitación en ventas.";
+
+// Íconos inline (para reutilizar en cards)
+const icons = {
+  brief: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M9 2h6a2 2 0 012 2v2h2a2 2 0 012 2v2H2V8a2 2 0 012-2h2V4a2 2 0 012-2zm8 6V4h-2v2H9V4H7v4h10zM2 12h20v6a2 2 0 01-2 2H4a2 2 0 01-2-2v-6z"/></svg>`,
+  target: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M11 2h2v3.05A7.002 7.002 0 0119.95 11H23v2h-3.05A7.002 7.002 0 0113 19.95V23h-2v-3.05A7.002 7.002 0 014.05 13H1v-2h3.05A7.002 7.002 0 0111 5.05V2zm1 5a5 5 0 105 5 5.006 5.006 0 00-5-5zm0 2a3 3 0 11-3 3 3.009 3.009 0 013-3z"/></svg>`,
+  team: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a4 4 0 10-4-4 4 4 0 004 4zm-6 8a6 6 0 1112 0v2H6zM18 8a3 3 0 11-3-3 3 3 0 013 3zM4 9a3 3 0 103-3 3 3 0 00-3 3z"/></svg>`,
+  tools: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19.3l-6.4-6.4a6 6 0 11-3-3l6.4 6.4 3-3V19.3zM8 14a4 4 0 104-4 4.005 4.005 0 00-4 4z"/></svg>`,
+  list: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h16v2H4z"/></svg>`,
+  check: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/></svg>`,
+  pos: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14a2 2 0 012 2v9H3V6a2 2 0 012-2zm-2 13h18v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1z"/></svg>`,
+  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v14H3zM5 7v10h14V7zM9 9l6 3-6 3z"/></svg>`,
+  flow: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10v4H7zM4 10h7v4H4zM13 16h7v4h-7z"/></svg>`,
+  phone: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.36 11.36 0 003.6.6 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.6 3.6 1 1 0 01-.25 1z"/></svg>`,
+  mail: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v.217l-10 6.25-10-6.25V6zm0 2.383V18a2 2 0 002 2h16a2 2 0 002-2V8.383l-9.445 5.89a2 2 0 01-2.11 0L2 8.383z"/></svg>`,
+};
+
+
+
+// Equipo (organigrama)
+const equipo = [
+  { nombre: "José Noé Hernández Esquivel", rol: "Lic. en Mercadotecnia" },
+  { nombre: "Marco Tulio Álvarez Barajas", rol: "Ing. en Sistemas Computacionales" },
+];
+
+// Recursos tecnológicos físicos
+
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/novatec-logo.webp" />
+    <SEO title={title} description={description} type="website" locale="es_MX" />
+    <title>{title}</title>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+    <Navbar logoSrc="/novatec-logo.webp" />
+    <CircuitBG />
+    <!-- HERO (full-height viewport) -->
+<header class="relative z-10  overflow-x-clip">
+  <!--
+    min-h-[100svh]: usa unidades "svh" para móviles (evita saltos al mostrar/ocultar la barra del navegador).
+    pt-28 sm:pt-32: margen superior pensando en un Navbar fijo (ajusta si tu Navbar NO es fijo).
+  -->
+  <section class="w-full min-h-[100svh] flex items-center pt-28 sm:pt-32 pb-12">
+    <div class="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div class="space-y-6">
+          <span class="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs tracking-wide text-cyan-200">
+            Soluciones pruebas integrales para PYMES
+          </span>
+          <h1 class="text-3xl font-extrabold sm:text-4xl lg:text-5xl leading-tight">
+            Controla tu operación, reduce pérdidas y optimiza tus ganancias
+          </h1>
+          <p class="text-slate-300/90 text-lg">
+            En <strong>NovaTec Business Solutions</strong> proveemos herramientas tecnológicas y procesos claros
+            para profesionalizar tu negocio: desde <em>POS</em> y CRM/ERP hasta inventarios, hardware, presencia digital
+            y capacitación comercial.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/productos" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500/90 px-5 py-3 font-semibold text-slate-900 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-300">
+              Ver catálogo
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 fill-current"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
+            </a>
+            <a href="/cotizar" class="inline-flex items-center gap-2 rounded-xl border border-slate-700 px-5 py-3 font-semibold text-slate-100 hover:bg-slate-900/50">
+              Solicitar cotización
+            </a>
+          </div>
+        </div>
+
+        <!-- Lado derecho: 3 highlights -->
+        <div class="grid gap-6 sm:grid-cols-2">
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-cyan-900/10 sm:col-span-2">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15" set:html={icons.brief}></div>
+            <h3 class="text-lg font-bold">Finalidad de la empresa</h3>
+            <p class="mt-2 text-sm text-slate-300/90">
+              Mejoramos el control administrativo, reducimos pérdidas y optimizamos ganancias con soluciones innovadoras.
+            </p>
+            
+          </article>
+
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-cyan-900/10 sm:col-span-2">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15" set:html={icons.team}></div>
+            <h3 class="text-lg font-bold">Equipo</h3>
+            <ul class="mt-2 space-y-2 text-sm text-slate-300/90">
+              {equipo.map(m => (
+                <li class="flex items-center gap-3">
+                  <span class="inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400"></span>
+                  <span class="font-medium">{m.nombre}</span>
+                  <span class="text-slate-400">— {m.rol}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fondo radial decorativo (queda detrás) -->
+  <div aria-hidden class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(75%_75%_at_50%_0%,rgba(56,189,248,0.15)_0%,rgba(15,23,42,0)_60%)]"></div>
+</header>
+
+
+
+    <Footer logoSrc="/novatec-logo.webp" />
+  </body>
+</html>
+
+<SEO
+  title="NovaTec Business Solutions — Software, Hardware y Servicios"
+  description="Soluciones integrales: POS, CRM/ERP, facturación, hardware, inventarios, social media y capacitación en ventas."
+  type="website"
+  locale="es_MX"
+  url="https://novatec.vercel.app/"
+  siteName="NovaTec Business Solutions"
+  ogImage="/og-default.png"
+  logo="/logo-novatec.png"
+  phone="+52 443 371 1589"
+  email="contacto@novatec.mx"
+  address={{
+    streetAddress: "Av. Principal 123",
+    addressLocality: "Morelia",
+    addressRegion: "Michoacán",
+    postalCode: "58000",
+    addressCountry: "MX"
+  }}
+/>
