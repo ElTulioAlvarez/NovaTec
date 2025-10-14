@@ -329,70 +329,76 @@ const description =
     <Footer logoSrc="/novatec-logo.webp" />
 
     <script is:inline>
-      const form = document.getElementById("cotizarForm");
-      const btn = document.getElementById("submitBtn");
-      const msg = document.getElementById("formMsg");
+  (function () {
+    const form = document.getElementById("cotizarForm");
+    const btn  = document.getElementById("submitBtn");
+    const msg  = document.getElementById("formMsg");
 
-      function getPayload(fd) {
-        // No mandamos el archivo por email. Se podría subir a storage si lo deseas.
-        const entries = [...fd.entries()].filter(([k]) => k !== "archivo");
-        return Object.fromEntries(entries);
-      }
+    if (!form) return;
 
-      function validateMinimal(payload) {
-        if (
-          !payload.nombre ||
-          !payload.email ||
-          !payload.tipo ||
-          !payload.descripcion
-        ) {
-          return "Por favor completa Nombre, Email, Tipo y Descripción.";
-        }
-        return null;
-      }
+    const endpoint = new URL("/api/cotizar", location.origin);
 
-      form?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        msg.textContent = "";
-        btn.disabled = true;
-        btn.textContent = "Enviando…";
+    function getPayload(fd) {
+      const entries = [...fd.entries()].filter(([k]) => k !== "archivo");
+      return Object.fromEntries(entries);
+    }
 
-        const fd = new FormData(form);
-        const payload = getPayload(fd);
-
-        const err = validateMinimal(payload);
-        if (err) {
-          msg.textContent = err;
-          btn.disabled = false;
-          btn.textContent = "Enviar solicitud";
-          return;
-        }
-
-        try {
-          const res = await fetch("/api/cotizar", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify(payload),
-          });
-
-          const data = await res.json().catch(() => ({}));
-          if (!res.ok || !data.ok) throw new Error(data.error || "Error");
-
-          msg.textContent =
-            "¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.";
-          form.reset();
-        } catch (err) {
-          msg.textContent =
-            "No se pudo enviar. Intenta de nuevo o escríbenos a contacto@novatec.mx";
-        } finally {
-          btn.disabled = false;
-          btn.textContent = "Enviar solicitud";
-        }
+    async function postJSON(url, payload) {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        // credentials same-origin por si en el futuro agregas sesión/csrftoken
+        credentials: "same-origin",
       });
-    </script>
+      let data = {};
+      try { data = await res.json(); } catch {}
+      if (!res.ok || !data.ok) {
+        const reason = data.error || `${res.status} ${res.statusText}`;
+        throw new Error(reason);
+      }
+      return data;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // ✅ usa validación nativa del navegador
+      if (!form.reportValidity()) return;
+
+      msg.textContent = "";
+      btn.disabled = true;
+      const oldLabel = btn.textContent;
+      btn.textContent = "Enviando…";
+
+      const fd = new FormData(form);
+      const payload = getPayload(fd);
+
+      try {
+        const data = await postJSON(endpoint, payload);
+        msg.textContent = "¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.";
+        form.reset();
+      } catch (err) {
+        // Muestra el motivo real en UI y consola
+        console.error("cotizar fetch error:", err);
+        msg.textContent = "No se pudo enviar: " + (err?.message || "Error");
+        // fallback opcional: submit nativo si quieres degradación elegante
+        // form.setAttribute("action", endpoint.href);
+        // form.setAttribute("method", "post");
+        // form.submit();
+      } finally {
+        btn.disabled = false;
+        btn.textContent = oldLabel;
+      }
+    });
+
+    // 🔎 Diagnóstico rápido en producción (opcional):
+    // fetch(new URL("/api/cotizar", location.origin))
+    //   .then(r => r.json())
+    //   .then(d => console.log("Health /api/cotizar:", d))
+    //   .catch(console.warn);
+  })();
+</script>
   </body>
 </html>
 
