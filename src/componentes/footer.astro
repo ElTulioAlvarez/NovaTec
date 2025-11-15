@@ -2,7 +2,7 @@
 export interface Props {
   logoSrc?: string;
 }
-const { logoSrc = "/novatec-logo.webp" } = Astro.props;
+const { logoSrc = "/web-app-manifest-512x512.png" } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
@@ -18,14 +18,14 @@ const year = new Date().getFullYear();
           <div class="logo-3d [perspective:1200px]">
             <img
               src={logoSrc}
-              alt="NovaTec logo"
+              alt="Tecno logo"
               class="h-10 w-10 rounded-lg shadow-lg transform-gpu transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-hover:scale-105"
               loading="lazy"
               decoding="async"
             />
           </div>
           <div>
-            <p class="text-base font-extrabold leading-tight">NovaTec Business Solutions</p>
+            <p class="text-base font-extrabold leading-tight">Tecno Business Solutions</p>
             <p class="text-xs text-slate-300/80 -mt-0.5">Tecnología + Social Media para crecer marcas</p>
           </div>
         </div>
@@ -106,7 +106,7 @@ const year = new Date().getFullYear();
     <!-- Línea legal -->
     <div class="holo-divider mx-auto my-8 w-[92%] max-w-[76rem]"></div>
     <div class="flex flex-col sm:flex-row items-center justify-between gap-3 py-6 text-xs text-slate-400/90">
-      <p>© {year} NovaTec Business Solutions. Todos los derechos reservados.</p>
+      <p>© {year} Tecno Business Solutions. Todos los derechos reservados.</p>
       <ul class="flex flex-wrap items-center gap-4">
         <li><a href="/terminos" class="footer-link">Términos</a></li>
         <li><a href="/privacidad" class="footer-link">Privacidad</a></li>
