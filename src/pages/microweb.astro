@@ -1,0 +1,680 @@
+---
+/**
+ * MicroWeb SIMPLE (tipo tarjeta digital) - 1 archivo .astro
+ * NeoTec Business Solutions
+ * Look premium iOS-like (electric blue / dark)
+ *
+ * Requisitos de assets (en /public):
+ * - /og-default.png
+ * - /icons/phone.png
+ * - /icons/whatsapp.png
+ * - /icons/email.png
+ * - /icons/maps.png
+ * - /icons/facebook.png
+ * - /icons/web.png
+ */
+
+const brandTitle = "NEOTEC";
+const brandSubtitle = "BUSINESS\nSOLUTIONS";
+const displayName = "NeoTec Business Solutions";
+
+const heroImageUrl = "/og-default.png";
+const heroTagline = "Soluciones integrales para PyMEs";
+
+// Links reales solicitados
+const quickLinks = [
+  {
+    label: "Teléfono",
+    href: "tel:+524433934469",
+    iconImg: "/icons/phone.png",
+    accent: "cyan",
+  },
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/524433934469?text=Hola%20NeoTec%2C%20quisiera%20más%20información%20por%20favor",
+    iconImg: "/icons/whatsapp.png",
+    accent: "green",
+  },
+  {
+    label: "Email",
+    href: "mailto:eltulioalvarez@gmail.com?subject=Contacto%20NeoTec",
+    iconImg: "/icons/email.png",
+    accent: "blue",
+  },
+  {
+    label: "Maps",
+    href: "https://www.google.com/maps?q=Morelia,+Michoac%C3%A1n",
+    iconImg: "/icons/maps.png",
+    accent: "yellow",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/search/top/?q=Marco%20Tulio%20Alvarez%20Barajas",
+    iconImg: "/icons/facebook.png",
+    accent: "indigo",
+  },
+  {
+    label: "Web",
+    href: "https://antimattermx.com",
+    iconImg: "/icons/web.png",
+    accent: "slate",
+  },
+];
+
+// Servicios (lista desplegable)
+const services = [
+  {
+    title: "Software a la medida",
+    body: "Sistemas web y escritorio para operación, control y crecimiento. Enfoque en rendimiento, escalabilidad y soporte.",
+  },
+  {
+    title: "Punto de Venta (POS)",
+    body: "Implementación y personalización de POS: ventas, caja, inventario, reportes y multi-sucursal.",
+  },
+  {
+    title: "Inventarios y Operación",
+    body: "Control de existencias, entradas/salidas, kardex, alertas de stock y flujos operativos.",
+  },
+  {
+    title: "Marketing y MicroWebs",
+    body: "Micro webs listas para vender, presencia digital, captación de leads y contenido para redes.",
+  },
+];
+
+// Carrusel
+const carousel = [
+  {
+    img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+    alt: "Operación y procesos",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Inventarios y control",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Equipos y colaboración",
+  },
+];
+
+const primaryCtaText = "Cotizar por WhatsApp";
+const primaryCtaHref =
+  "https://wa.me/524433934469?text=Hola%20NeoTec%2C%20quiero%20una%20cotización%20por%20favor";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{displayName}</title>
+    <meta
+      name="description"
+      content="NeoTec Business Solutions - Soluciones integrales para PyMEs: software, POS, inventarios y marketing."
+    />
+    <meta name="theme-color" content="#061A3A" />
+    <style>
+      :root{
+        /* Electric iOS-like dark */
+        --bg0:#030712;          /* slate-950 */
+        --bg1:#061A3A;          /* deep navy */
+        --bg2:#061E4D;          /* navy */
+        --card: rgba(255,255,255,.06);
+        --card2: rgba(15,23,42,.55);
+        --stroke: rgba(148,163,184,.14);
+        --stroke2: rgba(255,255,255,.12);
+        --text:#E5E7EB;         /* slate-200 */
+        --muted:#94A3B8;        /* slate-400 */
+        --shadow: 0 24px 70px rgba(0,0,0,.45);
+        --radius: 18px;
+        --radius2: 26px;
+        --max: 520px;
+
+        --cyan: 34,211,238;
+        --blue: 59,130,246;
+        --indigo: 99,102,241;
+        --green: 34,197,94;
+        --yellow: 234,179,8;
+        --slate: 148,163,184;
+      }
+
+      *{ box-sizing:border-box; }
+      html, body { height: 100%; }
+      body{
+        margin:0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        color: var(--text);
+        min-height: 100vh;
+        display:flex;
+        justify-content:center;
+
+        /* Premium background */
+        background:
+          radial-gradient(900px 520px at 20% -10%, rgba(var(--cyan), .18), transparent 60%),
+          radial-gradient(900px 520px at 90% 10%, rgba(var(--blue), .16), transparent 55%),
+          radial-gradient(700px 520px at 55% 110%, rgba(var(--indigo), .12), transparent 55%),
+          linear-gradient(180deg, var(--bg0), var(--bg1) 45%, #04142E 100%);
+      }
+
+      a{ color:inherit; text-decoration:none; }
+
+      .wrap{
+        width: 100%;
+        max-width: var(--max);
+        padding: 14px 12px 26px;
+      }
+
+      .shell{
+        border-radius: var(--radius2);
+        overflow:hidden;
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.10);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        position: relative;
+      }
+
+      /* Subtle inner glow border */
+      .shell::before{
+        content:"";
+        position:absolute; inset:0;
+        border-radius: inherit;
+        pointer-events:none;
+        background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));
+        mask: linear-gradient(#000, transparent 35%);
+        opacity:.55;
+      }
+
+      /* HERO */
+      .hero{
+        position:relative;
+        height: 360px;
+        background: #061A3A;
+        overflow:hidden;
+        border-bottom: 1px solid rgba(255,255,255,.10);
+      }
+      .hero img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display:block;
+        padding: 24px 18px 70px;
+        filter: saturate(1.06) contrast(1.06);
+      }
+      .overlay{
+        position:absolute; inset:0;
+        background:
+          radial-gradient(900px 380px at 12% 10%, rgba(var(--cyan), .18), transparent 60%),
+          radial-gradient(800px 360px at 82% 22%, rgba(var(--blue), .14), transparent 55%),
+          linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.30) 65%, rgba(0,0,0,.55));
+        pointer-events:none;
+      }
+
+      .hero-text{
+        position:absolute;
+        left: 18px;
+        top: 18px;
+        display:flex;
+        flex-direction:column;
+        gap: 10px;
+        max-width: 72%;
+        pointer-events:none;
+      }
+      .big{
+        font-weight: 1000;
+        letter-spacing: -1px;
+        font-size: 56px;
+        line-height: .9;
+        color: #ffffff;
+        text-transform: uppercase;
+        text-shadow: 0 18px 55px rgba(0,0,0,.45);
+      }
+      .sub{
+        font-weight: 900;
+        white-space: pre-line;
+        font-size: 20px;
+        line-height: 1.05;
+        color: rgba(226,232,240,.92);
+        text-transform: uppercase;
+        text-shadow: 0 18px 55px rgba(0,0,0,.45);
+      }
+      .hero-rule{
+        height: 4px;
+        width: 170px;
+        background: rgba(226,232,240,.92);
+        border-radius: 999px;
+        margin-top: 2px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      }
+
+      .hero-tagline{
+        position:absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 12px;
+
+        padding: 14px 14px;
+        border-radius: 18px;
+        color: rgba(226,232,240,.95);
+        font-weight: 950;
+        font-size: 15.5px;
+        letter-spacing: .25px;
+
+        background: rgba(2,6,23,.55);
+        border: 1px solid rgba(255,255,255,.12);
+        backdrop-filter: blur(14px);
+
+        box-shadow:
+          0 22px 55px rgba(0,0,0,.35),
+          0 0 0 1px rgba(var(--cyan), .10),
+          0 0 22px rgba(var(--cyan), .10);
+
+        display:flex;
+        align-items:center;
+        gap: 10px;
+      }
+
+      .tag-dot{
+        width: 10px;
+        height: 10px;
+        border-radius: 99px;
+        background: rgba(var(--cyan), .95);
+        box-shadow: 0 0 18px rgba(var(--cyan), .55);
+        flex: 0 0 auto;
+      }
+
+      @media (max-width: 420px){
+        .hero{ height: 334px; }
+        .big{ font-size: 48px; }
+        .sub{ font-size: 18px; }
+        .hero-tagline{ font-size: 14.8px; }
+      }
+
+      /* NAME BAR */
+      .namebar{
+        background: rgba(255,255,255,.95);
+        color: #0B1220;
+        padding: 12px 16px;
+        border-top: 1px solid rgba(255,255,255,.10);
+        border-bottom: 1px solid rgba(0,0,0,.06);
+      }
+      .namebar h1{
+        margin:0;
+        text-align:center;
+        font-size: 17px;
+        font-weight: 950;
+        letter-spacing: .1px;
+      }
+
+      /* ICON GRID (Premium iOS-like) */
+      .icons{
+        padding: 16px;
+        background:
+          radial-gradient(80% 65% at 50% 0%, rgba(var(--cyan), .14), transparent 60%),
+          linear-gradient(180deg, rgba(2,6,23,.80), rgba(15,23,42,.55));
+        border-top: 1px solid rgba(255,255,255,.08);
+      }
+
+      .icons-inner{
+        border-radius: 22px;
+        background: rgba(255,255,255,.05);
+        border: 1px solid rgba(255,255,255,.10);
+        box-shadow:
+          0 24px 65px rgba(0,0,0,.35),
+          inset 0 1px 0 rgba(255,255,255,.08);
+        padding: 16px 14px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .icons-inner::before{
+        content:"";
+        position:absolute; inset:-60px;
+        background:
+          radial-gradient(55% 55% at 30% 0%, rgba(var(--cyan), .18), transparent 60%),
+          radial-gradient(55% 55% at 80% 10%, rgba(var(--blue), .14), transparent 60%);
+        pointer-events:none;
+        opacity:.9;
+      }
+
+      .grid{
+        position: relative;
+        display:grid;
+        grid-template-columns: repeat(3, 1fr); /* 6 items -> 2 filas */
+        gap: 18px 14px;
+      }
+      @media (max-width: 420px){
+        .grid{ gap: 16px 10px; }
+      }
+
+      .icon{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap: 10px;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* iOS "app icon" bubble */
+      .bubble{
+        width: 72px;
+        height: 72px;
+        border-radius: 999px;
+        display:grid;
+        place-items:center;
+
+        background: rgba(2,6,23,.55);
+        border: 1px solid rgba(255,255,255,.10);
+
+        box-shadow:
+          0 22px 45px rgba(0,0,0,.45),
+          inset 0 1px 0 rgba(255,255,255,.10);
+
+        position: relative;
+        overflow: hidden;
+        transform: translateZ(0);
+        transition: transform .16s ease, filter .16s ease;
+      }
+
+      /* Gloss highlight */
+      .bubble::after{
+        content:"";
+        position:absolute;
+        inset: 0;
+        background:
+          radial-gradient(120% 70% at 30% 0%, rgba(255,255,255,.18), transparent 55%),
+          linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 45%);
+        pointer-events:none;
+      }
+
+      /* Accent rings/glow */
+      .icon.accent-cyan  .bubble{ box-shadow: 0 22px 45px rgba(0,0,0,.45), 0 0 0 1px rgba(var(--cyan), .18), 0 0 30px rgba(var(--cyan), .18), inset 0 1px 0 rgba(255,255,255,.10); }
+      .icon.accent-green .bubble{ box-shadow: 0 22px 45px rgba(0,0,0,.45), 0 0 0 1px rgba(var(--green), .18), 0 0 30px rgba(var(--green), .16), inset 0 1px 0 rgba(255,255,255,.10); }
+      .icon.accent-blue  .bubble{ box-shadow: 0 22px 45px rgba(0,0,0,.45), 0 0 0 1px rgba(var(--blue), .18), 0 0 30px rgba(var(--blue), .16), inset 0 1px 0 rgba(255,255,255,.10); }
+      .icon.accent-yellow .bubble{ box-shadow: 0 22px 45px rgba(0,0,0,.45), 0 0 0 1px rgba(var(--yellow), .18), 0 0 30px rgba(var(--yellow), .14), inset 0 1px 0 rgba(255,255,255,.10); }
+      .icon.accent-indigo .bubble{ box-shadow: 0 22px 45px rgba(0,0,0,.45), 0 0 0 1px rgba(var(--indigo), .18), 0 0 30px rgba(var(--indigo), .14), inset 0 1px 0 rgba(255,255,255,.10); }
+      .icon.accent-slate .bubble{ box-shadow: 0 22px 45px rgba(0,0,0,.45), 0 0 0 1px rgba(var(--slate), .16), 0 0 26px rgba(var(--slate), .10), inset 0 1px 0 rgba(255,255,255,.10); }
+
+      .icon-img{
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+        filter: drop-shadow(0 14px 24px rgba(0,0,0,.45));
+        user-select:none;
+        pointer-events:none;
+      }
+
+      .label{
+        font-size: 12.5px;
+        font-weight: 900;
+        color: rgba(226,232,240,.92);
+        letter-spacing: .25px;
+      }
+
+      .icon:hover .bubble{ transform: translateY(-2px); filter: brightness(1.06); }
+      .icon:active .bubble{ transform: translateY(0px) scale(.98); }
+
+      /* SERVICES */
+      .services{
+        padding: 0;
+        background:
+          radial-gradient(75% 70% at 50% 0%, rgba(var(--blue), .14), transparent 60%),
+          linear-gradient(180deg, #0B3B8F, #062B68);
+        border-top: 1px solid rgba(255,255,255,.10);
+      }
+      .svc-head{
+        display:flex;
+        align-items:center;
+        gap: 12px;
+        padding: 14px 16px;
+        color: rgba(226,232,240,.96);
+        font-weight: 1000;
+        text-transform: uppercase;
+        letter-spacing: .9px;
+        border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+      .svc-head .badge{
+        width: 34px; height: 34px;
+        border-radius: 14px;
+        background: rgba(255,255,255,.12);
+        display:grid;
+        place-items:center;
+        border: 1px solid rgba(255,255,255,.16);
+        box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      }
+      .svc{
+        border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+      .svc summary{
+        list-style:none;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        color: rgba(226,232,240,.95);
+        font-weight: 950;
+      }
+      .svc summary::-webkit-details-marker{ display:none; }
+      .svc summary .left{
+        display:flex; align-items:center; gap: 12px;
+      }
+      .svc .ic{
+        width: 34px; height: 34px;
+        border-radius: 14px;
+        background: rgba(255,255,255,.12);
+        border: 1px solid rgba(255,255,255,.14);
+        display:grid;
+        place-items:center;
+        font-weight: 1000;
+        box-shadow: 0 18px 40px rgba(0,0,0,.20);
+      }
+      .plus{
+        width: 36px; height: 36px;
+        border-radius: 14px;
+        background: rgba(255,255,255,.12);
+        border: 1px solid rgba(255,255,255,.14);
+        display:grid;
+        place-items:center;
+        font-weight: 1000;
+        box-shadow: 0 18px 40px rgba(0,0,0,.18);
+        transition: transform .16s ease, background .16s ease;
+      }
+      details[open] .plus{
+        background: rgba(255,255,255,.18);
+        transform: rotate(45deg);
+      }
+      .svc .body{
+        padding: 0 16px 14px 62px;
+        color: rgba(226,232,240,.88);
+        font-weight: 750;
+        line-height: 1.55;
+        font-size: 13px;
+      }
+
+      /* CAROUSEL */
+      .carousel{
+        background: rgba(2,6,23,.75);
+        border-top: 1px solid rgba(255,255,255,.10);
+        padding: 14px 0 10px;
+      }
+      .track{
+        display:flex;
+        overflow:auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding: 0 14px 10px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .track::-webkit-scrollbar{ height: 8px; }
+      .track::-webkit-scrollbar-thumb{ background: rgba(255,255,255,.14); border-radius: 999px; }
+      .slide{
+        flex: 0 0 86%;
+        scroll-snap-align: center;
+        border-radius: 18px;
+        overflow:hidden;
+        border: 1px solid rgba(255,255,255,.12);
+        box-shadow: 0 22px 55px rgba(0,0,0,.35);
+        background:#0b1220;
+        position:relative;
+      }
+      .slide::after{
+        content:"";
+        position:absolute; inset:0;
+        background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.35));
+        pointer-events:none;
+      }
+      .slide img{
+        width:100%;
+        height: 200px;
+        object-fit: cover;
+        display:block;
+        filter: saturate(1.02) contrast(1.02);
+      }
+      @media (min-width: 720px){
+        .wrap{ max-width: 640px; }
+        .slide{ flex-basis: 70%; }
+        .slide img{ height: 240px; }
+      }
+      .dots{
+        display:flex;
+        justify-content:center;
+        gap: 8px;
+        padding: 8px 0 2px;
+      }
+      .dot{
+        width: 8px; height: 8px;
+        border-radius: 99px;
+        background: rgba(255,255,255,.18);
+      }
+
+      /* CTA */
+      .cta{
+        background:
+          radial-gradient(80% 70% at 50% 0%, rgba(var(--cyan), .18), transparent 60%),
+          linear-gradient(180deg, #0B3B8F, #062B68);
+        padding: 18px 16px 20px;
+        border-top: 1px solid rgba(255,255,255,.10);
+      }
+      .cta a{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap: 10px;
+        text-align:center;
+        padding: 16px 14px;
+        border-radius: 18px;
+        color: rgba(226,232,240,.98);
+        font-weight: 1000;
+        font-size: 20px;
+
+        background: rgba(2,6,23,.55);
+        border: 1px solid rgba(255,255,255,.12);
+        backdrop-filter: blur(14px);
+
+        box-shadow:
+          0 26px 70px rgba(0,0,0,.38),
+          0 0 0 1px rgba(var(--cyan), .14),
+          0 0 26px rgba(var(--cyan), .12);
+      }
+      .cta a:hover{ filter: brightness(1.05); }
+      .cta a:active{ transform: scale(.995); }
+
+      /* Desktop breathing room */
+      @media (min-width: 980px){
+        body{ padding: 22px 0; }
+        .wrap{ max-width: 720px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="shell">
+        <!-- HERO -->
+        <section class="hero" aria-label="Portada">
+          <img src={heroImageUrl} alt="NeoTec Business Solutions" loading="eager" />
+          <div class="overlay" aria-hidden="true"></div>
+
+          <div class="hero-text" aria-hidden="true">
+            <div class="big">{brandTitle}</div>
+            <div class="hero-rule" aria-hidden="true"></div>
+            <div class="sub">{brandSubtitle}</div>
+          </div>
+
+          <div class="hero-tagline">
+            <span class="tag-dot" aria-hidden="true"></span>
+            <span>{heroTagline}</span>
+          </div>
+        </section>
+
+
+        <!-- ICON GRID -->
+        <section class="icons" aria-label="Accesos directos">
+          <div class="icons-inner">
+            <div class="grid">
+              {quickLinks.map((l) => (
+                <a
+                  class={`icon accent-${l.accent}`}
+                  href={l.href}
+                  aria-label={l.label}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                >
+                  <div class="bubble" aria-hidden="true">
+                    <img class="icon-img" src={l.iconImg} alt="" loading="lazy" />
+                  </div>
+                  <div class="label">{l.label}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services" aria-label="Servicios">
+          <div class="svc-head">
+            <span class="badge">🚀</span>
+            <span>Servicios</span>
+          </div>
+
+          {services.map((s, idx) => (
+            <details class="svc" {...(idx === 0 ? { open: true } : {})}>
+              <summary>
+                <span class="left">
+                  <span class="ic">💼</span>
+                  <span>{s.title}</span>
+                </span>
+                <span class="plus">+</span>
+              </summary>
+              <div class="body">{s.body}</div>
+            </details>
+          ))}
+        </section>
+
+        <!-- CAROUSEL -->
+        <section class="carousel" aria-label="Carrusel">
+          <div class="track" id="track">
+            {carousel.map((c) => (
+              <div class="slide">
+                <img src={c.img} alt={c.alt} loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div class="dots" aria-hidden="true">
+            {carousel.map(() => <span class="dot"></span>)}
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta" aria-label="CTA final">
+          <a href={primaryCtaHref} target="_blank" rel="noopener">
+            {primaryCtaText}
+          </a>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
