@@ -34,22 +34,22 @@ const services = [
   {
     title: "Asesoría legal",
     desc: "Análisis inicial del asunto, revisión del contexto jurídico y orientación clara sobre posibles vías de acción.",
-    image: "/src/assets/microwebs/ponienteabogados/asesoria.png",
+    image: "/delponienteabogados/asesoria.png",
   },
   {
     title: "Presupuesto de servicio judicial",
     desc: "Evaluación preliminar del caso para estimar alcance, etapas del procedimiento y costos del servicio.",
-    image: "/src/assets/microwebs/ponienteabogados/presupuesto.png",
+    image: "/delponienteabogados/presupuesto.png",
   },
   {
     title: "Orientación gubernamental",
     desc: "Acompañamiento sobre trámites, requisitos, dependencias y ruta adecuada para la gestión correspondiente.",
-    image: "/src/assets/microwebs/ponienteabogados/orientacion.png",
+    image: "/delponienteabogados/orientacion.png",
   },
   {
     title: "Contacto jurídico",
     desc: "Canal directo para resolver dudas, agendar atención y dar seguimiento puntual al asunto planteado.",
-    image: "/src/assets/microwebs/ponienteabogados/contacto.png",
+    image: "/delponienteabogados/contacto.png",
   },
 ];
 
@@ -90,35 +90,35 @@ const processItems = [
 
 const gallery = [
   {
-    src: "/src/assets/microwebs/ponienteabogados/1.jpeg",
+    src: "/delponienteabogados/1.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 1",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/2.jpeg",
+    src: "/delponienteabogados/2.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 2",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/3.jpeg",
+    src: "/delponienteabogados/3.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 3",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/4.jpeg",
+    src: "/delponienteabogados/4.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 4",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/5.jpeg",
+    src: "/delponienteabogados/5.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 5",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/6.jpeg",
+    src: "/delponienteabogados/6.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 6",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/7.jpeg",
+    src: "/delponienteabogados/7.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 7",
   },
   {
-    src: "/src/assets/microwebs/ponienteabogados/8.jpeg",
+    src: "/delponienteabogados/8.jpeg",
     alt: "Galería DEL PONIENTE & ABOGADOS 8",
   },
 ];
@@ -128,11 +128,72 @@ const gallery = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{PROFILE.brand}</title>
+
+    <title>{PROFILE.brand} | Asesoría legal y contacto jurídico</title>
+
     <meta
       name="description"
-      content={`${PROFILE.brand}: asesoría legal, orientación gubernamental, presupuesto de servicio judicial y contacto jurídico directo.`}
+      content="DEL PONIENTE & ABOGADOS: asesoría legal, presupuesto de servicio judicial, orientación gubernamental y contacto jurídico directo."
     />
+
+    <meta
+      name="keywords"
+      content="abogados, despacho jurídico, asesoría legal, servicio judicial, orientación gubernamental, contacto jurídico, DEL PONIENTE & ABOGADOS, Iván Santos Cortés"
+    />
+
+    <meta name="author" content="DEL PONIENTE & ABOGADOS" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0d0d0f" />
+
+    <link
+      rel="canonical"
+      href="https://neotec-plum.vercel.app/microwebs/delponiente&abogados"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DEL PONIENTE & ABOGADOS" />
+    <meta property="og:locale" content="es_MX" />
+    <meta
+      property="og:url"
+      content="https://neotec-plum.vercel.app/microwebs/delponiente&abogados"
+    />
+    <meta
+      property="og:title"
+      content="DEL PONIENTE & ABOGADOS | Asesoría legal y contacto jurídico"
+    />
+    <meta
+      property="og:description"
+      content="Despacho enfocado en asesoría legal, presupuesto de servicio judicial, orientación gubernamental y contacto jurídico directo."
+    />
+    <meta
+      property="og:image"
+      content="https://neotec-plum.vercel.app/delponienteabogados/og-default.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="DEL PONIENTE & ABOGADOS - Microweb jurídica"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="DEL PONIENTE & ABOGADOS | Asesoría legal y contacto jurídico"
+    />
+    <meta
+      name="twitter:description"
+      content="Asesoría legal, presupuesto de servicio judicial, orientación gubernamental y contacto jurídico directo."
+    />
+    <meta
+      name="twitter:image"
+      content="https://neotec-plum.vercel.app/delponienteabogados/og-default.png"
+    />
+
+    <!-- Extras útiles -->
+    <meta name="format-detection" content="telephone=no" />
   </head>
 
   <body>
@@ -145,7 +206,7 @@ const gallery = [
           <div class="heroBrand" data-reveal-child>
             <img
               class="logo"
-              src="/src/assets/microwebs/ponienteabogados/logo.png"
+              src="/delponienteabogados/logo.png"
               alt="Logo de DEL PONIENTE & ABOGADOS"
               loading="eager"
               decoding="async"
