@@ -13,8 +13,6 @@ const PROFILE = {
     holder: "Iván Santos",
     account: "012180015325743466",
   },
-  cityLabel: "Atención jurídica",
-  websiteLabel: "MicroWeb legal",
   heroTitle:
     "Defensa, orientación y acompañamiento jurídico con seriedad y criterio.",
   heroText:
@@ -89,38 +87,14 @@ const processItems = [
 ];
 
 const gallery = [
-  {
-    src: "/delponienteabogados/1.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 1",
-  },
-  {
-    src: "/delponienteabogados/2.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 2",
-  },
-  {
-    src: "/delponienteabogados/3.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 3",
-  },
-  {
-    src: "/delponienteabogados/4.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 4",
-  },
-  {
-    src: "/delponienteabogados/5.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 5",
-  },
-  {
-    src: "/delponienteabogados/6.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 6",
-  },
-  {
-    src: "/delponienteabogados/7.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 7",
-  },
-  {
-    src: "/delponienteabogados/8.jpeg",
-    alt: "Galería DEL PONIENTE & ABOGADOS 8",
-  },
+  { src: "/delponienteabogados/1.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 1" },
+  { src: "/delponienteabogados/2.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 2" },
+  { src: "/delponienteabogados/3.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 3" },
+  { src: "/delponienteabogados/4.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 4" },
+  { src: "/delponienteabogados/5.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 5" },
+  { src: "/delponienteabogados/6.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 6" },
+  { src: "/delponienteabogados/7.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 7" },
+  { src: "/delponienteabogados/8.jpeg", alt: "Galería DEL PONIENTE & ABOGADOS 8" },
 ];
 ---
 
@@ -130,27 +104,24 @@ const gallery = [
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>{PROFILE.brand} | Asesoría legal y contacto jurídico</title>
-
     <meta
       name="description"
       content="DEL PONIENTE & ABOGADOS: asesoría legal, presupuesto de servicio judicial, orientación gubernamental y contacto jurídico directo."
     />
-
     <meta
       name="keywords"
       content="abogados, despacho jurídico, asesoría legal, servicio judicial, orientación gubernamental, contacto jurídico, DEL PONIENTE & ABOGADOS, Iván Santos Cortés"
     />
-
     <meta name="author" content="DEL PONIENTE & ABOGADOS" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0d0d0f" />
+    <meta name="format-detection" content="telephone=no" />
 
     <link
       rel="canonical"
       href="https://neotec-plum.vercel.app/microwebs/delponiente&abogados"
     />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DEL PONIENTE & ABOGADOS" />
     <meta property="og:locale" content="es_MX" />
@@ -177,7 +148,6 @@ const gallery = [
       content="DEL PONIENTE & ABOGADOS - Microweb jurídica"
     />
 
-    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -191,14 +161,10 @@ const gallery = [
       name="twitter:image"
       content="https://neotec-plum.vercel.app/delponienteabogados/og-default.png"
     />
-
-    <!-- Extras útiles -->
-    <meta name="format-detection" content="telephone=no" />
   </head>
 
   <body>
     <main class="wrap">
-      <!-- HERO -->
       <header class="hero panel panel-blur" data-reveal>
         <div class="heroGlow" aria-hidden="true"></div>
 
@@ -229,7 +195,7 @@ const gallery = [
                 <span class="btnGlow" aria-hidden="true"></span>
               </a>
 
-              <a class="btn ghost" href="#procesos"> Ver procesos </a>
+              <a class="btn ghost" href="#procesos">Ver procesos</a>
             </div>
           </div>
         </div>
@@ -244,7 +210,18 @@ const gallery = [
             title="WhatsApp"
             data-reveal
           >
-            <span class="qicon" aria-hidden="true">💬</span>
+            <span class="qicon" aria-hidden="true">
+              <svg class="qsvg qsvg-whatsapp" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .15 5.34.15 11.91c0 2.1.55 4.15 1.59 5.96L0 24l6.32-1.66a11.88 11.88 0 0 0 5.75 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.16-3.48-8.41ZM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.75.98 1-3.65-.24-.37a9.83 9.83 0 0 1-1.51-5.26c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7c0 5.47-4.45 9.92-9.93 9.92Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M17.56 14.33c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.43-1.49-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.62.71.22 1.35.19 1.86.11.57-.08 1.77-.72 2.02-1.42.25-.69.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
             <span class="qtitle">WhatsApp</span>
             <span class="qmeta">+52 {PROFILE.whatsapp}</span>
           </a>
@@ -256,7 +233,17 @@ const gallery = [
             title="Teléfono"
             data-reveal
           >
-            <span class="qicon" aria-hidden="true">📞</span>
+            <span class="qicon" aria-hidden="true">
+              <svg class="qsvg qsvg-phone" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 11.2 18.8a19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3.02a2 2 0 0 1 1.98 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L7.9 9.8a16 16 0 0 0 6.3 6.3l1.35-1.34a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92Z"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
             <span class="qtitle">Teléfono</span>
             <span class="qmeta">+52 {PROFILE.phone}</span>
           </a>
@@ -270,7 +257,14 @@ const gallery = [
             title="Facebook"
             data-reveal
           >
-            <span class="qicon" aria-hidden="true">f</span>
+            <span class="qicon" aria-hidden="true">
+              <svg class="qsvg qsvg-facebook" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M13.5 21v-7h2.7l.5-3h-3.2V9.2c0-.88.3-1.48 1.56-1.48H17V5.05c-.3-.04-1.34-.13-2.55-.13-2.52 0-4.25 1.54-4.25 4.38V11H7.5v3h2.7v7h3.3Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
             <span class="qtitle">Facebook</span>
             <span class="qmeta">Perfil oficial</span>
           </a>
@@ -284,20 +278,38 @@ const gallery = [
             title="Instagram"
             data-reveal
           >
-            <span class="qicon" aria-hidden="true">◎</span>
+            <span class="qicon" aria-hidden="true">
+              <svg class="qsvg qsvg-instagram" viewBox="0 0 24 24" fill="none">
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="5"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.9"
+                />
+                <circle cx="17.2" cy="6.8" r="1.15" fill="currentColor" />
+              </svg>
+            </span>
             <span class="qtitle">Instagram</span>
             <span class="qmeta">@vicsantosco_del_poniente</span>
           </a>
         </section>
       </header>
 
-      <!-- SERVICIOS -->
       <section class="section" id="servicios">
         <div class="sectionHead" data-reveal>
           <h2 data-reveal-child>Servicios jurídicos</h2>
           <p data-reveal-child>
-            Atención formal, seguimiento profesional y comunicación clara en
-            cada asunto.
+            Atención formal, seguimiento profesional y comunicación clara en cada asunto.
           </p>
         </div>
 
@@ -320,9 +332,7 @@ const gallery = [
 
                 <div class="cardContent">
                   <h3 data-reveal-child>{s.title}</h3>
-                  <p class="cardDesc" data-reveal-child>
-                    {s.desc}
-                  </p>
+                  <p class="cardDesc" data-reveal-child>{s.desc}</p>
 
                   <div class="cardActions" data-reveal-child>
                     <a
@@ -341,7 +351,6 @@ const gallery = [
         </div>
       </section>
 
-      <!-- PROCESOS -->
       <section class="section" id="procesos">
         <div class="sectionHead" data-reveal>
           <h2 data-reveal-child>Procesos del despacho</h2>
@@ -353,13 +362,11 @@ const gallery = [
 
         <div class="accordionWrap">
           {
-            processItems.map((item, index) => (
+            processItems.map((item) => (
               <details class="accordion panel" data-reveal>
                 <summary>
                   <span>{item.title}</span>
-                  <span class="plus" aria-hidden="true">
-                    +
-                  </span>
+                  <span class="plus" aria-hidden="true">+</span>
                 </summary>
                 <div class="accordionBody">
                   <p>{item.body}</p>
@@ -370,7 +377,6 @@ const gallery = [
         </div>
       </section>
 
-      <!-- GALERÍA -->
       <section class="section" id="galeria">
         <div class="sectionHead" data-reveal>
           <h2 data-reveal-child>Galería</h2>
@@ -407,13 +413,10 @@ const gallery = [
         </div>
       </section>
 
-      <!-- INFO BANCARIA -->
       <section class="section" id="datos">
         <div class="sectionHead" data-reveal>
           <h2 data-reveal-child>Información bancaria</h2>
-          <p data-reveal-child>
-            Datos para referencia administrativa del despacho.
-          </p>
+          <p data-reveal-child>Datos para referencia administrativa del despacho.</p>
         </div>
 
         <div class="bank panel" data-reveal>
@@ -441,7 +444,6 @@ const gallery = [
         </div>
       </section>
 
-      <!-- CIERRE -->
       <section class="quote" id="contacto">
         <div class="quoteBox panel panel-blur" data-reveal>
           <h2 data-reveal-child>Contacto jurídico directo</h2>
@@ -461,7 +463,7 @@ const gallery = [
               <span class="btnGlow" aria-hidden="true"></span>
             </a>
 
-            <a class="btn ghost" href={telLink}> Llamar ahora </a>
+            <a class="btn ghost" href={telLink}>Llamar ahora</a>
           </div>
 
           <div class="mini" data-reveal-child>
@@ -473,20 +475,18 @@ const gallery = [
       </section>
 
       <footer class="footer" data-reveal>
-        <p data-reveal-child>
-          © {new Date().getFullYear()}
-          {PROFILE.brand}
-        </p>
+        <p data-reveal-child>© {new Date().getFullYear()} {PROFILE.brand}</p>
       </footer>
     </main>
 
-    <!-- MODAL ZOOM -->
     <div class="zoomModal" id="zoomModal" aria-hidden="true">
       <button
         class="zoomBackdrop"
         type="button"
         data-close-zoom
-        aria-label="Cerrar imagen"></button>
+        aria-label="Cerrar imagen"
+      ></button>
+
       <div
         class="zoomDialog"
         role="dialog"
@@ -497,19 +497,19 @@ const gallery = [
           class="zoomClose"
           type="button"
           data-close-zoom
-          aria-label="Cerrar">×</button
+          aria-label="Cerrar"
         >
+          ×
+        </button>
         <img id="zoomImage" src="" alt="" />
       </div>
     </div>
 
     <script>
       (() => {
-        const reduce = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        ).matches;
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const nodes = Array.from(
-          document.querySelectorAll<HTMLElement>("[data-reveal]"),
+          document.querySelectorAll<HTMLElement>("[data-reveal]")
         );
 
         if (reduce) {
@@ -524,7 +524,7 @@ const gallery = [
                 el.classList.add("is-in");
 
                 const kids = el.querySelectorAll<HTMLElement>(
-                  ":scope > [data-reveal-child]",
+                  ":scope > [data-reveal-child]"
                 );
 
                 kids.forEach((kid, i) => {
@@ -534,25 +534,21 @@ const gallery = [
                 io.unobserve(el);
               });
             },
-            { threshold: 0.18 },
+            { threshold: 0.18 }
           );
 
           nodes.forEach((el) => io.observe(el));
         }
 
-        const modal = document.getElementById(
-          "zoomModal",
-        ) as HTMLDivElement | null;
-        const zoomImage = document.getElementById(
-          "zoomImage",
-        ) as HTMLImageElement | null;
+        const modal = document.getElementById("zoomModal") as HTMLDivElement | null;
+        const zoomImage = document.getElementById("zoomImage") as HTMLImageElement | null;
 
         const openButtons = Array.from(
-          document.querySelectorAll<HTMLElement>("[data-open-zoom]"),
+          document.querySelectorAll<HTMLElement>("[data-open-zoom]")
         );
 
         const closeButtons = Array.from(
-          document.querySelectorAll<HTMLElement>("[data-close-zoom]"),
+          document.querySelectorAll<HTMLElement>("[data-close-zoom]")
         );
 
         const openModal = (src: string, alt: string): void => {
@@ -580,27 +576,19 @@ const gallery = [
             const src = btn.getAttribute("data-src");
             const alt = btn.getAttribute("data-alt") ?? "";
 
-            if (src) {
-              openModal(src, alt);
-            }
+            if (src) openModal(src, alt);
           });
         });
 
         closeButtons.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            closeModal();
-          });
+          btn.addEventListener("click", closeModal);
         });
 
         document.addEventListener("keydown", (e: KeyboardEvent) => {
-          if (e.key === "Escape") {
-            closeModal();
-          }
+          if (e.key === "Escape") closeModal();
         });
 
-        const copyBtn = document.querySelector<HTMLElement>(
-          "[data-copy-account]",
-        );
+        const copyBtn = document.querySelector<HTMLElement>("[data-copy-account]");
         const bankAccount = document.getElementById("bankAccount");
 
         copyBtn?.addEventListener("click", async () => {
@@ -621,9 +609,7 @@ const gallery = [
           }
         });
 
-        const track = document.getElementById(
-          "galleryTrack",
-        ) as HTMLDivElement | null;
+        const track = document.getElementById("galleryTrack") as HTMLDivElement | null;
         let isDown = false;
         let startX = 0;
         let scrollLeft = 0;
@@ -661,13 +647,10 @@ const gallery = [
     <style>
       :root {
         --bg: #0d0d0f;
-        --bg2: #121215;
         --panel: rgba(19, 19, 22, 0.86);
-        --panel2: rgba(26, 26, 30, 0.92);
         --gold: #d4af37;
         --gold-2: #f0d36a;
         --red: #9f1d20;
-        --red-2: #c92b2f;
         --text: rgba(255, 255, 255, 0.94);
         --muted: rgba(234, 234, 234, 0.72);
         --line: rgba(212, 175, 55, 0.24);
@@ -695,16 +678,8 @@ const gallery = [
         margin: 0;
         color: var(--text);
         background:
-          radial-gradient(
-            circle at top,
-            rgba(159, 29, 32, 0.08),
-            transparent 22%
-          ),
-          radial-gradient(
-            circle at 20% 0%,
-            rgba(212, 175, 55, 0.08),
-            transparent 26%
-          ),
+          radial-gradient(circle at top, rgba(159, 29, 32, 0.08), transparent 22%),
+          radial-gradient(circle at 20% 0%, rgba(212, 175, 55, 0.08), transparent 26%),
           linear-gradient(180deg, #090909 0%, #0e0e11 48%, #111114 100%);
         font-family:
           "Inter",
@@ -722,18 +697,15 @@ const gallery = [
       .wrap {
         width: min(var(--max), calc(100% - 32px));
         margin: 0 auto;
-        padding: 26px 0 72px;
+        padding: 12px 0 40px;
       }
 
       .panel {
         position: relative;
         border-radius: var(--radius-xl);
         border: 1px solid var(--line);
-        background: linear-gradient(
-          180deg,
-          rgba(22, 22, 26, 0.92),
-          rgba(12, 12, 15, 0.96)
-        );
+        background:
+          linear-gradient(180deg, rgba(22, 22, 26, 0.92), rgba(12, 12, 15, 0.96));
         box-shadow: var(--shadow);
         overflow: hidden;
       }
@@ -801,7 +773,13 @@ const gallery = [
       }
 
       .hero {
-        padding: 22px;
+        min-height: 100vh;
+        min-height: 100svh;
+        min-height: 100dvh;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .heroGlow {
@@ -809,42 +787,18 @@ const gallery = [
         inset: 0;
         pointer-events: none;
         background:
-          radial-gradient(
-            circle at 50% 0%,
-            rgba(212, 175, 55, 0.12),
-            transparent 34%
-          ),
-          radial-gradient(
-            circle at 85% 20%,
-            rgba(159, 29, 32, 0.1),
-            transparent 22%
-          );
+          radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12), transparent 34%),
+          radial-gradient(circle at 85% 20%, rgba(159, 29, 32, 0.1), transparent 22%);
       }
 
       .heroTop {
-        display: grid;
-        grid-template-columns: 1.02fr 1fr;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 28px;
-      }
-
-      .brandStamp {
-        display: inline-flex;
-        margin-bottom: 12px;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(212, 175, 55, 0.22);
-        background: rgba(212, 175, 55, 0.08);
-        padding: 8px 14px;
-        font-size: 0.84rem;
-        font-weight: 700;
-        color: var(--gold-2);
-        letter-spacing: 0.2px;
+        justify-content: center;
+        gap: 12px;
+        flex: 1 1 auto;
+        text-align: center;
       }
 
       .heroBrand {
@@ -852,7 +806,7 @@ const gallery = [
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 420px;
+        padding-top: 4px;
       }
 
       .heroBrand::before {
@@ -861,21 +815,18 @@ const gallery = [
         width: 88%;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
-        background: radial-gradient(
-          circle,
-          rgba(212, 175, 55, 0.16),
-          transparent 58%
-        );
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.16), transparent 58%);
         filter: blur(10px);
       }
 
       .logo {
         position: relative;
         z-index: 1;
-        width: min(420px, 100%);
+        width: clamp(110px, 18vh, 180px);
         height: auto;
         object-fit: contain;
-        filter: drop-shadow(0 18px 46px rgba(212, 175, 55, 0.16))
+        filter:
+          drop-shadow(0 18px 46px rgba(212, 175, 55, 0.16))
           drop-shadow(0 8px 22px rgba(159, 29, 32, 0.14));
       }
 
@@ -894,25 +845,31 @@ const gallery = [
 
       h1 {
         margin: 0;
-        font-size: clamp(1.7rem, 3.6vw, 3.25rem);
-        line-height: 1.08;
-        letter-spacing: -0.02em;
+        font-size: clamp(1.9rem, 5.2vh, 3.35rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
         max-width: 12ch;
       }
 
       .subtitle {
-        margin: 14px 0 0;
+        margin: 10px auto 0;
         color: var(--muted);
-        font-size: 1.04rem;
-        line-height: 1.65;
-        max-width: 62ch;
+        font-size: clamp(0.95rem, 1.85vh, 1.04rem);
+        line-height: 1.5;
+        max-width: 34rem;
       }
 
       .ctaRow {
-        margin-top: 22px;
+        margin-top: 16px;
         display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
+        gap: 10px;
+        flex-wrap: nowrap;
+        width: 100%;
+      }
+
+      .ctaRow .btn {
+        flex: 1 1 0;
+        min-width: 0;
       }
 
       .btn {
@@ -965,15 +922,15 @@ const gallery = [
       }
 
       .quick {
-        margin-top: 22px;
+        margin-top: 16px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
+        gap: 10px;
       }
 
       .qbtn {
-        padding: 15px 14px;
-        min-height: 108px;
+        padding: 12px 10px;
+        min-height: 92px;
         text-decoration: none;
         color: var(--text);
         border-radius: var(--radius);
@@ -982,7 +939,9 @@ const gallery = [
           border-color 0.16s ease;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
       }
 
       .qbtn:hover {
@@ -996,15 +955,43 @@ const gallery = [
         display: grid;
         place-items: center;
         border-radius: 14px;
-        background: linear-gradient(
-          180deg,
-          rgba(212, 175, 55, 0.14),
-          rgba(159, 29, 32, 0.12)
-        );
+        background:
+          linear-gradient(180deg, rgba(212, 175, 55, 0.14), rgba(159, 29, 32, 0.12));
         border: 1px solid rgba(212, 175, 55, 0.22);
         color: var(--gold-2);
-        font-size: 1.1rem;
-        font-weight: 900;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.04),
+          0 8px 18px rgba(0, 0, 0, 0.22);
+        flex-shrink: 0;
+      }
+
+      .qsvg {
+        display: block;
+        overflow: visible;
+      }
+
+      .qsvg * {
+        vector-effect: non-scaling-stroke;
+      }
+
+      .qsvg-phone {
+        width: 21px;
+        height: 21px;
+      }
+
+      .qsvg-whatsapp {
+        width: 22px;
+        height: 22px;
+      }
+
+      .qsvg-facebook {
+        width: 19px;
+        height: 19px;
+      }
+
+      .qsvg-instagram {
+        width: 21px;
+        height: 21px;
       }
 
       .qtitle {
@@ -1014,8 +1001,9 @@ const gallery = [
 
       .qmeta {
         color: var(--muted);
-        font-size: 0.92rem;
-        line-height: 1.4;
+        font-size: 0.86rem;
+        line-height: 1.3;
+        text-align: center;
       }
 
       .section {
@@ -1073,21 +1061,9 @@ const gallery = [
         inset: 0;
         z-index: 1;
         background:
-          linear-gradient(
-            180deg,
-            rgba(10, 10, 12, 0.15),
-            rgba(10, 10, 12, 0.78)
-          ),
-          linear-gradient(
-            90deg,
-            rgba(10, 10, 12, 0.78),
-            rgba(10, 10, 12, 0.18)
-          ),
-          radial-gradient(
-            circle at top left,
-            rgba(212, 175, 55, 0.1),
-            transparent 30%
-          );
+          linear-gradient(180deg, rgba(10, 10, 12, 0.15), rgba(10, 10, 12, 0.78)),
+          linear-gradient(90deg, rgba(10, 10, 12, 0.78), rgba(10, 10, 12, 0.18)),
+          radial-gradient(circle at top left, rgba(212, 175, 55, 0.1), transparent 30%);
       }
 
       .cardContent {
@@ -1147,7 +1123,7 @@ const gallery = [
         align-items: center;
         justify-content: space-between;
         gap: 18px;
-        padding: 18px 18px;
+        padding: 18px;
         font-weight: 800;
         color: var(--text);
       }
@@ -1234,6 +1210,20 @@ const gallery = [
         aspect-ratio: 4 / 3;
       }
 
+      .galleryItem::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          180deg,
+          rgba(10, 10, 12, 0.02) 0%,
+          rgba(10, 10, 12, 0.08) 55%,
+          rgba(10, 10, 12, 0.22) 100%
+        );
+      }
+
       .galleryItem::after {
         content: "Zoom";
         position: absolute;
@@ -1248,20 +1238,6 @@ const gallery = [
         border: 1px solid rgba(212, 175, 55, 0.22);
         color: var(--gold-2);
         backdrop-filter: blur(6px);
-      }
-
-      .galleryItem::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background: linear-gradient(
-          180deg,
-          rgba(10, 10, 12, 0.02) 0%,
-          rgba(10, 10, 12, 0.08) 55%,
-          rgba(10, 10, 12, 0.22) 100%
-        );
       }
 
       .galleryItem img {
@@ -1295,10 +1271,6 @@ const gallery = [
         border: 1px solid rgba(212, 175, 55, 0.14);
         background: rgba(255, 255, 255, 0.02);
         padding: 16px;
-      }
-
-      .bankItemWide {
-        grid-column: span 1;
       }
 
       .bankLabel {
@@ -1441,24 +1413,60 @@ const gallery = [
         }
       }
 
-      @media (max-width: 980px) {
-        .heroTop {
-          grid-template-columns: 1fr;
-          gap: 18px;
+      @media (max-height: 760px) {
+        .hero {
+          padding: 12px;
         }
 
-        .heroBrand {
-          order: -1;
-          min-height: unset;
-          padding-top: 8px;
+        .heroTop {
+          gap: 8px;
         }
 
         .logo {
-          width: min(340px, 78vw);
+          width: clamp(82px, 12vh, 128px);
         }
 
-        .heroText {
-          text-align: center;
+        h1 {
+          font-size: clamp(1.2rem, 4.6vh, 2rem);
+          max-width: 11ch;
+        }
+
+        .subtitle {
+          font-size: 0.9rem;
+          line-height: 1.38;
+        }
+
+        .btn {
+          min-height: 42px;
+          padding: 10px 12px;
+          font-size: 0.92rem;
+        }
+
+        .qbtn {
+          min-height: 68px;
+        }
+
+        .qicon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .qsvg-phone,
+        .qsvg-whatsapp,
+        .qsvg-instagram {
+          width: 19px;
+          height: 19px;
+        }
+
+        .qsvg-facebook {
+          width: 17px;
+          height: 17px;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .logo {
+          width: min(340px, 78vw);
         }
 
         h1 {
@@ -1472,10 +1480,6 @@ const gallery = [
 
         .ctaRow {
           justify-content: center;
-        }
-
-        .quick {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
         }
 
         .servicesGrid {
@@ -1497,11 +1501,6 @@ const gallery = [
           padding: 18px;
         }
 
-        .eyebrow {
-          font-size: 0.78rem;
-          padding: 7px 12px;
-        }
-
         .logo {
           width: min(250px, 86vw);
         }
@@ -1515,7 +1514,6 @@ const gallery = [
         }
 
         .ctaRow {
-          flex-wrap: nowrap;
           flex-direction: column;
         }
 
@@ -1530,9 +1528,6 @@ const gallery = [
 
         .qbtn {
           min-height: 78px;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
           padding: 10px 8px;
         }
 
@@ -1545,6 +1540,18 @@ const gallery = [
           margin: 0;
           width: 44px;
           height: 44px;
+        }
+
+        .qsvg-phone,
+        .qsvg-whatsapp,
+        .qsvg-instagram {
+          width: 20px;
+          height: 20px;
+        }
+
+        .qsvg-facebook {
+          width: 18px;
+          height: 18px;
         }
 
         .servicesGrid {
