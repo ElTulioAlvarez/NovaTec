@@ -1,0 +1,1559 @@
+---
+const PROFILE = {
+  brand: "DEL PONIENTE & ABOGADOS",
+  contact: "Lic. Iván Santos Cortés",
+  phone: "5548563673",
+  whatsapp: "5548563673",
+  facebook:
+    "https://www.facebook.com/profile.php?id=100079703094233&mibextid=wwXIfr&rdid=RYzz6odAyEBmLKeO&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DXfWdrvjn%2F%3Fmivextid%3DwwwXlfr#",
+  instagram:
+    "https://www.instagram.com/vicsantosco_del_poniente?igh=MXFkcDkzYmtmZz-BrYw%3D%3D&utm_-source=qr",
+  bank: {
+    name: "BBVA",
+    holder: "Iván Santos",
+    account: "012180015325743466",
+  },
+  cityLabel: "Atención jurídica",
+  websiteLabel: "MicroWeb legal",
+  heroTitle:
+    "Defensa, orientación y acompañamiento jurídico con seriedad y criterio.",
+  heroText:
+    "Despacho enfocado en asesoría legal, presupuesto de servicio judicial, orientación gubernamental y contacto jurídico directo. Atención clara, formal y con seguimiento profesional.",
+};
+
+const waMessage = encodeURIComponent(
+  `Hola, me interesa recibir información de ${PROFILE.brand}. Quisiera orientación sobre mi asunto jurídico.`,
+);
+
+const waLink = `https://wa.me/52${PROFILE.whatsapp}?text=${waMessage}`;
+const telLink = `tel:+52${PROFILE.phone}`;
+const fbLink = PROFILE.facebook;
+const igLink = PROFILE.instagram;
+
+const services = [
+  {
+    title: "Asesoría legal",
+    desc: "Análisis inicial del asunto, revisión del contexto jurídico y orientación clara sobre posibles vías de acción.",
+    image: "/src/assets/microwebs/ponienteabogados/asesoria.png",
+  },
+  {
+    title: "Presupuesto de servicio judicial",
+    desc: "Evaluación preliminar del caso para estimar alcance, etapas del procedimiento y costos del servicio.",
+    image: "/src/assets/microwebs/ponienteabogados/presupuesto.png",
+  },
+  {
+    title: "Orientación gubernamental",
+    desc: "Acompañamiento sobre trámites, requisitos, dependencias y ruta adecuada para la gestión correspondiente.",
+    image: "/src/assets/microwebs/ponienteabogados/orientacion.png",
+  },
+  {
+    title: "Contacto jurídico",
+    desc: "Canal directo para resolver dudas, agendar atención y dar seguimiento puntual al asunto planteado.",
+    image: "/src/assets/microwebs/ponienteabogados/contacto.png",
+  },
+];
+
+const processItems = [
+  {
+    title: "1. Primer contacto y escucha del asunto",
+    body: "Se recibe la información inicial del caso, se identifican los hechos principales, las partes involucradas y el objetivo del cliente. Esta etapa permite determinar si el asunto requiere asesoría, gestión o procedimiento judicial.",
+  },
+  {
+    title: "2. Revisión jurídica preliminar",
+    body: "Se analiza el problema desde el punto de vista legal, se revisa la viabilidad inicial del asunto y se identifican riesgos, alternativas y posibles rutas de atención. Aquí se define con mayor claridad el panorama jurídico.",
+  },
+  {
+    title: "3. Orientación y estrategia",
+    body: "Se explica al cliente el camino recomendado, los pasos a seguir, la documentación necesaria y las implicaciones del proceso. La intención es que cada decisión se tome con contexto, no a ciegas.",
+  },
+  {
+    title: "4. Presupuesto y alcance del servicio",
+    body: "Una vez entendido el caso, se plantea el alcance del servicio profesional y se presenta el presupuesto correspondiente, considerando la naturaleza del asunto, su complejidad y el seguimiento requerido.",
+  },
+  {
+    title: "5. Integración documental",
+    body: "Se solicita y organiza la documentación indispensable para sustentar el trámite, gestión o procedimiento. Una integración documental ordenada evita retrasos, errores y observaciones innecesarias.",
+  },
+  {
+    title: "6. Gestión, trámite o seguimiento judicial",
+    body: "Se ejecutan las acciones necesarias ante autoridades, dependencias o instancias correspondientes, o bien se da cauce al servicio judicial cuando el caso lo exige. El seguimiento se realiza con criterio profesional y formalidad.",
+  },
+  {
+    title: "7. Comunicación con el cliente",
+    body: "Durante el proceso se mantiene contacto para informar avances, requerimientos, incidencias o decisiones relevantes. La comunicación clara reduce incertidumbre y mejora la toma de decisiones.",
+  },
+  {
+    title: "8. Cierre o continuidad del asunto",
+    body: "Según el resultado del caso, se entrega conclusión, siguientes pasos o continuidad estratégica. Algunos asuntos terminan con una gestión puntual; otros requieren acompañamiento posterior.",
+  },
+];
+
+const gallery = [
+  {
+    src: "/src/assets/microwebs/ponienteabogados/1.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 1",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/2.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 2",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/3.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 3",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/4.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 4",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/5.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 5",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/6.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 6",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/7.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 7",
+  },
+  {
+    src: "/src/assets/microwebs/ponienteabogados/8.jpeg",
+    alt: "Galería DEL PONIENTE & ABOGADOS 8",
+  },
+];
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{PROFILE.brand}</title>
+    <meta
+      name="description"
+      content={`${PROFILE.brand}: asesoría legal, orientación gubernamental, presupuesto de servicio judicial y contacto jurídico directo.`}
+    />
+  </head>
+
+  <body>
+    <main class="wrap">
+      <!-- HERO -->
+      <header class="hero panel panel-blur" data-reveal>
+        <div class="heroGlow" aria-hidden="true"></div>
+
+        <div class="heroTop">
+          <div class="heroBrand" data-reveal-child>
+            <img
+              class="logo"
+              src="/src/assets/microwebs/ponienteabogados/logo.png"
+              alt="Logo de DEL PONIENTE & ABOGADOS"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+
+          <div class="heroText">
+            <p class="kicker" data-reveal-child>{PROFILE.brand}</p>
+            <h1 data-reveal-child>{PROFILE.heroTitle}</h1>
+            <p class="subtitle" data-reveal-child>{PROFILE.heroText}</p>
+
+            <div class="ctaRow" data-reveal-child>
+              <a
+                class="btn primary"
+                href={waLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contactar por WhatsApp
+                <span class="btnGlow" aria-hidden="true"></span>
+              </a>
+
+              <a class="btn ghost" href="#procesos"> Ver procesos </a>
+            </div>
+          </div>
+        </div>
+
+        <section class="quick" aria-label="Accesos directos">
+          <a
+            class="qbtn panel"
+            href={waLink}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+            title="WhatsApp"
+            data-reveal
+          >
+            <span class="qicon" aria-hidden="true">💬</span>
+            <span class="qtitle">WhatsApp</span>
+            <span class="qmeta">+52 {PROFILE.whatsapp}</span>
+          </a>
+
+          <a
+            class="qbtn panel"
+            href={telLink}
+            aria-label="Teléfono"
+            title="Teléfono"
+            data-reveal
+          >
+            <span class="qicon" aria-hidden="true">📞</span>
+            <span class="qtitle">Teléfono</span>
+            <span class="qmeta">+52 {PROFILE.phone}</span>
+          </a>
+
+          <a
+            class="qbtn panel"
+            href={fbLink}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+            title="Facebook"
+            data-reveal
+          >
+            <span class="qicon" aria-hidden="true">f</span>
+            <span class="qtitle">Facebook</span>
+            <span class="qmeta">Perfil oficial</span>
+          </a>
+
+          <a
+            class="qbtn panel"
+            href={igLink}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+            data-reveal
+          >
+            <span class="qicon" aria-hidden="true">◎</span>
+            <span class="qtitle">Instagram</span>
+            <span class="qmeta">@vicsantosco_del_poniente</span>
+          </a>
+        </section>
+      </header>
+
+      <!-- SERVICIOS -->
+      <section class="section" id="servicios">
+        <div class="sectionHead" data-reveal>
+          <h2 data-reveal-child>Servicios jurídicos</h2>
+          <p data-reveal-child>
+            Atención formal, seguimiento profesional y comunicación clara en
+            cada asunto.
+          </p>
+        </div>
+
+        <div class="cards servicesGrid">
+          {
+            services.map((s, idx) => (
+              <article class="card panel card-media" data-reveal>
+                <div class="cardBg" aria-hidden="true">
+                  <img
+                    src={s.image}
+                    alt=""
+                    loading={idx < 2 ? "eager" : "lazy"}
+                    decoding="async"
+                    width="1200"
+                    height="900"
+                  />
+                </div>
+
+                <div class="cardOverlay" aria-hidden="true" />
+
+                <div class="cardContent">
+                  <h3 data-reveal-child>{s.title}</h3>
+                  <p class="cardDesc" data-reveal-child>
+                    {s.desc}
+                  </p>
+
+                  <div class="cardActions" data-reveal-child>
+                    <a
+                      class="link"
+                      href={waLink}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Solicitar información →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- PROCESOS -->
+      <section class="section" id="procesos">
+        <div class="sectionHead" data-reveal>
+          <h2 data-reveal-child>Procesos del despacho</h2>
+          <p data-reveal-child>
+            Información desplegable para explicar cómo se atienden los asuntos
+            jurídicos desde el primer contacto hasta el seguimiento.
+          </p>
+        </div>
+
+        <div class="accordionWrap">
+          {
+            processItems.map((item, index) => (
+              <details class="accordion panel" data-reveal>
+                <summary>
+                  <span>{item.title}</span>
+                  <span class="plus" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <div class="accordionBody">
+                  <p>{item.body}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- GALERÍA -->
+      <section class="section" id="galeria">
+        <div class="sectionHead" data-reveal>
+          <h2 data-reveal-child>Galería</h2>
+          <p data-reveal-child>
+            Espacio visual para mostrar oficina, equipo, documentación, atención
+            profesional o imagen corporativa del despacho.
+          </p>
+        </div>
+
+        <div class="galleryShell panel" data-reveal>
+          <div class="galleryTrack" id="galleryTrack">
+            {
+              gallery.map((img, index) => (
+                <button
+                  class="galleryItem"
+                  type="button"
+                  data-open-zoom
+                  data-src={img.src}
+                  data-alt={img.alt}
+                  aria-label={`Abrir imagen ${index + 1}`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="900"
+                  />
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- INFO BANCARIA -->
+      <section class="section" id="datos">
+        <div class="sectionHead" data-reveal>
+          <h2 data-reveal-child>Información bancaria</h2>
+          <p data-reveal-child>
+            Datos para referencia administrativa del despacho.
+          </p>
+        </div>
+
+        <div class="bank panel" data-reveal>
+          <div class="bankGrid">
+            <div class="bankItem">
+              <span class="bankLabel">Banco</span>
+              <strong>{PROFILE.bank.name}</strong>
+            </div>
+
+            <div class="bankItem">
+              <span class="bankLabel">Titular</span>
+              <strong>{PROFILE.bank.holder}</strong>
+            </div>
+
+            <div class="bankItem bankItemWide">
+              <span class="bankLabel">Cuenta</span>
+              <div class="copyRow">
+                <strong id="bankAccount">{PROFILE.bank.account}</strong>
+                <button class="copyBtn" type="button" data-copy-account>
+                  Copiar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CIERRE -->
+      <section class="quote" id="contacto">
+        <div class="quoteBox panel panel-blur" data-reveal>
+          <h2 data-reveal-child>Contacto jurídico directo</h2>
+          <p data-reveal-child>
+            Escríbanos por WhatsApp para recibir atención inicial, seguimiento y
+            orientación sobre su asunto.
+          </p>
+
+          <div class="quoteBtns" data-reveal-child>
+            <a
+              class="btn primary"
+              href={waLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Hablar por WhatsApp
+              <span class="btnGlow" aria-hidden="true"></span>
+            </a>
+
+            <a class="btn ghost" href={telLink}> Llamar ahora </a>
+          </div>
+
+          <div class="mini" data-reveal-child>
+            <span>{PROFILE.contact}</span>
+            <span>•</span>
+            <span>{PROFILE.brand}</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer" data-reveal>
+        <p data-reveal-child>
+          © {new Date().getFullYear()}
+          {PROFILE.brand}
+        </p>
+      </footer>
+    </main>
+
+    <!-- MODAL ZOOM -->
+    <div class="zoomModal" id="zoomModal" aria-hidden="true">
+      <button
+        class="zoomBackdrop"
+        type="button"
+        data-close-zoom
+        aria-label="Cerrar imagen"></button>
+      <div
+        class="zoomDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Vista ampliada de imagen"
+      >
+        <button
+          class="zoomClose"
+          type="button"
+          data-close-zoom
+          aria-label="Cerrar">×</button
+        >
+        <img id="zoomImage" src="" alt="" />
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        const nodes = Array.from(
+          document.querySelectorAll<HTMLElement>("[data-reveal]"),
+        );
+
+        if (reduce) {
+          nodes.forEach((el) => el.classList.add("is-in"));
+        } else {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const el = entry.target as HTMLElement;
+                el.classList.add("is-in");
+
+                const kids = el.querySelectorAll<HTMLElement>(
+                  ":scope > [data-reveal-child]",
+                );
+
+                kids.forEach((kid, i) => {
+                  kid.style.setProperty("--d", `${i * 55}ms`);
+                });
+
+                io.unobserve(el);
+              });
+            },
+            { threshold: 0.18 },
+          );
+
+          nodes.forEach((el) => io.observe(el));
+        }
+
+        const modal = document.getElementById(
+          "zoomModal",
+        ) as HTMLDivElement | null;
+        const zoomImage = document.getElementById(
+          "zoomImage",
+        ) as HTMLImageElement | null;
+
+        const openButtons = Array.from(
+          document.querySelectorAll<HTMLElement>("[data-open-zoom]"),
+        );
+
+        const closeButtons = Array.from(
+          document.querySelectorAll<HTMLElement>("[data-close-zoom]"),
+        );
+
+        const openModal = (src: string, alt: string): void => {
+          if (!modal || !zoomImage) return;
+
+          zoomImage.src = src;
+          zoomImage.alt = alt || "";
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        };
+
+        const closeModal = (): void => {
+          if (!modal || !zoomImage) return;
+
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          zoomImage.src = "";
+          zoomImage.alt = "";
+          document.body.style.overflow = "";
+        };
+
+        openButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const src = btn.getAttribute("data-src");
+            const alt = btn.getAttribute("data-alt") ?? "";
+
+            if (src) {
+              openModal(src, alt);
+            }
+          });
+        });
+
+        closeButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            closeModal();
+          });
+        });
+
+        document.addEventListener("keydown", (e: KeyboardEvent) => {
+          if (e.key === "Escape") {
+            closeModal();
+          }
+        });
+
+        const copyBtn = document.querySelector<HTMLElement>(
+          "[data-copy-account]",
+        );
+        const bankAccount = document.getElementById("bankAccount");
+
+        copyBtn?.addEventListener("click", async () => {
+          try {
+            const text = bankAccount?.textContent?.trim() || "";
+            await navigator.clipboard.writeText(text);
+            copyBtn.textContent = "Copiado";
+
+            window.setTimeout(() => {
+              copyBtn.textContent = "Copiar";
+            }, 1600);
+          } catch {
+            copyBtn.textContent = "No se pudo copiar";
+
+            window.setTimeout(() => {
+              copyBtn.textContent = "Copiar";
+            }, 1800);
+          }
+        });
+
+        const track = document.getElementById(
+          "galleryTrack",
+        ) as HTMLDivElement | null;
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        if (track) {
+          track.addEventListener("mousedown", (e: MouseEvent) => {
+            isDown = true;
+            track.classList.add("dragging");
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+          });
+
+          track.addEventListener("mouseleave", () => {
+            isDown = false;
+            track.classList.remove("dragging");
+          });
+
+          track.addEventListener("mouseup", () => {
+            isDown = false;
+            track.classList.remove("dragging");
+          });
+
+          track.addEventListener("mousemove", (e: MouseEvent) => {
+            if (!isDown) return;
+
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 1.15;
+            track.scrollLeft = scrollLeft - walk;
+          });
+        }
+      })();
+    </script>
+
+    <style>
+      :root {
+        --bg: #0d0d0f;
+        --bg2: #121215;
+        --panel: rgba(19, 19, 22, 0.86);
+        --panel2: rgba(26, 26, 30, 0.92);
+        --gold: #d4af37;
+        --gold-2: #f0d36a;
+        --red: #9f1d20;
+        --red-2: #c92b2f;
+        --text: rgba(255, 255, 255, 0.94);
+        --muted: rgba(234, 234, 234, 0.72);
+        --line: rgba(212, 175, 55, 0.24);
+        --line-strong: rgba(212, 175, 55, 0.42);
+        --shadow: 0 20px 46px rgba(0, 0, 0, 0.42);
+        --radius: 20px;
+        --radius-xl: 28px;
+        --max: 1140px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(159, 29, 32, 0.08),
+            transparent 22%
+          ),
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(212, 175, 55, 0.08),
+            transparent 26%
+          ),
+          linear-gradient(180deg, #090909 0%, #0e0e11 48%, #111114 100%);
+        font-family:
+          "Inter",
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        overflow-x: hidden;
+      }
+
+      .wrap {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+        padding: 26px 0 72px;
+      }
+
+      .panel {
+        position: relative;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          180deg,
+          rgba(22, 22, 26, 0.92),
+          rgba(12, 12, 15, 0.96)
+        );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.03) 48%,
+            transparent 60%
+          ),
+          radial-gradient(
+            circle at 12% 0%,
+            rgba(212, 175, 55, 0.08),
+            transparent 32%
+          );
+      }
+
+      .panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border-radius: inherit;
+        box-shadow:
+          inset 0 0 0 1px rgba(212, 175, 55, 0.05),
+          inset 0 0 0 2px rgba(159, 29, 32, 0.03);
+      }
+
+      .panel-blur {
+        backdrop-filter: blur(10px);
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+        will-change: transform, opacity;
+      }
+
+      [data-reveal].is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      [data-reveal-child] {
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+        transition-delay: var(--d, 0ms);
+      }
+
+      .is-in [data-reveal-child] {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .heroGlow {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(212, 175, 55, 0.12),
+            transparent 34%
+          ),
+          radial-gradient(
+            circle at 85% 20%,
+            rgba(159, 29, 32, 0.1),
+            transparent 22%
+          );
+      }
+
+      .heroTop {
+        display: grid;
+        grid-template-columns: 1.02fr 1fr;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .brandStamp {
+        display: inline-flex;
+        margin-bottom: 12px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        background: rgba(212, 175, 55, 0.08);
+        padding: 8px 14px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        color: var(--gold-2);
+        letter-spacing: 0.2px;
+      }
+
+      .heroBrand {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 420px;
+      }
+
+      .heroBrand::before {
+        content: "";
+        position: absolute;
+        width: 88%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.16),
+          transparent 58%
+        );
+        filter: blur(10px);
+      }
+
+      .logo {
+        position: relative;
+        z-index: 1;
+        width: min(420px, 100%);
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 18px 46px rgba(212, 175, 55, 0.16))
+          drop-shadow(0 8px 22px rgba(159, 29, 32, 0.14));
+      }
+
+      .heroText {
+        position: relative;
+        z-index: 1;
+      }
+
+      .kicker {
+        margin: 0 0 10px;
+        color: var(--gold-2);
+        font-size: 0.96rem;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.7rem, 3.6vw, 3.25rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        max-width: 12ch;
+      }
+
+      .subtitle {
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 1.04rem;
+        line-height: 1.65;
+        max-width: 62ch;
+      }
+
+      .ctaRow {
+        margin-top: 22px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 50px;
+        padding: 13px 18px;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        text-decoration: none;
+        font-weight: 900;
+        letter-spacing: 0.2px;
+        transition:
+          transform 0.16s ease,
+          border-color 0.16s ease;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .primary {
+        color: #140d00;
+        background: linear-gradient(90deg, var(--gold), var(--gold-2));
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .ghost {
+        color: var(--text);
+        background: rgba(159, 29, 32, 0.08);
+        border-color: rgba(212, 175, 55, 0.18);
+      }
+
+      .btnGlow {
+        position: absolute;
+        inset: -2px;
+        border-radius: 16px;
+        pointer-events: none;
+        background: radial-gradient(
+          220px 80px at 40% 10%,
+          rgba(255, 255, 255, 0.34),
+          transparent 60%
+        );
+        opacity: 0.4;
+      }
+
+      .quick {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .qbtn {
+        padding: 15px 14px;
+        min-height: 108px;
+        text-decoration: none;
+        color: var(--text);
+        border-radius: var(--radius);
+        transition:
+          transform 0.16s ease,
+          border-color 0.16s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .qbtn:hover {
+        transform: translateY(-1px);
+        border-color: var(--line-strong);
+      }
+
+      .qicon {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(
+          180deg,
+          rgba(212, 175, 55, 0.14),
+          rgba(159, 29, 32, 0.12)
+        );
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        color: var(--gold-2);
+        font-size: 1.1rem;
+        font-weight: 900;
+      }
+
+      .qtitle {
+        font-weight: 900;
+        letter-spacing: 0.2px;
+      }
+
+      .qmeta {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.4;
+      }
+
+      .section {
+        margin-top: 28px;
+      }
+
+      .sectionHead {
+        padding: 8px 4px 16px;
+      }
+
+      .sectionHead h2 {
+        margin: 0;
+        font-size: clamp(1.24rem, 2.3vw, 1.85rem);
+      }
+
+      .sectionHead p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 78ch;
+      }
+
+      .cards {
+        display: grid;
+        gap: 14px;
+      }
+
+      .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-media {
+        border-radius: var(--radius);
+        padding: 0;
+        min-height: 250px;
+      }
+
+      .cardBg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .cardBg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform: scale(1.02);
+        filter: saturate(0.96) contrast(1.02) brightness(0.62);
+      }
+
+      .cardOverlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(10, 10, 12, 0.15),
+            rgba(10, 10, 12, 0.78)
+          ),
+          linear-gradient(
+            90deg,
+            rgba(10, 10, 12, 0.78),
+            rgba(10, 10, 12, 0.18)
+          ),
+          radial-gradient(
+            circle at top left,
+            rgba(212, 175, 55, 0.1),
+            transparent 30%
+          );
+      }
+
+      .cardContent {
+        position: relative;
+        z-index: 2;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 10px;
+        min-height: 250px;
+      }
+
+      .cardContent h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 1.16;
+      }
+
+      .cardDesc {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.84);
+        line-height: 1.55;
+        font-size: 0.96rem;
+      }
+
+      .cardActions {
+        margin-top: 2px;
+      }
+
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--gold-2);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .link:hover {
+        text-decoration: underline;
+      }
+
+      .accordionWrap {
+        display: grid;
+        gap: 12px;
+      }
+
+      .accordion {
+        border-radius: 18px;
+      }
+
+      .accordion summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 18px 18px;
+        font-weight: 800;
+        color: var(--text);
+      }
+
+      .accordion summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .accordion[open] summary {
+        border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+      }
+
+      .plus {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(212, 175, 55, 0.1);
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        color: var(--gold-2);
+        font-size: 1rem;
+        line-height: 1;
+        flex: 0 0 auto;
+        transition: transform 0.2s ease;
+      }
+
+      .accordion[open] .plus {
+        transform: rotate(45deg);
+      }
+
+      .accordionBody {
+        padding: 0 18px 18px;
+      }
+
+      .accordionBody p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .galleryShell {
+        padding: 16px;
+        border-radius: 26px;
+      }
+
+      .galleryTrack {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(320px, 38%);
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        cursor: grab;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(212, 175, 55, 0.24) transparent;
+      }
+
+      .galleryTrack.dragging {
+        cursor: grabbing;
+      }
+
+      .galleryTrack::-webkit-scrollbar {
+        height: 10px;
+      }
+
+      .galleryTrack::-webkit-scrollbar-thumb {
+        background: rgba(212, 175, 55, 0.24);
+        border-radius: 999px;
+      }
+
+      .galleryItem {
+        position: relative;
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        scroll-snap-align: start;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+
+      .galleryItem::after {
+        content: "Zoom";
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        z-index: 2;
+        border-radius: 999px;
+        padding: 8px 11px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        background: rgba(10, 10, 12, 0.68);
+        border: 1px solid rgba(212, 175, 55, 0.22);
+        color: var(--gold-2);
+        backdrop-filter: blur(6px);
+      }
+
+      .galleryItem::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          180deg,
+          rgba(10, 10, 12, 0.02) 0%,
+          rgba(10, 10, 12, 0.08) 55%,
+          rgba(10, 10, 12, 0.22) 100%
+        );
+      }
+
+      .galleryItem img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        transition:
+          transform 0.32s ease,
+          filter 0.32s ease;
+        filter: brightness(0.92);
+      }
+
+      .galleryItem:hover img {
+        transform: scale(1.04);
+      }
+
+      .bank {
+        padding: 22px;
+      }
+
+      .bankGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .bankItem {
+        border-radius: 18px;
+        border: 1px solid rgba(212, 175, 55, 0.14);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 16px;
+      }
+
+      .bankItemWide {
+        grid-column: span 1;
+      }
+
+      .bankLabel {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--gold-2);
+        font-size: 0.84rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .copyRow {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .copyBtn {
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        background: rgba(159, 29, 32, 0.08);
+        color: var(--text);
+        font-weight: 800;
+        border-radius: 12px;
+        padding: 9px 12px;
+        cursor: pointer;
+      }
+
+      .copyBtn:hover {
+        border-color: rgba(212, 175, 55, 0.34);
+      }
+
+      .quote {
+        margin-top: 28px;
+      }
+
+      .quoteBox {
+        padding: 22px;
+      }
+
+      .quoteBox h2 {
+        margin: 0;
+        font-size: clamp(1.24rem, 2.2vw, 1.8rem);
+      }
+
+      .quoteBox p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 86ch;
+      }
+
+      .quoteBtns {
+        margin-top: 16px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .mini {
+        margin-top: 14px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .footer {
+        margin-top: 20px;
+        padding: 10px 4px;
+        color: rgba(255, 255, 255, 0.54);
+        text-align: center;
+        font-size: 0.92rem;
+      }
+
+      .zoomModal {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+      }
+
+      .zoomModal.is-open {
+        display: block;
+      }
+
+      .zoomBackdrop {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        background: rgba(0, 0, 0, 0.82);
+        cursor: pointer;
+      }
+
+      .zoomDialog {
+        position: absolute;
+        inset: 50%;
+        transform: translate(-50%, -50%);
+        width: min(92vw, 1100px);
+        max-height: 88vh;
+        border-radius: 22px;
+        background: rgba(10, 10, 12, 0.95);
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        box-shadow: 0 24px 54px rgba(0, 0, 0, 0.52);
+        padding: 14px;
+      }
+
+      .zoomDialog img {
+        width: 100%;
+        max-height: calc(88vh - 28px);
+        object-fit: contain;
+        display: block;
+        border-radius: 16px;
+      }
+
+      .zoomClose {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        background: rgba(10, 10, 12, 0.74);
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .card-media .cardBg img {
+          transition: transform 0.35s ease;
+        }
+
+        .card-media:hover .cardBg img {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .heroTop {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .heroBrand {
+          order: -1;
+          min-height: unset;
+          padding-top: 8px;
+        }
+
+        .logo {
+          width: min(340px, 78vw);
+        }
+
+        .heroText {
+          text-align: center;
+        }
+
+        h1 {
+          max-width: 100%;
+        }
+
+        .subtitle {
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .ctaRow {
+          justify-content: center;
+        }
+
+        .quick {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .servicesGrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .bankGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .wrap {
+          width: min(var(--max), calc(100% - 22px));
+          padding: 18px 0 52px;
+        }
+
+        .hero {
+          padding: 18px;
+        }
+
+        .eyebrow {
+          font-size: 0.78rem;
+          padding: 7px 12px;
+        }
+
+        .logo {
+          width: min(250px, 86vw);
+        }
+
+        h1 {
+          font-size: clamp(1.58rem, 9vw, 2.2rem);
+        }
+
+        .subtitle {
+          font-size: 0.98rem;
+        }
+
+        .ctaRow {
+          flex-wrap: nowrap;
+          flex-direction: column;
+        }
+
+        .ctaRow .btn {
+          width: 100%;
+        }
+
+        .quick {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+
+        .qbtn {
+          min-height: 78px;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 10px 8px;
+        }
+
+        .qtitle,
+        .qmeta {
+          display: none;
+        }
+
+        .qicon {
+          margin: 0;
+          width: 44px;
+          height: 44px;
+        }
+
+        .servicesGrid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .card-media,
+        .cardContent {
+          min-height: 210px;
+        }
+
+        .cardContent {
+          padding: 12px;
+          gap: 8px;
+        }
+
+        .cardContent h3 {
+          font-size: 0.98rem;
+        }
+
+        .cardDesc {
+          display: none;
+        }
+
+        .link {
+          font-size: 0.92rem;
+        }
+
+        .galleryTrack {
+          grid-auto-columns: 88%;
+          gap: 12px;
+        }
+
+        .quoteBox,
+        .bank {
+          padding: 18px;
+        }
+
+        .accordion summary {
+          padding: 16px;
+          font-size: 0.96rem;
+        }
+
+        .accordionBody {
+          padding: 0 16px 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal],
+        [data-reveal-child] {
+          transition: none;
+          opacity: 1;
+          transform: none;
+        }
+
+        .btn,
+        .qbtn,
+        .galleryItem img,
+        .card-media .cardBg img,
+        .plus {
+          transition: none !important;
+        }
+
+        .btn:hover,
+        .qbtn:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </body>
+</html>
