@@ -1,7 +1,9 @@
 ---
-// BackgroundBusiness.astro (v2 — limpio y ordenado)
-// Fondo empresarial/tech con composición más estable
-// Props compatibles + nuevos toggles
+// CircuitBG.astro
+// Fondo premium tipo PCB / circuitos tecnológicos
+// Diseñado para NeoTec Business Solutions
+// Sutil, responsivo y configurable
+
 interface Props {
   background?: string;
   primary?: string;
@@ -9,26 +11,38 @@ interface Props {
   glow?: string;
   opacity?: number;
   speed?: number;
-  // Nuevos
-  showGrid?: boolean;     // malla corporativa
-  showHex?: boolean;      // patrón hex (apagado por defecto)
-  showCards?: boolean;    // wireframes tipo dashboard
+  showGrid?: boolean;
+  showScanlines?: boolean;
+  showParticles?: boolean;
 }
+
 const {
-  background = "#0b1020",
+  background = "#050b18",
   primary = "#1a9cff",
   accent = "#6ad8ff",
-  glow = "#ffffff",
-  opacity = 0.5,
-  speed = 14,
+  glow = "#e8fbff",
+  opacity = 0.58,
+  speed = 16,
   showGrid = true,
-  showHex = false,
-  showCards = true,
+  showScanlines = true,
+  showParticles = true,
 } = Astro.props as Props;
 ---
 
-<div aria-hidden="true" style={`position:fixed;inset:0;z-index:-1;background:${background};overflow:hidden;`}>
+<div
+  aria-hidden="true"
+  class="circuit-bg"
+  style={`
+    --bg:${background};
+    --primary:${primary};
+    --accent:${accent};
+    --glow:${glow};
+    --opacity:${opacity};
+    --speed:${speed}s;
+  `}
+>
   <svg
+    class="circuit-svg"
     viewBox="0 0 1600 900"
     width="100%"
     height="100%"
@@ -36,101 +50,470 @@ const {
     role="img"
   >
     <defs>
-      <!-- Malla corporativa basada en columnas de 8 (alineación fuerte) -->
-      <pattern id="gridCols" width="200" height="200" patternUnits="userSpaceOnUse">
-        <path d="M 0 0 L 0 200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <path d="M 25 0 L 25 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-        <path d="M 50 0 L 50 200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-        <path d="M 75 0 L 75 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-        <path d="M 100 0 L 100 200" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <path d="M 125 0 L 125 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-        <path d="M 150 0 L 150 200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-        <path d="M 175 0 L 175 200" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-        <path d="M 0 0 L 200 0" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
-        <path d="M 0 100 L 200 100" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <!-- Grid técnico, muy tenue -->
+      <pattern id="pcbGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path
+          d="M 80 0 L 0 0 0 80"
+          fill="none"
+          stroke="rgba(255,255,255,0.035)"
+          stroke-width="1"
+        />
+        <path
+          d="M 40 0 L 40 80 M 0 40 L 80 40"
+          fill="none"
+          stroke="rgba(106,216,255,0.025)"
+          stroke-width="1"
+        />
       </pattern>
 
-      <!-- Hex sutil (opcional) -->
-      <pattern id="hex" width="60" height="52" patternUnits="userSpaceOnUse">
-        <path d="M30 0 L60 15 L60 37 L30 52 L0 37 L0 15 Z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <!-- Micro patrón tipo fibra/cobre de PCB -->
+      <pattern id="pcbMicro" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path
+          d="M4 16 H14 M18 16 H28 M16 4 V14 M16 18 V28"
+          stroke="rgba(106,216,255,0.035)"
+          stroke-width="1"
+          stroke-linecap="round"
+        />
+        <circle cx="16" cy="16" r="1.5" fill="rgba(106,216,255,0.06)" />
       </pattern>
 
-      <linearGradient id="topGlow" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(102,225,255,0.12)"/>
-        <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
-      </linearGradient>
-      <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
-        <stop offset="60%" stop-color="rgba(0,0,0,0)" />
-        <stop offset="100%" stop-color="rgba(0,0,0,0.42)" />
+      <!-- Brillo superior -->
+      <radialGradient id="topElectricGlow" cx="50%" cy="0%" r="75%">
+        <stop offset="0%" stop-color="rgba(106,216,255,0.18)" />
+        <stop offset="45%" stop-color="rgba(26,156,255,0.07)" />
+        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
       </radialGradient>
 
-      <filter id="softGlow" x="-200%" y="-200%" width="400%" height="400%">
-        <feGaussianBlur stdDeviation="3.5" result="b1"/>
+      <!-- Luz lateral azul -->
+      <radialGradient id="sideGlowLeft" cx="0%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="rgba(26,156,255,0.16)" />
+        <stop offset="60%" stop-color="rgba(26,156,255,0.04)" />
+        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+      </radialGradient>
+
+      <radialGradient id="sideGlowRight" cx="100%" cy="65%" r="65%">
+        <stop offset="0%" stop-color="rgba(106,216,255,0.13)" />
+        <stop offset="58%" stop-color="rgba(26,156,255,0.035)" />
+        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+      </radialGradient>
+
+      <!-- Viñeta para mantener el centro legible -->
+      <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+        <stop offset="52%" stop-color="rgba(0,0,0,0)" />
+        <stop offset="100%" stop-color="rgba(0,0,0,0.58)" />
+      </radialGradient>
+
+      <!-- Glow suave para pistas y nodos -->
+      <filter id="circuitGlow" x="-250%" y="-250%" width="500%" height="500%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feColorMatrix
+          in="blur"
+          type="matrix"
+          values="
+            0 0 0 0 0.10
+            0 0 0 0 0.62
+            0 0 0 0 1.00
+            0 0 0 0.85 0
+          "
+          result="blueBlur"
+        />
         <feMerge>
-          <feMergeNode in="b1"/>
-          <feMergeNode in="SourceGraphic"/>
+          <feMergeNode in="blueBlur" />
+          <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
 
+      <filter id="nodeGlow" x="-300%" y="-300%" width="600%" height="600%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+      <linearGradient id="traceGradient" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="rgba(26,156,255,0.25)" />
+        <stop offset="45%" stop-color="rgba(106,216,255,0.85)" />
+        <stop offset="100%" stop-color="rgba(232,251,255,0.55)" />
+      </linearGradient>
+
+      <linearGradient id="traceGradientDim" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="rgba(26,156,255,0.12)" />
+        <stop offset="60%" stop-color="rgba(106,216,255,0.38)" />
+        <stop offset="100%" stop-color="rgba(232,251,255,0.18)" />
+      </linearGradient>
+
       <style>
-        @keyframes floatX { 0%{transform:translateX(0)} 50%{transform:translateX(-20px)} 100%{transform:translateX(0)} }
-        @keyframes floatY { 0%{transform:translateY(0)} 50%{transform:translateY(-12px)} 100%{transform:translateY(0)} }
-        @keyframes dash { to { stroke-dashoffset: -900; } }
-        @keyframes shimmer { 0%{opacity:.12} 50%{opacity:.28} 100%{opacity:.12} }
-        .parallax-slow{ animation: floatX calc(var(--speed,14s)*5) ease-in-out infinite; }
-        .parallax-med { animation: floatY calc(var(--speed,14s)*4.5) ease-in-out infinite; }
-        .metric-line { stroke-dasharray: 12 20; animation: dash calc(var(--speed,14s)*1.1) linear infinite; filter:url(#softGlow) }
-        .metric-line2{ stroke-dasharray: 10 18; animation: dash calc(var(--speed,14s)*0.9) linear infinite; filter:url(#softGlow) }
-        .shimmer{ animation: shimmer calc(var(--speed,14s)*2) ease-in-out infinite; }
+        @keyframes circuitDash {
+          to {
+            stroke-dashoffset: -720;
+          }
+        }
+
+        @keyframes circuitPulse {
+          0%,
+          100% {
+            opacity: 0.32;
+          }
+          50% {
+            opacity: 0.78;
+          }
+        }
+
+        @keyframes nodePulse {
+          0%,
+          100% {
+            opacity: 0.45;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.18);
+          }
+        }
+
+        @keyframes slowDrift {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0);
+          }
+          50% {
+            transform: translate3d(-18px, 10px, 0);
+          }
+        }
+
+        @keyframes scanMove {
+          0% {
+            transform: translateY(-900px);
+            opacity: 0;
+          }
+          15% {
+            opacity: 0.35;
+          }
+          50% {
+            opacity: 0.18;
+          }
+          100% {
+            transform: translateY(900px);
+            opacity: 0;
+          }
+        }
+
+        @keyframes particleFloat {
+          0%,
+          100% {
+            transform: translateY(0);
+            opacity: 0.15;
+          }
+          50% {
+            transform: translateY(-22px);
+            opacity: 0.55;
+          }
+        }
+
+        .trace-main {
+          stroke-dasharray: 18 24;
+          stroke-dashoffset: 0;
+          animation: circuitDash calc(var(--speed) * 1.4) linear infinite;
+        }
+
+        .trace-secondary {
+          stroke-dasharray: 10 26;
+          stroke-dashoffset: 0;
+          animation: circuitDash calc(var(--speed) * 1.9) linear infinite;
+        }
+
+        .pulse {
+          animation: circuitPulse calc(var(--speed) * 0.9) ease-in-out infinite;
+        }
+
+        .node {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: nodePulse calc(var(--speed) * 0.75) ease-in-out infinite;
+        }
+
+        .node.delay-1 {
+          animation-delay: calc(var(--speed) * -0.15);
+        }
+
+        .node.delay-2 {
+          animation-delay: calc(var(--speed) * -0.32);
+        }
+
+        .node.delay-3 {
+          animation-delay: calc(var(--speed) * -0.48);
+        }
+
+        .drift {
+          animation: slowDrift calc(var(--speed) * 4) ease-in-out infinite;
+        }
+
+        .scan {
+          animation: scanMove calc(var(--speed) * 2.3) linear infinite;
+        }
+
+        .particle {
+          animation: particleFloat calc(var(--speed) * 1.7) ease-in-out infinite;
+        }
+
+        .particle.delay-1 {
+          animation-delay: calc(var(--speed) * -0.2);
+        }
+
+        .particle.delay-2 {
+          animation-delay: calc(var(--speed) * -0.45);
+        }
+
+        .particle.delay-3 {
+          animation-delay: calc(var(--speed) * -0.65);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .trace-main,
+          .trace-secondary,
+          .pulse,
+          .node,
+          .drift,
+          .scan,
+          .particle {
+            animation: none !important;
+          }
+        }
       </style>
     </defs>
 
-    <!-- Capas base -->
-    {showGrid && <rect width="100%" height="100%" fill="url(#gridCols)" opacity="0.28"/>}
-    {showHex && <rect width="100%" height="100%" fill="url(#hex)" opacity="0.16"/>}
-    <rect width="100%" height="100%" fill="url(#topGlow)" />
-    <rect width="100%" height="100%" fill="url(#vignette)" />
+    <!-- Base -->
+    <rect width="1600" height="900" fill="var(--bg)" />
+    <rect width="1600" height="900" fill="url(#topElectricGlow)" />
+    <rect width="1600" height="900" fill="url(#sideGlowLeft)" />
+    <rect width="1600" height="900" fill="url(#sideGlowRight)" />
 
-    <!-- Sección KPI: una sola familia de líneas + pocas barras alineadas a columna -->
-    <g style={`--speed:${speed}s`} opacity={opacity}>
-      <!-- Barras (alineadas a columnas cada 50px) -->
-      <g class="parallax-slow" fill={primary} opacity="0.5">
-        <rect x="150" y="560" width="22" height="220" rx="6" />
-        <rect x="200" y="600" width="22" height="180" rx="6" />
-        <rect x="250" y="520" width="22" height="260" rx="6" />
-        <rect x="300" y="580" width="22" height="200" rx="6" />
-      </g>
+    {showGrid && (
+      <>
+        <rect width="1600" height="900" fill="url(#pcbGrid)" opacity="0.62" />
+        <rect width="1600" height="900" fill="url(#pcbMicro)" opacity="0.34" />
+      </>
+    )}
 
-      <!-- Línea principal (KPI) -->
-      <g class="parallax-med" fill="none" stroke={accent} stroke-width="2">
-        <path class="metric-line" d="M120 700 C 300 650, 520 620, 760 600 S 1120 560, 1460 520" />
-      </g>
+    <!-- Bloques abstractos tipo chips, muy discretos -->
+    <g class="drift" opacity="0.18">
+      <rect
+        x="1080"
+        y="145"
+        width="260"
+        height="170"
+        rx="18"
+        fill="rgba(255,255,255,0.035)"
+        stroke="rgba(106,216,255,0.18)"
+      />
+      <rect
+        x="1135"
+        y="195"
+        width="150"
+        height="70"
+        rx="10"
+        fill="rgba(26,156,255,0.045)"
+        stroke="rgba(106,216,255,0.2)"
+      />
 
-      <!-- Línea secundaria (proyección) más tenue -->
-      <g fill="none" stroke={primary} stroke-width="1.6" opacity="0.7">
-        <path class="metric-line2" d="M120 740 C 320 700, 600 670, 900 650 S 1200 630, 1520 610" />
-      </g>
+      <rect
+        x="180"
+        y="560"
+        width="230"
+        height="145"
+        rx="18"
+        fill="rgba(255,255,255,0.03)"
+        stroke="rgba(106,216,255,0.14)"
+      />
+      <rect
+        x="235"
+        y="604"
+        width="120"
+        height="52"
+        rx="9"
+        fill="rgba(26,156,255,0.045)"
+        stroke="rgba(106,216,255,0.16)"
+      />
     </g>
 
-    <!-- Puntos de datos (mínimos, jerárquicos) -->
-    <g opacity={Math.min(opacity + 0.18, 0.85)}>
-      <circle cx="760" cy="600" r="4" fill={accent} filter="url(#softGlow)"/>
-      <circle cx="1120" cy="560" r="3.6" fill={primary} filter="url(#softGlow)"/>
-      <circle cx="1460" cy="520" r="4.2" fill={glow} filter="url(#softGlow)"/>
+    <!-- Circuitos principales -->
+    <g
+      opacity="var(--opacity)"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      filter="url(#circuitGlow)"
+    >
+      <!-- Rama superior izquierda -->
+      <path
+        class="trace-main"
+        d="M-40 185 H210 C235 185 245 205 245 225 V290 C245 315 265 325 290 325 H455 C485 325 500 340 500 370 V430"
+        stroke="url(#traceGradient)"
+        stroke-width="2.4"
+      />
+
+      <path
+        class="trace-secondary"
+        d="M70 105 H310 C335 105 350 120 350 145 V210 C350 232 365 245 388 245 H560 C585 245 600 260 600 285 V330"
+        stroke="url(#traceGradientDim)"
+        stroke-width="1.7"
+        opacity="0.82"
+      />
+
+      <!-- Rama central horizontal -->
+      <path
+        class="trace-main"
+        d="M250 465 H455 C485 465 500 450 500 420 V390 C500 365 520 350 545 350 H770 C795 350 815 370 815 395 V475 C815 500 835 520 860 520 H1120 C1150 520 1170 500 1170 470 V410"
+        stroke="url(#traceGradient)"
+        stroke-width="2.2"
+      />
+
+      <!-- Rama derecha superior -->
+      <path
+        class="trace-secondary"
+        d="M980 235 H1215 C1240 235 1255 250 1255 275 V350 C1255 375 1275 395 1300 395 H1640"
+        stroke="url(#traceGradientDim)"
+        stroke-width="1.8"
+        opacity="0.78"
+      />
+
+      <!-- Rama derecha inferior -->
+      <path
+        class="trace-main"
+        d="M720 675 H925 C955 675 970 655 970 630 V595 C970 570 990 550 1015 550 H1235 C1260 550 1275 570 1275 595 V675 C1275 700 1295 720 1320 720 H1640"
+        stroke="url(#traceGradient)"
+        stroke-width="2.3"
+      />
+
+      <!-- Rama inferior izquierda -->
+      <path
+        class="trace-secondary"
+        d="M-30 735 H265 C290 735 305 715 305 690 V655 C305 630 325 610 350 610 H540 C565 610 585 590 585 565 V525"
+        stroke="url(#traceGradientDim)"
+        stroke-width="1.7"
+        opacity="0.72"
+      />
+
+      <!-- Trazos verticales técnicos -->
+      <path
+        class="trace-secondary"
+        d="M700 -40 V135 C700 160 720 180 745 180 H850 C875 180 895 200 895 225 V350"
+        stroke="url(#traceGradientDim)"
+        stroke-width="1.6"
+        opacity="0.65"
+      />
+
+      <path
+        class="trace-secondary"
+        d="M1410 -40 V160 C1410 185 1390 205 1365 205 H1315 C1290 205 1275 220 1275 245 V395"
+        stroke="url(#traceGradientDim)"
+        stroke-width="1.6"
+        opacity="0.65"
+      />
     </g>
 
-    <!-- Tarjetas fantasma (opcionales, alineadas al grid) -->
-    {showCards && (
-      <g opacity="0.26">
-        <rect x="1000" y="140" width="460" height="210" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
-        <rect x="1000" y="370" width="460" height="150" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
-        <rect x="1000" y="540" width="460" height="120" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <!-- Nodos / soldaduras -->
+    <g filter="url(#nodeGlow)" opacity="0.9">
+      <circle class="node" cx="245" cy="225" r="4.5" fill="var(--accent)" />
+      <circle class="node delay-1" cx="455" cy="325" r="3.8" fill="var(--primary)" />
+      <circle class="node delay-2" cx="500" cy="430" r="4.4" fill="var(--glow)" />
+
+      <circle class="node delay-3" cx="600" cy="330" r="3.5" fill="var(--accent)" />
+      <circle class="node delay-1" cx="815" cy="475" r="4.5" fill="var(--accent)" />
+      <circle class="node delay-2" cx="1170" cy="410" r="4.2" fill="var(--glow)" />
+
+      <circle class="node delay-3" cx="970" cy="630" r="4" fill="var(--primary)" />
+      <circle class="node delay-1" cx="1275" cy="675" r="4.5" fill="var(--accent)" />
+
+      <circle class="node delay-2" cx="305" cy="690" r="3.8" fill="var(--primary)" />
+      <circle class="node delay-3" cx="585" cy="525" r="4" fill="var(--glow)" />
+
+      <circle class="node delay-1" cx="895" cy="350" r="3.8" fill="var(--accent)" />
+      <circle class="node delay-2" cx="1275" cy="395" r="4.2" fill="var(--primary)" />
+    </g>
+
+    <!-- Pads/círculos técnicos secundarios -->
+    <g opacity="0.33" stroke="var(--accent)" fill="none">
+      <circle cx="245" cy="225" r="13" />
+      <circle cx="500" cy="430" r="15" />
+      <circle cx="815" cy="475" r="14" />
+      <circle cx="1170" cy="410" r="16" />
+      <circle cx="1275" cy="675" r="14" />
+      <circle cx="585" cy="525" r="12" />
+    </g>
+
+    <!-- Partículas eléctricas sutiles -->
+    {showParticles && (
+      <g opacity="0.42" filter="url(#nodeGlow)">
+        <circle class="particle" cx="180" cy="170" r="1.8" fill="var(--accent)" />
+        <circle class="particle delay-1" cx="390" cy="250" r="1.5" fill="var(--primary)" />
+        <circle class="particle delay-2" cx="720" cy="150" r="1.8" fill="var(--glow)" />
+        <circle class="particle delay-3" cx="980" cy="310" r="1.5" fill="var(--accent)" />
+        <circle class="particle delay-1" cx="1370" cy="250" r="1.8" fill="var(--primary)" />
+        <circle class="particle delay-2" cx="210" cy="790" r="1.7" fill="var(--accent)" />
+        <circle class="particle delay-3" cx="680" cy="735" r="1.5" fill="var(--glow)" />
+        <circle class="particle delay-1" cx="1180" cy="780" r="1.6" fill="var(--accent)" />
+        <circle class="particle delay-2" cx="1490" cy="650" r="1.5" fill="var(--primary)" />
       </g>
     )}
 
-    <!-- Brillo superior sutil -->
-    <g class="shimmer">
-      <ellipse cx="800" cy="-60" rx="900" ry="200" fill={accent} opacity="0.12"/>
-    </g>
+    <!-- Línea de escaneo elegante -->
+    {showScanlines && (
+      <g class="scan">
+        <rect
+          x="0"
+          y="0"
+          width="1600"
+          height="90"
+          fill="rgba(106,216,255,0.055)"
+        />
+        <line
+          x1="0"
+          y1="90"
+          x2="1600"
+          y2="90"
+          stroke="rgba(106,216,255,0.16)"
+          stroke-width="1"
+        />
+      </g>
+    )}
+
+    <!-- Viñeta final para contraste de contenido -->
+    <rect width="1600" height="900" fill="url(#vignette)" />
+
+    <!-- Capa oscura central muy ligera para mejorar lectura -->
+    <rect width="1600" height="900" fill="rgba(0,0,0,0.12)" />
   </svg>
 </div>
+
+<style>
+  .circuit-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg);
+    pointer-events: none;
+  }
+
+  .circuit-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .circuit-bg {
+      opacity: 0.86;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .circuit-bg {
+      opacity: 0.76;
+    }
+  }
+</style>

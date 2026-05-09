@@ -1,1 +1,186 @@
 @import "tailwindcss";
+
+/* =========================================================
+   NeoTec Business Solutions — Global Styles
+   Scrollbar premium + ajustes base sin tapar CircuitBG
+   ========================================================= */
+
+:root {
+  color-scheme: dark;
+
+  --neotec-bg: #030712;
+  --neotec-cyan: #22d3ee;
+  --neotec-cyan-soft: #67e8f9;
+  --neotec-blue: #1a9cff;
+  --neotec-text: #e5e7eb;
+
+  --scrollbar-track: #020617;
+  --scrollbar-thumb: rgba(34, 211, 238, 0.42);
+  --scrollbar-thumb-hover: rgba(103, 232, 249, 0.72);
+}
+
+/* Base mínima: NO pintar fondo aquí para no tapar CircuitBG */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--neotec-text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Evita desbordes horizontales por decoraciones */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Selección de texto */
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+  color: #ffffff;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Chromium / Edge / Safari scrollbar */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 6, 23, 1),
+      rgba(15, 23, 42, 0.96)
+    );
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 2px solid var(--scrollbar-track);
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(103, 232, 249, 0.72),
+      rgba(26, 156, 255, 0.46)
+    );
+  box-shadow:
+    0 0 10px rgba(34, 211, 238, 0.26),
+    inset 0 0 6px rgba(255, 255, 255, 0.12);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(165, 243, 252, 0.95),
+      rgba(34, 211, 238, 0.72)
+    );
+  box-shadow:
+    0 0 16px rgba(34, 211, 238, 0.42),
+    inset 0 0 7px rgba(255, 255, 255, 0.16);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+/* Links */
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Medios responsivos */
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* Importante: NO aplicar max-width global a svg.
+   Tus fondos SVG y algunos íconos pueden comportarse raro si se fuerza globalmente. */
+
+/* Inputs */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  color-scheme: dark;
+}
+
+/* Autofill dark en Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #e5e7eb;
+  -webkit-box-shadow: 0 0 0 1000px #0f172a inset;
+  caret-color: #67e8f9;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Focus accesible acorde a marca */
+:focus-visible {
+  outline: 2px solid rgba(103, 232, 249, 0.85);
+  outline-offset: 3px;
+}
+
+/* Mejor comportamiento de anclas con navbar fijo */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Utilidades tipográficas */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Motion accesible */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Ajuste móvil */
+@media (max-width: 640px) {
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}
