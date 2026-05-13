@@ -169,29 +169,30 @@ const proof = [
     <main class="relative z-10">
       <!-- HERO -->
       <section
-        class="relative min-h-[100svh] overflow-hidden px-4 pt-28 pb-14 sm:px-6 sm:pt-32 lg:px-8"
+        class="relative min-h-[92svh] overflow-hidden px-4 pt-28 pb-12 sm:px-6 sm:pt-32 lg:px-8"
       >
         <div
-          class="mx-auto flex min-h-[calc(100svh-8rem)] max-w-[1440px] items-center"
+          class="mx-auto flex min-h-[calc(92svh-7rem)] max-w-[1440px] items-center"
         >
           <div
-            class="grid w-full gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center"
+            class="grid w-full gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center"
           >
-            <div class="reveal space-y-7">
+            <!-- Copy -->
+            <div class="reveal space-y-6">
               <div
-                class="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100 shadow-lg shadow-cyan-950/30 backdrop-blur-xl"
+                class="inline-flex max-w-full items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-cyan-100 shadow-lg shadow-cyan-950/30 backdrop-blur-xl sm:text-xs"
               >
                 <span
-                  class="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.95)]"
+                  class="h-2 w-2 shrink-0 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.95)]"
                 ></span>
                 Tecnología integral para PYMES
               </div>
 
               <div class="space-y-5">
                 <h1
-                  class="max-w-5xl text-balance text-4xl font-black leading-[1.02] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                  class="max-w-5xl text-balance text-4xl font-black leading-[1.03] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
                 >
-                  Tecnología real para negocios que quieren
+                  Tecnología real para
                   <span
                     class="bg-gradient-to-r from-cyan-200 via-sky-400 to-cyan-100 bg-clip-text text-transparent"
                   >
@@ -200,22 +201,14 @@ const proof = [
                 </h1>
 
                 <p
-                  class="max-w-3xl text-pretty text-base leading-8 text-slate-300 sm:text-lg lg:text-xl"
+                  class="max-w-2xl text-pretty text-base leading-8 text-slate-300 sm:text-lg lg:text-xl"
                 >
                   En <strong class="text-white"
                     >NeoTec Business Solutions</strong
                   >
-                  desarrollamos software, puntos de venta, plataformas web y estrategias
-                  digitales para PYMES que necesitan control, eficiencia y presencia
-                  profesional.
-                </p>
-
-                <p
-                  class="max-w-2xl text-sm leading-7 text-slate-400 sm:text-base"
-                >
-                  Desde la operación interna hasta la experiencia digital del
-                  cliente, construimos soluciones que ayudan a tu negocio a
-                  trabajar con más orden, menos pérdidas y mejores decisiones.
+                  desarrollamos software, puntos de venta, páginas web y estrategia
+                  digital para negocios que necesitan más control, mejor presencia
+                  y procesos claros.
                 </p>
               </div>
 
@@ -239,35 +232,45 @@ const proof = [
                 </a>
               </div>
 
+              <!-- Trust chips compactos -->
               <div
-                class="grid grid-cols-2 gap-3 pt-3 sm:max-w-2xl lg:max-w-3xl"
+                class="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-3 lg:max-w-3xl"
               >
-                {
-                  metrics.map((item, index) => (
-                    <article
-                      class="metric-card min-h-[132px] rounded-2xl border border-white/10 bg-white/[0.045] p-4 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/35 hover:bg-cyan-300/[0.08] sm:min-h-[140px] sm:p-5"
-                      style={`animation-delay:${index * 110}ms`}
-                    >
-                      <strong class="block text-3xl font-black leading-none text-cyan-200 sm:text-4xl">
-                        {item.value}
-                      </strong>
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3 backdrop-blur-xl"
+                >
+                  <strong class="block text-sm font-black text-white"
+                    >Software</strong
+                  >
+                  <span class="text-xs text-slate-400">Sistemas a medida</span>
+                </div>
 
-                      <span class="mt-3 block text-sm font-black leading-snug text-white sm:text-base">
-                        {item.label}
-                      </span>
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3 backdrop-blur-xl"
+                >
+                  <strong class="block text-sm font-black text-white"
+                    >POS</strong
+                  >
+                  <span class="text-xs text-slate-400">Ventas e inventario</span
+                  >
+                </div>
 
-                      <p class="mt-2 text-xs leading-5 text-slate-400 sm:text-sm">
-                        {item.detail}
-                      </p>
-                    </article>
-                  ))
-                }
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3 backdrop-blur-xl"
+                >
+                  <strong class="block text-sm font-black text-white"
+                    >Web</strong
+                  >
+                  <span class="text-xs text-slate-400"
+                    >Presencia profesional</span
+                  >
+                </div>
               </div>
             </div>
 
             <!-- Hero visual panel -->
             <aside
-              class="reveal reveal-delay relative mx-auto w-full max-w-xl lg:max-w-none"
+              class="reveal reveal-delay relative mx-auto hidden w-full max-w-xl md:block lg:max-w-none"
             >
               <div
                 class="absolute -inset-6 rounded-[2rem] bg-cyan-400/10 blur-3xl"
@@ -289,6 +292,7 @@ const proof = [
                       Operación digital
                     </h2>
                   </div>
+
                   <div
                     class="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100"
                   >
@@ -303,19 +307,22 @@ const proof = [
                     <p
                       class="text-xs uppercase tracking-[0.2em] text-slate-400"
                     >
-                      Desarrollo
+                      Producto
                     </p>
                     <p class="mt-2 text-2xl font-black text-white">
-                      Plataforma
+                      NeoTec POS
                     </p>
-                    <div
-                      class="mt-4 h-2 overflow-hidden rounded-full bg-slate-800"
-                    >
-                      <div class="progress-bar h-full rounded-full bg-cyan-300">
-                      </div>
+
+                    <div class="mt-4 grid grid-cols-5 gap-1">
+                      <span class="h-8 rounded-lg bg-cyan-300/90"></span>
+                      <span class="h-8 rounded-lg bg-cyan-300/70"></span>
+                      <span class="h-8 rounded-lg bg-cyan-300/50"></span>
+                      <span class="h-8 rounded-lg bg-cyan-300/35"></span>
+                      <span class="h-8 rounded-lg bg-cyan-300/20"></span>
                     </div>
+
                     <p class="mt-3 text-xs text-slate-400">
-                      Arquitectura, módulos y despliegue.
+                      Venta, caja, inventario y reportes.
                     </p>
                   </div>
 
@@ -325,60 +332,22 @@ const proof = [
                     <p
                       class="text-xs uppercase tracking-[0.2em] text-slate-400"
                     >
-                      Producto
+                      Digital
                     </p>
-                    <p class="mt-2 text-2xl font-black text-white">POS</p>
-                    <div class="mt-4 grid grid-cols-5 gap-1">
-                      <span class="h-8 rounded-lg bg-cyan-300/90"></span>
-                      <span class="h-8 rounded-lg bg-cyan-300/70"></span>
-                      <span class="h-8 rounded-lg bg-cyan-300/50"></span>
-                      <span class="h-8 rounded-lg bg-cyan-300/35"></span>
-                      <span class="h-8 rounded-lg bg-cyan-300/20"></span>
-                    </div>
-                    <p class="mt-3 text-xs text-slate-400">
-                      Venta, caja, inventario y reportes.
+                    <p class="mt-2 text-2xl font-black text-white">
+                      Web + Media
                     </p>
-                  </div>
-                </div>
 
-                <div
-                  class="mt-3 rounded-2xl border border-white/10 bg-white/[0.045] p-4"
-                >
-                  <div class="mb-4 flex items-center justify-between">
-                    <p
-                      class="text-xs font-bold uppercase tracking-[0.2em] text-slate-400"
+                    <div
+                      class="mt-4 h-2 overflow-hidden rounded-full bg-slate-800"
                     >
-                      Ecosistema de soluciones
-                    </p>
-                    <span
-                      class="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.95)]"
-                    ></span>
-                  </div>
+                      <div class="progress-bar h-full rounded-full bg-cyan-300">
+                      </div>
+                    </div>
 
-                  <div class="space-y-3">
-                    {
-                      [
-                        ["Software", "92%"],
-                        ["Punto de venta", "88%"],
-                        ["Web / microwebs", "84%"],
-                        ["Redes sociales", "76%"],
-                      ].map(([label, width]) => (
-                        <div>
-                          <div class="mb-1 flex items-center justify-between text-xs">
-                            <span class="font-semibold text-slate-200">
-                              {label}
-                            </span>
-                            <span class="text-cyan-200">{width}</span>
-                          </div>
-                          <div class="h-2 overflow-hidden rounded-full bg-slate-800/90">
-                            <div
-                              class="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-200"
-                              style={`width:${width}`}
-                            />
-                          </div>
-                        </div>
-                      ))
-                    }
+                    <p class="mt-3 text-xs text-slate-400">
+                      Presencia, marca y estrategia comercial.
+                    </p>
                   </div>
                 </div>
 
@@ -386,9 +355,8 @@ const proof = [
                   class="mt-3 rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.06] p-4"
                 >
                   <p class="text-sm leading-6 text-cyan-50">
-                    “No vendemos tecnología aislada. Diseñamos sistemas,
-                    procesos y presencia digital para que el negocio funcione
-                    mejor.”
+                    Sistemas, procesos y presencia digital para que el negocio
+                    trabaje mejor.
                   </p>
                 </div>
               </div>
@@ -397,183 +365,285 @@ const proof = [
         </div>
       </section>
 
-      <!-- SOLUCIONES -->
-      <section id="soluciones" class="px-4 py-20 sm:px-6 lg:px-8">
+      <!-- SOLUCIONES + DIFERENCIADOR -->
+      <section
+        id="soluciones"
+        class="px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-20"
+      >
         <div class="mx-auto max-w-[1440px]">
-          <div class="reveal mx-auto max-w-3xl text-center">
+          <!-- Header compacto -->
+          <div class="reveal mx-auto max-w-4xl text-center">
             <span
-              class="text-sm font-black uppercase tracking-[0.24em] text-cyan-200"
+              class="text-xs font-black uppercase tracking-[0.24em] text-cyan-200 sm:text-sm"
             >
-              Lo que construimos
+              Soluciones NeoTec
             </span>
+
             <h2
               class="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Un ecosistema tecnológico para operar con orden.
+              Tecnología para operar, vender y crecer con más control.
             </h2>
-            <p class="mt-5 text-base leading-8 text-slate-300 sm:text-lg">
-              NeoTec integra desarrollo, implementación, soporte y estrategia
-              digital. Porque una PYME no necesita veinte proveedores peleándose
-              entre sí: necesita una solución clara que funcione.
+
+            <p
+              class="mx-auto mt-5 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 lg:text-lg"
+            >
+              Integramos software, POS, web, soporte y estrategia digital para
+              que tu negocio tenga herramientas conectadas, procesos claros y
+              presencia profesional.
             </p>
           </div>
 
-          <div class="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <!-- Cards 2x2 en móvil -->
+          <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
             {
               solutions.map((item, index) => (
                 <article
-                  class="reveal solution-card group rounded-[1.7rem] border border-white/10 bg-slate-950/45 p-6 shadow-xl shadow-slate-950/30 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-cyan-300/35 hover:bg-cyan-300/[0.065]"
-                  style={`animation-delay:${index * 75}ms`}
+                  class="
+              reveal solution-card group relative overflow-hidden rounded-2xl border border-white/10
+              bg-slate-950/45 p-4 shadow-xl shadow-slate-950/25 backdrop-blur-xl
+              transition duration-300 hover:-translate-y-1 hover:border-cyan-300/35 hover:bg-cyan-300/[0.065]
+              sm:rounded-[1.5rem] sm:p-5 lg:p-6
+            "
+                  style={`animation-delay:${index * 70}ms`}
                 >
-                  <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200 transition duration-300 group-hover:scale-110 group-hover:bg-cyan-300/20">
-                    <span set:html={item.icon} />
-                  </div>
-                  <h3 class="text-xl font-black text-white">{item.title}</h3>
-                  <p class="mt-3 text-sm leading-7 text-slate-300">
-                    {item.description}
-                  </p>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </section>
+                  <div
+                    class="
+                pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100
+                bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.13),transparent_48%)]
+              "
+                  />
 
-      <!-- DIFERENCIADOR -->
-      <section class="px-4 py-20 sm:px-6 lg:px-8">
-        <div
-          class="mx-auto grid max-w-[1440px] gap-8 rounded-[2rem] border border-cyan-300/15 bg-cyan-950/[0.12] p-6 backdrop-blur-2xl sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10"
-        >
-          <div class="reveal">
-            <span
-              class="text-sm font-black uppercase tracking-[0.24em] text-cyan-200"
-            >
-              Por qué NeoTec
-            </span>
-            <h2 class="mt-4 text-3xl font-black text-white sm:text-4xl">
-              No somos “otra agencia”. Somos el puente entre operación y
-              tecnología.
-            </h2>
-            <p class="mt-5 text-base leading-8 text-slate-300">
-              Trabajamos desde la realidad del negocio: ventas, caja,
-              inventario, clientes, redes, procesos, errores humanos y
-              herramientas mal conectadas. Ahí es donde la tecnología sí hace
-              diferencia.
-            </p>
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            {
-              [
-                "Soluciones pensadas para PYMES mexicanas.",
-                "Desarrollo alineado a procesos reales.",
-                "Visión integral: software, web, redes y soporte.",
-                "Acompañamiento para implementación y mejora continua.",
-              ].map((text, index) => (
-                <article
-                  class="reveal rounded-2xl border border-white/10 bg-white/[0.045] p-5"
-                  style={`animation-delay:${index * 95}ms`}
-                >
-                  <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-300/10 text-cyan-200">
-                    <span set:html={icons.check} />
-                  </div>
-                  <p class="text-sm font-semibold leading-7 text-slate-200">
-                    {text}
-                  </p>
-                </article>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
-      <!-- PRUEBA / TRACCIÓN -->
-      <section class="px-4 py-20 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-[1440px]">
-          <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <div class="reveal">
-              <span
-                class="text-sm font-black uppercase tracking-[0.24em] text-cyan-200"
-              >
-                Ya estamos construyendo
-              </span>
-              <h2
-                class="mt-4 text-3xl font-black text-white sm:text-4xl lg:text-5xl"
-              >
-                Proyectos reales, clientes reales, problemas reales.
-              </h2>
-              <p class="mt-5 text-base leading-8 text-slate-300">
-                NeoTec está avanzando con clientes activos, productos propios y
-                desarrollo de soluciones grandes. Esto no es presentación de
-                PowerPoint: es ejecución.
-              </p>
-            </div>
-
-            <div
-              class="reveal reveal-delay rounded-[2rem] border border-white/10 bg-slate-950/50 p-5 backdrop-blur-2xl sm:p-6"
-            >
-              <div class="space-y-3">
-                {
-                  proof.map((item, index) => (
-                    <div
-                      class="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:border-cyan-300/30 hover:bg-cyan-300/[0.055]"
-                      style={`animation-delay:${index * 80}ms`}
-                    >
-                      <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-cyan-300/10 text-cyan-200">
-                        <span set:html={icons.check} />
-                      </div>
-                      <p class="text-sm font-medium leading-7 text-slate-200">
-                        {item}
-                      </p>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROCESO -->
-      <section class="px-4 py-20 sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-[1440px]">
-          <div class="reveal mx-auto max-w-3xl text-center">
-            <span
-              class="text-sm font-black uppercase tracking-[0.24em] text-cyan-200"
-            >
-              Cómo trabajamos
-            </span>
-            <h2
-              class="mt-4 text-3xl font-black text-white sm:text-4xl lg:text-5xl"
-            >
-              Menos improvisación. Más método.
-            </h2>
-            <p class="mt-5 text-base leading-8 text-slate-300">
-              Cada solución parte de entender el negocio. La tecnología entra
-              después, cuando ya sabemos qué problema debe resolver.
-            </p>
-          </div>
-
-          <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {
-              process.map((item, index) => (
-                <article
-                  class="reveal process-card relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-slate-950/45 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-cyan-300/35 hover:bg-cyan-300/[0.055]"
-                  style={`animation-delay:${index * 110}ms`}
-                >
-                  <span class="absolute right-5 top-4 text-5xl font-black text-cyan-300/[0.08]">
-                    {item.step}
-                  </span>
                   <div class="relative">
-                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-sm font-black text-cyan-100">
-                      {item.step}
+                    <div
+                      class="
+                  mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-300/20
+                  bg-cyan-300/10 text-cyan-200 transition duration-300
+                  group-hover:scale-105 group-hover:bg-cyan-300/20
+                  sm:h-12 sm:w-12 sm:rounded-2xl
+                "
+                    >
+                      <span
+                        class="[&>svg]:h-5 [&>svg]:w-5 sm:[&>svg]:h-6 sm:[&>svg]:w-6"
+                        set:html={item.icon}
+                      />
                     </div>
-                    <h3 class="text-xl font-black text-white">{item.title}</h3>
-                    <p class="mt-3 text-sm leading-7 text-slate-300">
-                      {item.text}
+
+                    <h3 class="text-sm font-black leading-snug text-white sm:text-lg lg:text-xl">
+                      {item.title}
+                    </h3>
+
+                    <p class="mt-2 text-xs leading-5 text-slate-400 sm:text-sm sm:leading-6">
+                      {item.description}
                     </p>
                   </div>
                 </article>
+              ))
+            }
+          </div>
+
+          <!-- Diferenciador condensado -->
+          <div
+            class="reveal mt-10 grid gap-5 rounded-[1.7rem] border border-cyan-300/15
+        bg-cyan-950/[0.12] p-5 backdrop-blur-2xl
+        sm:p-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:p-8"
+          >
+            <div>
+              <span
+                class="text-xs font-black uppercase tracking-[0.24em] text-cyan-200 sm:text-sm"
+              >
+                Por qué NeoTec
+              </span>
+
+              <h2
+                class="mt-3 text-2xl font-black leading-tight text-white sm:text-3xl lg:text-4xl"
+              >
+                No somos otra agencia: conectamos operación, tecnología y marca.
+              </h2>
+
+              <p
+                class="mt-4 text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+              >
+                Partimos de cómo trabaja tu negocio: ventas, caja, inventario,
+                clientes, redes, soporte y procesos. La tecnología entra donde
+                realmente mejora algo.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              {
+                [
+                  "Pensado para PYMES mexicanas.",
+                  "Desarrollo alineado a procesos reales.",
+                  "Software, web, redes y soporte en una sola visión.",
+                  "Acompañamiento para implementar y mejorar.",
+                ].map((text, index) => (
+                  <article
+                    class="
+                reveal rounded-2xl border border-white/10 bg-white/[0.045] p-4
+                transition duration-300 hover:border-cyan-300/25 hover:bg-cyan-300/[0.07]
+                sm:p-5
+              "
+                    style={`animation-delay:${index * 90}ms`}
+                  >
+                    <div class="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-300/10 text-cyan-200">
+                      <span
+                        class="[&>svg]:h-4 [&>svg]:w-4"
+                        set:html={icons.check}
+                      />
+                    </div>
+
+                    <p class="text-xs font-semibold leading-5 text-slate-200 sm:text-sm sm:leading-6">
+                      {text}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRACCIÓN + PROCESO -->
+      <section class="px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div class="mx-auto max-w-[1440px]">
+          <div
+            class="grid gap-8 rounded-[2rem] border border-cyan-300/15 bg-slate-950/50 p-5 backdrop-blur-2xl sm:p-7 lg:grid-cols-[0.9fr_1.1fr] lg:p-9"
+          >
+            <!-- Texto principal -->
+            <div class="reveal">
+              <span
+                class="text-xs font-black uppercase tracking-[0.24em] text-cyan-200 sm:text-sm"
+              >
+                Ejecución real
+              </span>
+
+              <h2
+                class="mt-4 text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl"
+              >
+                Proyectos reales. Método claro.
+              </h2>
+
+              <p
+                class="mt-5 text-sm leading-7 text-slate-300 sm:text-base sm:leading-8"
+              >
+                NeoTec ya trabaja con clientes activos, productos propios y
+                soluciones digitales en desarrollo. No vendemos humo:
+                diagnosticamos, construimos, implementamos y acompañamos.
+              </p>
+
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.045] p-4"
+                >
+                  <strong class="block text-2xl font-black text-cyan-200"
+                    >2+</strong
+                  >
+                  <span
+                    class="mt-1 block text-xs font-semibold leading-5 text-slate-300"
+                  >
+                    clientes activos
+                  </span>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.045] p-4"
+                >
+                  <strong class="block text-2xl font-black text-cyan-200"
+                    >360°</strong
+                  >
+                  <span
+                    class="mt-1 block text-xs font-semibold leading-5 text-slate-300"
+                  >
+                    visión tecnológica
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cards compactas -->
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              {
+                [
+                  {
+                    step: "01",
+                    title: "Diagnóstico",
+                    text: "Entendemos operación, ventas, caja, procesos y dolores reales.",
+                  },
+                  {
+                    step: "02",
+                    title: "Diseño",
+                    text: "Definimos la solución: software, POS, web, redes o soporte.",
+                  },
+                  {
+                    step: "03",
+                    title: "Implementación",
+                    text: "Construimos, configuramos y ajustamos con enfoque práctico.",
+                  },
+                  {
+                    step: "04",
+                    title: "Mejora",
+                    text: "Capacitamos, damos soporte y evolucionamos la solución.",
+                  },
+                ].map((item, index) => (
+                  <article
+                    class="
+                reveal relative overflow-hidden rounded-2xl border border-white/10
+                bg-white/[0.045] p-4 backdrop-blur-xl transition duration-300
+                hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-cyan-300/[0.065]
+                sm:p-5
+              "
+                    style={`animation-delay:${index * 90}ms`}
+                  >
+                    <span class="absolute right-4 top-3 text-4xl font-black text-cyan-300/[0.08]">
+                      {item.step}
+                    </span>
+
+                    <div class="relative">
+                      <div class="mb-4 flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 text-xs font-black text-cyan-100">
+                        {item.step}
+                      </div>
+
+                      <h3 class="text-sm font-black text-white sm:text-lg">
+                        {item.title}
+                      </h3>
+
+                      <p class="mt-2 text-xs leading-5 text-slate-400 sm:text-sm sm:leading-6">
+                        {item.text}
+                      </p>
+                    </div>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Línea de prueba compacta -->
+          <div
+            class="reveal mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {
+              [
+                "Gestión digital para negocios locales.",
+                "Punto de venta propio en construcción.",
+                "Microwebs profesionales para marcas y servicios.",
+                "Soluciones pensadas para PYMES mexicanas.",
+              ].map((item, index) => (
+                <div
+                  class="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/40 p-4 backdrop-blur-xl transition duration-300 hover:border-cyan-300/25 hover:bg-cyan-300/[0.055]"
+                  style={`animation-delay:${index * 80}ms`}
+                >
+                  <div class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-cyan-300/10 text-cyan-200">
+                    <span
+                      class="[&>svg]:h-4 [&>svg]:w-4"
+                      set:html={icons.check}
+                    />
+                  </div>
+
+                  <p class="text-xs font-semibold leading-5 text-slate-300 sm:text-sm sm:leading-6">
+                    {item}
+                  </p>
+                </div>
               ))
             }
           </div>
@@ -581,46 +651,114 @@ const proof = [
       </section>
 
       <!-- CTA FINAL -->
-      <section class="px-4 py-20 sm:px-6 lg:px-8">
+      <section class="px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div
-          class="reveal mx-auto max-w-[1200px] overflow-hidden rounded-[2.2rem] border border-cyan-300/20 bg-gradient-to-br from-cyan-300/[0.14] via-slate-950/70 to-slate-950/90 p-8 text-center shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl sm:p-12"
+          class="reveal relative mx-auto max-w-[1120px] overflow-hidden rounded-[2rem]
+      border border-cyan-300/20 bg-slate-950/70 p-6 text-center
+      shadow-2xl shadow-cyan-950/30 backdrop-blur-2xl
+      sm:p-9 lg:p-11"
         >
+          <!-- FX fondo -->
           <div
-            class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-100"
-            set:html={icons.pulse}
-          />
-          <h2
-            class="mx-auto max-w-4xl text-3xl font-black text-white sm:text-4xl lg:text-5xl"
+            class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,0.18),transparent_34%),radial-gradient(circle_at_85%_80%,rgba(59,130,246,0.14),transparent_36%)]"
+            aria-hidden="true"
           >
-            ¿Tu negocio necesita orden, tecnología o presencia digital
-            profesional?
-          </h2>
-          <p
-            class="mx-auto mt-5 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg"
-          >
-            Hablemos de tu operación y diseñemos una solución realista,
-            escalable y rentable. Sin humo corporativo, sin promesas infladas y
-            sin sistemas que terminan abandonados en una carpeta llamada
-            “final_final_ahora_sí”.
-          </p>
+          </div>
 
-          <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              href="/cotizar"
-              class="group inline-flex items-center justify-center gap-2 rounded-2xl bg-cyan-300 px-7 py-4 text-sm font-black uppercase tracking-wide text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.32)] transition duration-300 hover:-translate-y-1 hover:bg-cyan-200"
+          <div
+            class="pointer-events-none absolute inset-0 opacity-[0.12] bg-[linear-gradient(rgba(255,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.055)_1px,transparent_1px)] bg-[size:34px_34px]"
+            aria-hidden="true"
+          >
+          </div>
+
+          <div class="relative">
+            <div
+              class="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.18)] sm:h-14 sm:w-14"
+              set:html={icons.pulse}
+            />
+
+            <span
+              class="text-xs font-black uppercase tracking-[0.24em] text-cyan-200 sm:text-sm"
             >
-              Solicitar diagnóstico
+              Listo para digitalizar
+            </span>
+
+            <h2
+              class="mx-auto mt-4 max-w-4xl text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
+            >
+              Ordena tu operación.
               <span
-                class="transition duration-300 group-hover:translate-x-1"
-                set:html={icons.arrow}
-              />
-            </a>
-            <a
-              href="/productos"
-              class="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/[0.04] px-7 py-4 text-sm font-bold uppercase tracking-wide text-white transition duration-300 hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-cyan-300/10"
+                class="block bg-gradient-to-r from-cyan-200 via-sky-400 to-cyan-100 bg-clip-text text-transparent"
+              >
+                Mejora tu presencia digital.
+              </span>
+            </h2>
+
+            <p
+              class="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8 lg:text-lg"
             >
-              Explorar soluciones
-            </a>
+              Software, POS, web y estrategia para negocios que quieren vender
+              mejor, trabajar con más control y tomar mejores decisiones.
+            </p>
+
+            <!-- Beneficios compactos -->
+            <div
+              class="mx-auto mt-7 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3"
+            >
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3"
+              >
+                <p class="text-sm font-black text-white">Diagnóstico claro</p>
+                <p class="mt-1 text-xs text-slate-400">
+                  Sin soluciones infladas
+                </p>
+              </div>
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3"
+              >
+                <p class="text-sm font-black text-white">Implementación real</p>
+                <p class="mt-1 text-xs text-slate-400">Tecnología que se usa</p>
+              </div>
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.045] px-4 py-3"
+              >
+                <p class="text-sm font-black text-white">Acompañamiento</p>
+                <p class="mt-1 text-xs text-slate-400">
+                  Soporte y mejora continua
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <a
+                href="/cotizar"
+                class="group inline-flex items-center justify-center gap-2 rounded-2xl
+            bg-cyan-300 px-7 py-4 text-sm font-black uppercase tracking-wide
+            text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.32)]
+            transition duration-300 hover:-translate-y-1 hover:bg-white
+            hover:shadow-[0_0_52px_rgba(34,211,238,0.46)]
+            focus:outline-none focus:ring-2 focus:ring-cyan-200"
+              >
+                Solicitar diagnóstico
+                <span
+                  class="transition duration-300 group-hover:translate-x-1"
+                  set:html={icons.arrow}
+                />
+              </a>
+
+              <a
+                href="/productos"
+                class="inline-flex items-center justify-center rounded-2xl border
+            border-white/15 bg-white/[0.045] px-7 py-4 text-sm font-bold
+            uppercase tracking-wide text-white transition duration-300
+            hover:-translate-y-1 hover:border-cyan-300/40
+            hover:bg-cyan-300/10 hover:text-cyan-100"
+              >
+                Explorar soluciones
+              </a>
+            </div>
           </div>
         </div>
       </section>
