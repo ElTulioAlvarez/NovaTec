@@ -7,27 +7,57 @@ import "../styles/global.css";
 
 const title = "Servicios — NeoTec Business Solutions";
 const description =
-  "Catálogo de servicios y productos: software (POS, CRM/ERP, facturación), hardware, inventarios físicos, social media/web/apps y proceso de ventas.";
+  "Catálogo de servicios y productos: software, POS, CRM/ERP, facturación, hardware, inventarios físicos, social media, web, apps y proceso de ventas.";
 
 const icons = {
-  pos: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14a2 2 0 012 2v9H3V6a2 2 0 012-2zm-2 13h18v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1z"/></svg>`,
-  tools: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.7 19.3l-6.4-6.4a6 6 0 11-3-3l6.4 6.4 3-3V19.3zM8 14a4 4 0 104-4 4.005 4.005 0 00-4 4z"/></svg>`,
-  list: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h16v2H4z"/></svg>`,
-  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v14H3zM5 7v10h14V7zM9 9l6 3-6 3z"/></svg>`,
-  flow: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10v4H7zM4 10h7v4H4zM13 16h7v4h-7z"/></svg>`,
+  pos: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14a2 2 0 0 1 2 2v9H3V6a2 2 0 0 1 2-2Zm-2 13h18v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1Z"/></svg>`,
+
+  tools: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22.61 18.99 13.5 9.88a6.49 6.49 0 0 0-8.45-8.45l4.1 4.1-3.54 3.54-4.1-4.1a6.49 6.49 0 0 0 8.45 8.45l9.11 9.11a1.25 1.25 0 0 0 1.77 0l1.77-1.77a1.25 1.25 0 0 0 0-1.77Z"/></svg>`,
+
+  list: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h16v2H4V5Zm0 6h16v2H4v-2Zm0 6h16v2H4v-2Z"/></svg>`,
+
+  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm2 0v14h14V5H5Zm4 4 6 3-6 3V9Z"/></svg>`,
+
+  flow: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10v5H7V3ZM4 11h7v5H4v-5Zm9 5h7v5h-7v-5Zm-2-3h2v2h-2v-2Zm1-5h2v3h-2V8Z"/></svg>`,
 };
 
 const oferta = {
-  software: ["Punto de venta (POS)", "Sistema administrativo", "CRM / ERP", "Facturación electrónica", "Desarrollo a la medida"],
-  hardware: ["Equipos de cómputo y tabletas", "Impresoras y cajones de dinero", "Lectores de códigos de barras", "Terminales para cobro con tarjeta"],
-  inventarios: ["Realización de inventarios físicos", "Consultoría y asesoría", "Creación y depuración de bases de datos"],
-  social: ["Creación de perfiles corporativos", "Diseño de logotipos e identidad", "Páginas web, tienda en línea y apps", "Contenido y campañas de publicidad digital"],
-  ventas: ["Consultoría de proceso comercial", "Asesoría y capacitación para el área de ventas", "Auditoría de embudos y seguimiento"],
+  software: [
+    "Punto de venta (POS)",
+    "Sistema administrativo",
+    "CRM / ERP",
+    "Facturación electrónica",
+    "Desarrollo a la medida",
+  ],
+  hardware: [
+    "Equipos de cómputo y tabletas",
+    "Impresoras y cajones de dinero",
+    "Lectores de códigos de barras",
+    "Terminales para cobro con tarjeta",
+  ],
+  inventarios: [
+    "Realización de inventarios físicos",
+    "Consultoría y asesoría",
+    "Creación y depuración de bases de datos",
+  ],
+  social: [
+    "Creación de perfiles corporativos",
+    "Diseño de logotipos e identidad",
+    "Páginas web, tienda en línea y apps",
+    "Contenido y campañas de publicidad digital",
+  ],
+  ventas: [
+    "Consultoría de proceso comercial",
+    "Asesoría y capacitación para el área de ventas",
+    "Auditoría de embudos y seguimiento",
+  ],
 };
+
 const servicios = [
   {
     key: "social",
     titulo: "Social media, web y apps",
+    subtitulo: "Presencia digital, campañas, identidad y canales de venta.",
     icon: icons.media,
     img: "/images/servicios/social.jpg",
     items: oferta.social,
@@ -35,13 +65,15 @@ const servicios = [
   {
     key: "software",
     titulo: "Software",
+    subtitulo: "Sistemas para operar, vender, administrar y escalar.",
     icon: icons.pos,
-    img: "/images/servicios/software.jpg", // <-- tu imagen de fondo
+    img: "/images/servicios/software.jpg",
     items: oferta.software,
   },
   {
     key: "hardware",
     titulo: "Hardware",
+    subtitulo: "Equipo físico para punto de venta, cobro y operación diaria.",
     icon: icons.tools,
     img: "/images/servicios/hardware.jpg",
     items: oferta.hardware,
@@ -49,6 +81,7 @@ const servicios = [
   {
     key: "inventarios",
     titulo: "Gestión de inventarios físicos",
+    subtitulo: "Control, conteo, depuración y estructura de información.",
     icon: icons.list,
     img: "/images/servicios/inventarios.jpg",
     items: oferta.inventarios,
@@ -56,6 +89,7 @@ const servicios = [
   {
     key: "ventas",
     titulo: "Proceso de ventas",
+    subtitulo: "Estrategia comercial, seguimiento y mejora del embudo.",
     icon: icons.flow,
     img: "/images/servicios/ventas.jpg",
     items: oferta.ventas,
@@ -67,97 +101,470 @@ const servicios = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-    <SEO title={title} description={description} type="website" locale="es_MX" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <SEO
+      title={title}
+      description={description}
+      type="website"
+      locale="es_MX"
+    />
+
     <title>{title}</title>
   </head>
 
-  <!-- Offset del navbar aplicado al BODY -->
-  <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+  <body
+    class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white"
+  >
     <Navbar logoSrc="/novatec-logo.webp" />
-    <CircuitBG />
+    <CircuitBG opacity={0.26} />
 
-    <main class="relative z-10  overflow-x-clip">
-  <!-- HERO -->
-  <header class="relative min-h-[0svh] flex items-center pt-28 sm:pt-32 pb-12">
-    <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-4 pb-10">
-      <div class="flex flex-col items-start gap-4">
-        <span class="inline-flex items-center rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs tracking-wide text-cyan-200">
-          Nuestro catálogo
-        </span>
-        <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          Servicios y productos para profesionalizar tu operación
-        </h1>
-        <p class="max-w-3xl text-slate-300/90">
-          Paquetes flexibles con implementación, soporte y capacitación. Integramos software, hardware,
-          inventarios y presencia digital para acelerar resultados.
-        </p>
-      </div>
-    </section>
-    <!-- Fondo decorativo (una sola vez) -->
-    <div aria-hidden class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_70%_at_50%_10%,rgba(99,102,241,0.16)_0%,rgba(15,23,42,0)_60%)]"></div>
-  </header>
+    <main class="relative z-10 overflow-x-clip">
+      <!-- HERO -->
+      <header class="relative flex min-h-[0svh] items-center pt-28 pb-12 sm:pt-32">
+        <section class="mx-auto w-full max-w-7xl px-4 pt-4 pb-10 sm:px-6 lg:px-8">
+          <div class="flex max-w-4xl flex-col items-start gap-4">
+            <span
+              class="inline-flex items-center rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs tracking-wide text-cyan-200"
+            >
+              Nuestro catálogo
+            </span>
 
-  <!-- OFERTA COMERCIAL -->
-  <section id="oferta" class="scroll-mt-[160px] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-  <!-- Encabezado discreto, sin "Oferta comercial" -->
-  <header class="mb-8">
-    <h2 class="text-2xl sm:text-3xl font-extrabold">Servicios y productos</h2>
-    <p class="mt-2 text-slate-300/90">
-      Paquetes ajustables con implementación, soporte y capacitación según alcance.
-    </p>
-  </header>
+            <h1 class="text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+              Servicios y productos para profesionalizar tu operación
+            </h1>
 
-  <div class="grid gap-6 lg:grid-cols-2">
-    {servicios.map((s, idx) => (
-      <article class="relative group overflow-hidden rounded-2xl">
-        {/* Capa: imagen de fondo */}
-        <img
-          src={s.img}
-          alt={s.titulo}
-          class="absolute  h-full w-full object-cover opacity-50 transition-transform duration-500 group-hover:scale-[1.03]"
-          loading="lazy"
-        />
-        {/* Capa: degradado para legibilidad */}
-       
+            <p class="max-w-3xl text-base leading-7 text-slate-300/90 sm:text-lg">
+              Paquetes flexibles con implementación, soporte y capacitación.
+              Integramos software, hardware, inventarios y presencia digital
+              para acelerar resultados reales en tu negocio.
+            </p>
+          </div>
+        </section>
 
-        {/* Panel glass (contenido) */}
-        <div class="relative m-[1px] min-h-[28svh] rounded-2xl border border-white/15 bg-white/10  p-5  shadow-[0_0_0_1px_rgba(255,255,255,1)_inset] ">
-          <div class="mb-3 flex items-center gap-3 text-slate-100">
-            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-950/30 ring-1 ring-white/15" set:html={s.icon}></span>
-            <h3 class="text-lg font-bold">
-              {idx + 1}) {s.titulo}
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_70%_at_50%_10%,rgba(99,102,241,0.16)_0%,rgba(15,23,42,0)_60%)]"
+        >
+        </div>
+      </header>
+
+      <!-- OFERTA COMERCIAL -->
+      <section
+        id="oferta"
+        class="scroll-mt-[160px] mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
+      >
+        <header class="mb-8">
+          <span
+            class="inline-flex items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-xs tracking-wide text-cyan-200"
+          >
+            Soluciones NeoTec
+          </span>
+
+          <h2 class="mt-4 text-2xl font-extrabold sm:text-3xl">
+            Servicios y productos
+          </h2>
+
+          <p class="mt-2 max-w-3xl text-slate-300/90">
+            Paquetes ajustables con implementación, soporte y capacitación según
+            el alcance real de tu operación.
+          </p>
+        </header>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          {
+            servicios.map((s, idx) => (
+              <article class="service-card group">
+                <img
+                  src={s.img}
+                  alt={s.titulo}
+                  class="service-card-img"
+                  loading="lazy"
+                />
+
+                <div class="service-card-overlay" />
+                <div class="service-card-glow" />
+                <div class="service-card-noise" />
+
+                <div class="service-card-content">
+                  <div class="mb-5 flex items-start justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                      <span class="service-icon" set:html={s.icon} />
+
+                      <div>
+                        <span class="service-kicker">
+                          Solución {String(idx + 1).padStart(2, "0")}
+                        </span>
+
+                        <h3 class="service-title">{s.titulo}</h3>
+
+                        <p class="service-subtitle">{s.subtitulo}</p>
+                      </div>
+                    </div>
+
+                    <span class="service-index">{idx + 1}</span>
+                  </div>
+
+                  <ul class="service-list">
+                    {s.items.map((i) => (
+                      <li>
+                        <span class="service-dot" />
+                        <span>{i}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <!-- CTA -->
+        <div class="service-cta mt-10">
+          <div>
+            <h3 class="text-lg font-bold text-slate-50">
+              ¿Necesitas una solución específica?
             </h3>
+
+            <p class="mt-1 text-slate-300/90">
+              Diseñamos paquetes a la medida: POS, terminales, facturación,
+              inventarios, web, automatización o integración completa.
+            </p>
           </div>
 
-          <ul class="mt-3 space-y-2 text-slate-100/90 list-disc list-inside">
-            {s.items.map(i => <li>{i}</li>)}
-          </ul>
+          <a href="/cotizar" class="service-cta-btn">
+            Solicitar propuesta
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
-      </article>
-    ))}
-  </div>
-
-  <!-- CTA -->
-  <div class="mt-10 flex flex-col items-start gap-4 rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-6 sm:flex-row sm:items-center sm:justify-between">
-    <p class="text-slate-200">
-      ¿Necesitas una solución específica (ej. POS + terminal + facturación)? Diseñamos un paquete a tu medida.
-    </p>
-    <a href="/cotizar" class="inline-flex items-center gap-2 rounded-xl bg-cyan-500/90 px-5 py-3 font-semibold text-slate-900 hover:bg-cyan-400">
-      Solicitar propuesta
-    </a>
-  </div>
-</section>
-</main>
-
-
+      </section>
+    </main>
 
     <Footer />
   </body>
 </html>
 
+<style>
+  /* ====== Cards de servicios ====== */
 
+  .service-card {
+    position: relative;
+    min-height: 20rem;
+    overflow: hidden;
+    border-radius: 1.35rem;
+    border: 1px solid rgba(125, 211, 252, 0.28);
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.88)),
+      rgba(15, 23, 42, 0.92);
+    box-shadow:
+      0 22px 55px rgba(0, 0, 0, 0.42),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+    isolation: isolate;
+    transform: translateZ(0);
+  }
+
+  .service-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(125, 211, 252, 0.75),
+      rgba(255, 255, 255, 0.14) 35%,
+      rgba(14, 165, 233, 0.2) 68%,
+      rgba(125, 211, 252, 0.62)
+    );
+    pointer-events: none;
+    opacity: 0.75;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .service-card-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.34;
+    filter: saturate(0.95) contrast(1.08) brightness(0.78);
+    transform: scale(1.02);
+    transition:
+      transform 0.55s ease,
+      opacity 0.35s ease,
+      filter 0.35s ease;
+  }
+
+  .service-card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(
+        circle at 18% 18%,
+        rgba(125, 211, 252, 0.18),
+        transparent 34%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(2, 6, 23, 0.94) 0%,
+        rgba(15, 23, 42, 0.86) 42%,
+        rgba(2, 6, 23, 0.72) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(2, 6, 23, 0.38) 0%,
+        rgba(2, 6, 23, 0.94) 100%
+      );
+  }
+
+  .service-card-glow {
+    position: absolute;
+    inset: auto -18% -38% -18%;
+    z-index: 2;
+    height: 55%;
+    background: radial-gradient(
+      circle,
+      rgba(34, 211, 238, 0.18),
+      transparent 68%
+    );
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .service-card-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background:
+      linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.08),
+        transparent 22%,
+        transparent 70%,
+        rgba(125, 211, 252, 0.08)
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.035) 0px,
+        rgba(255, 255, 255, 0.035) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+    mix-blend-mode: overlay;
+    opacity: 0.24;
+    pointer-events: none;
+  }
+
+  .service-card-content {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    min-height: 20rem;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.45rem;
+  }
+
+  @media (min-width: 640px) {
+    .service-card-content {
+      padding: 1.7rem;
+    }
+  }
+
+  .service-icon {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    border: 1px solid rgba(125, 211, 252, 0.32);
+    background:
+      linear-gradient(135deg, rgba(8, 47, 73, 0.78), rgba(15, 23, 42, 0.86)),
+      rgba(15, 23, 42, 0.7);
+    color: #cffafe;
+    box-shadow:
+      0 10px 28px rgba(14, 165, 233, 0.15),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.055);
+  }
+
+  .service-kicker {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(103, 232, 249, 0.78);
+  }
+
+  .service-title {
+    font-size: 1.16rem;
+    font-weight: 850;
+    line-height: 1.25;
+    color: rgba(248, 250, 252, 0.98);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  }
+
+  .service-subtitle {
+    margin-top: 0.3rem;
+    max-width: 36rem;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    color: rgba(203, 213, 225, 0.78);
+  }
+
+  .service-index {
+    display: none;
+    font-size: 3.4rem;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.07);
+    text-shadow: 0 0 24px rgba(125, 211, 252, 0.08);
+  }
+
+  @media (min-width: 640px) {
+    .service-index {
+      display: inline-flex;
+    }
+  }
+
+  .service-list {
+    display: grid;
+    gap: 0.68rem;
+    color: rgba(226, 232, 240, 0.93);
+  }
+
+  .service-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.65rem;
+    font-size: 0.97rem;
+    line-height: 1.55;
+  }
+
+  .service-dot {
+    margin-top: 0.55rem;
+    height: 0.42rem;
+    width: 0.42rem;
+    border-radius: 9999px;
+    background: #67e8f9;
+    box-shadow: 0 0 16px rgba(103, 232, 249, 0.7);
+  }
+
+  /* ====== CTA ====== */
+
+  .service-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    border-radius: 1.35rem;
+    border: 1px solid rgba(34, 211, 238, 0.26);
+    background:
+      radial-gradient(
+        circle at 12% 20%,
+        rgba(34, 211, 238, 0.14),
+        transparent 34%
+      ),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.86), rgba(2, 6, 23, 0.78));
+    padding: 1.5rem;
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(12px);
+  }
+
+  @media (min-width: 640px) {
+    .service-cta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.65rem;
+    }
+  }
+
+  .service-cta-btn {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #67e8f9, #22d3ee);
+    padding: 0.9rem 1.25rem;
+    font-weight: 850;
+    color: #020617;
+    box-shadow: 0 14px 30px rgba(34, 211, 238, 0.24);
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  @media (min-width: 640px) {
+    .service-cta-btn {
+      width: auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .service-card {
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(125, 211, 252, 0.46);
+      box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.5),
+        0 0 42px rgba(14, 165, 233, 0.09),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .service-card:hover .service-card-img {
+      opacity: 0.43;
+      filter: saturate(1.08) contrast(1.14) brightness(0.82);
+      transform: scale(1.07);
+    }
+
+    .service-cta-btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 38px rgba(34, 211, 238, 0.3);
+    }
+
+    .service-cta-btn:active {
+      transform: translateY(1px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .service-card {
+      min-height: 21rem;
+    }
+
+    .service-card-content {
+      min-height: 21rem;
+    }
+  }
+</style>

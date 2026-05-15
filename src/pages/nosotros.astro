@@ -7,210 +7,406 @@ import "../styles/global.css";
 
 const title = "Nosotros — NeoTec Business Solutions";
 const description =
-  "Empresa tecnológica mexicana que integra software a medida y social media para profesionalizar operaciones y crecer marcas.";
+  "NeoTec Business Solutions es una empresa tecnológica mexicana que desarrolla software, páginas web, soluciones POS, automatización y estrategias digitales para profesionalizar negocios.";
 
 const icons = {
-  spark: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2 6h6l-5 3.5 2 6-5-3.5L7 17.5l2-6L4 8h6z"/></svg>`,
-  cube: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l10 5v10l-10 5L2 17V7l10-5z"/></svg>`,
-  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v14H3zM5 7v10h14V7zM9 9l6 3-6 3z"/></svg>`,
-  people: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0H5z"/></svg>`,
-  rocket: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3l7 7-4 1-3 3-1 4-7-7 4-1 3-3 1-4zM5 18l3 1-4 2 1-3z"/></svg>`,
-  check: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17l-3.88-3.88L3.7 13.7 9 19l12-12-1.41-1.41z"/></svg>`,
+  check: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z"/></svg>`,
+
+  rocket: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 3.2c2.9-.9 6-.6 7.8.1.7 1.8 1 4.9.1 7.8-.9 3-3 5.8-6.5 8.4l-.9-4.2-4.6-4.6-4.2-.9c2.5-3.6 5.3-5.7 8.3-6.6Zm2.6 5.4a2 2 0 1 0 2.8 2.8 2 2 0 0 0-2.8-2.8ZM5.2 14.5l4.3 4.3-5.2 1.7a.7.7 0 0 1-.8-.9l1.7-5.1Z"/></svg>`,
+
+  code: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6 4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4ZM13.2 4 9.5 20h2.1L15.3 4h-2.1Z"/></svg>`,
+
+  media: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm1 3v10h14V7H5Zm4 2 6 3-6 3V9Z"/></svg>`,
+
+  pos: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h14a2 2 0 0 1 2 2v9H3V5a2 2 0 0 1 2-2Zm0 3v5h14V6H5Zm-2 10h18v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2Zm5 1v2h8v-2H8Z"/></svg>`,
+
+  strategy: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 6v6c0 5 3.4 9.7 8 10 4.6-.3 8-5 8-10V6l-8-4Zm1 5v5.6l4 2.4-1 1.7-5-3V7h2Z"/></svg>`,
+
+  people: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Zm7-2a4 4 0 1 0-3.4-6.1A6.9 6.9 0 0 1 17 10c0 .7-.1 1.3-.3 1.9.7.1 1.5.1 2.3.1Zm0 2c-.8 0-1.6-.1-2.4-.3 1.5 1.1 2.4 2.5 2.4 4.3v1h4v-1c0-2.2-2.7-4-4-4ZM5 12c.8 0 1.6 0 2.3-.2A6.6 6.6 0 0 1 7 10c0-1.5.5-3 1.4-4.1A4 4 0 1 0 5 12Zm0 2c-1.3 0-4 1.8-4 4v1h4v-1c0-1.8.9-3.2 2.4-4.3-.8.2-1.6.3-2.4.3Z"/></svg>`,
+
+  flow: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10v5H7V3ZM4 11h7v5H4v-5Zm9 5h7v5h-7v-5Zm-2-3h2v2h-2v-2Zm1-5h2v3h-2V8Z"/></svg>`,
+
+  shield: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5.5 3.4 10.2 8 11 4.6-.8 8-5.5 8-11V5l-8-3Zm-1 14.5-4-4L8.4 11l2.6 2.6L16.6 8 18 9.4l-7 7.1Z"/></svg>`,
+
+  spark: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 14.2 8H21l-5.5 4 2.2 6.5L12 14.5 6.3 18.5 8.5 12 3 8h6.8L12 2Z"/></svg>`,
 };
+
+const pillars = [
+  {
+    icon: icons.code,
+    title: "Tecnología útil",
+    text: "Desarrollamos sistemas, plataformas y herramientas que resuelven problemas reales de operación.",
+  },
+  {
+    icon: icons.strategy,
+    title: "Estrategia clara",
+    text: "Antes de construir, entendemos el negocio, los procesos, el usuario y el objetivo comercial.",
+  },
+  {
+    icon: icons.shield,
+    title: "Implementación seria",
+    text: "No entregamos solo archivos: acompañamos con configuración, capacitación, soporte y mejora continua.",
+  },
+];
+
+const services = [
+  "Software a medida",
+  "Páginas web profesionales",
+  "Sistemas POS",
+  "Automatización de procesos",
+  "E-commerce",
+  "Social media",
+  "Branding digital",
+  "Soporte y capacitación",
+];
+
+const process = [
+  {
+    title: "Diagnóstico",
+    text: "Escuchamos la necesidad, revisamos el contexto y detectamos fricciones operativas o comerciales.",
+  },
+  {
+    title: "Propuesta",
+    text: "Definimos alcance, entregables, tiempos, prioridades y ruta de implementación.",
+  },
+  {
+    title: "Desarrollo",
+    text: "Construimos la solución con enfoque funcional, visual y técnico según el objetivo del proyecto.",
+  },
+  {
+    title: "Implementación",
+    text: "Configuramos, probamos, capacitamos y dejamos una base lista para operar.",
+  },
+];
+
+const stats = [
+  {
+    value: "360°",
+    label: "Visión integral",
+  },
+  {
+    value: "B2B",
+    label: "Enfoque empresarial",
+  },
+  {
+    value: "MX",
+    label: "Talento mexicano",
+  },
+];
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-    <SEO title={title} description={description} type="website" locale="es_MX" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <SEO
+      title={title}
+      description={description}
+      type="website"
+      locale="es_MX"
+    />
+
     <title>{title}</title>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white">
+  <body
+    class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white"
+  >
     <Navbar logoSrc="/novatec-logo.webp" />
-    <CircuitBG />
+    <CircuitBG opacity={0.24} />
 
     <main class="relative z-10 overflow-x-clip">
-      <!-- HERO :: más aire y jerarquía -->
-      <header class="relative pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
-        <section class="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div class="grid items-start gap-10 sm:gap-12 lg:gap-16 lg:grid-cols-[1.1fr,0.9fr]">
-            <!-- Texto -->
-            <div class="space-y-6 sm:space-y-7">
-              <span class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] sm:text-xs tracking-wide text-cyan-200">
-                Acerca de nosotros
+      <!-- HERO -->
+      <header class="relative pt-28 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
+        <section class="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="about-hero-grid">
+            <div class="about-hero-copy">
+              <span class="section-pill">
+                Acerca de NeoTec
               </span>
 
-              <h1 class="font-extrabold leading-tight tracking-tight text-[clamp(1.9rem,2.5vw+1rem,3.4rem)]">
-                Estrategia para hacer crecer tu negocio
+              <h1 class="about-title">
+                Tecnología, estrategia y ejecución para negocios que quieren crecer
               </h1>
 
-              <p class="measure text-[15.8px] sm:text-[16.2px] text-slate-200/90">
-                En <strong>NeoTec</strong> integramos <em>software a medida</em> y <em>social media para negocios</em>:
-                construimos sistemas que ordenan la operación y campañas que posicionan tu marca y generan demanda.
+              <p class="about-lead">
+                En <strong>NeoTec Business Solutions</strong> ayudamos a empresas,
+                comercios y emprendedores a profesionalizar su operación mediante
+                software, presencia digital, automatización y soluciones tecnológicas
+                diseñadas para trabajar en el mundo real.
               </p>
 
-              <!-- Bullets -->
-              <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
-                {[
-                  "Software a medida",
-                  "Social media con performance",
-                  "Implementación + capacitación",
-                ].map((t) => (
-                  <li class="flex items-center gap-2 text-[13.8px] sm:text-sm text-slate-100/90">
-                    <span class="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/20 bg-white/10">
-                      <span aria-hidden="true" set:html={icons.check}></span>
-                    </span>
-                    {t}
-                  </li>
-                ))}
-              </ul>
+              <p class="about-text">
+                Nuestro enfoque no es vender tecnología por venderla. Primero
+                entendemos el negocio, luego diseñamos una solución viable y
+                finalmente acompañamos la implementación para que realmente genere
+                valor.
+              </p>
 
-              <div class="flex flex-col gap-3 sm:flex-row sm:gap-4 pt-1">
-                <a href="/cotizar" class="btn-primary w-full sm:w-auto">
-                  <span aria-hidden="true" set:html={icons.rocket}></span> Comencemos
+              <div class="about-actions">
+                <a href="/cotizar" class="btn-primary">
+                  Cotizar proyecto
+                  <span aria-hidden="true">→</span>
                 </a>
-                <a href="/productos" class="btn-ghost w-full sm:w-auto">
+
+                <a href="/servicios" class="btn-ghost">
                   Ver soluciones
                 </a>
               </div>
             </div>
 
-            <!-- Cards -->
-            <div class="relative">
-              <div aria-hidden class="absolute -inset-10 rounded-[28px] bg-[radial-gradient(60%_50%_at_70%_30%,rgba(34,211,238,0.28),rgba(2,6,23,0))] blur-3xl opacity-80"></div>
-              <div class="relative grid gap-6 sm:gap-7">
-                <article class="holo-card will-change-transform">
-                  <div class="holo-inner p-7 sm:p-9 lg:p-10">
-                    <div class="mb-4 flex items-center gap-3">
-                      <span class="icon"><span aria-hidden="true" set:html={icons.cube}></span></span>
-                      <h3 class="font-semibold text-[17px]">Soluciones de software</h3>
-                    </div>
-                    <p class="measure-sm text-[15px] text-slate-300/95">
-                      POS, administración, plataformas web y herramientas a medida para digitalizar procesos y tener control real.
-                    </p>
-                  </div>
-                </article>
+            <aside class="about-hero-panel">
+              <div class="panel-glow"></div>
 
-                <article class="holo-card will-change-transform">
-                  <div class="holo-inner p-7 sm:p-9 lg:p-10">
-                    <div class="mb-4 flex items-center gap-3">
-                      <span class="icon"><span aria-hidden="true" set:html={icons.media}></span></span>
-                      <h3 class="font-semibold text-[17px]">Social media para negocios</h3>
-                    </div>
-                    <p class="measure-sm text-[15px] text-slate-300/95">
-                      Gestión de redes, contenido y campañas publicitarias enfocadas en visibilidad, confianza y ventas.
-                    </p>
+              <div class="company-card">
+                <div class="company-card-header">
+                  <span class="company-icon" set:html={icons.rocket}></span>
+
+                  <div>
+                    <span class="company-kicker">NeoTecMX</span>
+                    <h2>Business Solutions</h2>
                   </div>
-                </article>
+                </div>
+
+                <p>
+                  Integramos desarrollo, diseño, infraestructura, marketing y
+                  soporte para entregar soluciones completas, medibles y listas
+                  para operar.
+                </p>
+
+                <div class="company-tags">
+                  <span>Software</span>
+                  <span>Web</span>
+                  <span>POS</span>
+                  <span>Social Media</span>
+                </div>
               </div>
-            </div>
+
+              <div class="stats-grid">
+                {
+                  stats.map((stat) => (
+                    <div class="stat-card">
+                      <strong>{stat.value}</strong>
+                      <span>{stat.label}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </aside>
           </div>
         </section>
       </header>
 
-      <!-- Bloque doble: Software / Social -->
+      <!-- QUÉ HACEMOS -->
       <section class="section-space">
-        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div class="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
-            <article class="holo-card">
-              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
-                <div class="mb-5 flex items-center gap-3">
-                  <span class="icon"><span aria-hidden="true" set:html={icons.cube}></span></span>
-                  <h2 class="font-semibold text-[clamp(1.1rem,0.6vw+1rem,1.5rem)]">Soluciones de software</h2>
-                </div>
-                <p class="measure text-slate-100/90">
-                  Sistemas que conectan áreas clave y eliminan fricción operativa: precisión, trazabilidad y velocidad.
-                </p>
-                <ul class="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
-                  {["POS", "Administrativo", "Plataformas web", "Integraciones", "A medida"].map((t) => (
-                    <li class="chip">{t}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="section-heading">
+            <span class="section-pill">
+              Qué hacemos
+            </span>
 
-            <article class="holo-card">
-              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
-                <div class="mb-5 flex items-center gap-3">
-                  <span class="icon"><span aria-hidden="true" set:html={icons.media}></span></span>
-                  <h2 class="font-semibold text-[clamp(1.1rem,0.6vw+1rem,1.5rem)]">Social media para negocios</h2>
+            <h2>Convertimos necesidades de negocio en soluciones funcionales</h2>
+
+            <p>
+              Diseñamos e implementamos herramientas digitales que ayudan a
+              vender mejor, administrar con más control y proyectar una imagen
+              profesional.
+            </p>
+          </div>
+
+          <div class="pill-grid">
+            {
+              services.map((item) => (
+                <div class="solution-pill">
+                  <span set:html={icons.check}></span>
+                  <span>{item}</span>
                 </div>
-                <p class="measure text-slate-100/90">
-                  Presencia que vende: estrategia, branding, contenido y ads medibles para crecer con intención.
-                </p>
-                <ul class="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
-                  {["Estrategia", "Branding", "Contenido", "Ads", "Reporting"].map((t) => (
-                    <li class="chip">{t}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+              ))
+            }
           </div>
         </div>
       </section>
 
-      <!-- Visión + (Equipo / Enfoque) -->
-      <section class="section-space">
-        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <article class="holo-card mb-10 sm:mb-12">
-            <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
-              <div class="mb-4 sm:mb-6 flex items-center gap-3">
-                <span class="icon"><span aria-hidden="true" set:html={icons.spark}></span></span>
-                <h2 class="font-semibold text-[clamp(1.25rem,0.8vw+1rem,1.75rem)]">Nuestra visión</h2>
-              </div>
-              <p class="measure text-slate-100/90">
-                Ser tu aliado estratégico: un mismo equipo que unifica tecnología y comunicación para impulsar la evolución digital de tu negocio.
-              </p>
-            </div>
-          </article>
-
-          <div class="grid gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
-            <article class="holo-card">
-              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
-                <div class="mb-5 flex items-center gap-3">
-                  <span class="icon"><span aria-hidden="true" set:html={icons.people}></span></span>
-                  <h3 class="font-semibold text-[1.1rem]">Equipo</h3>
-                </div>
-                <p class="measure text-slate-100/90">
-                  Desarrollo, marketing y diseño trabajando en sintonía para entregar soluciones reales y medibles.
-                </p>
-              </div>
-            </article>
-
-            <article class="holo-card">
-              <div class="holo-inner h-full p-8 sm:p-10 lg:p-12">
-                <div class="mb-5 flex items-center gap-3">
-                  <span class="icon"><span aria-hidden="true" set:html={icons.rocket}></span></span>
-                  <h3 class="font-semibold text-[1.1rem]">Enfoque</h3>
-                </div>
-                <p class="measure text-slate-100/90">
-                  Resultados por encima del ruido: eficiencia operativa + crecimiento de marca con propósito.
-                </p>
-              </div>
-            </article>
+      <!-- PILARES -->
+      <section class="section-space pt-0">
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="grid gap-6 lg:grid-cols-3">
+            {
+              pillars.map((pillar) => (
+                <article class="neo-card">
+                  <div class="neo-card-icon" set:html={pillar.icon}></div>
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.text}</p>
+                </article>
+              ))
+            }
           </div>
         </div>
       </section>
 
-      <!-- CTA final -->
+      <!-- HISTORIA / ENFOQUE -->
       <section class="section-space">
-        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div class="rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-white/5 to-fuchsia-500/10 p-8 sm:p-10 lg:p-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur">
-            <div class="space-y-2">
-              <h2 class="font-bold text-[clamp(1.15rem,0.7vw+1rem,1.6rem)]">Impulsa tu negocio con tecnología y estrategia</h2>
-              <p class="measure-sm text-slate-100/90">
-                Hablemos de cómo integrar software y social media para tu siguiente salto.
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="story-card">
+            <div class="story-content">
+              <span class="section-pill">
+                Nuestra forma de trabajar
+              </span>
+
+              <h2>
+                No construimos adornos digitales. Construimos herramientas para operar mejor.
+              </h2>
+
+              <p>
+                Muchos negocios tienen procesos valiosos, pero desordenados:
+                ventas registradas a medias, inventarios inconsistentes,
+                comunicación dispersa, redes sociales sin estrategia o sistemas
+                que ya se quedaron cortos. Ahí entra NeoTec.
+              </p>
+
+              <p>
+                Nuestro trabajo es convertir ese caos en una solución clara:
+                sistemas que dan trazabilidad, sitios que transmiten confianza,
+                campañas que comunican valor y herramientas que ayudan a tomar
+                mejores decisiones.
               </p>
             </div>
-            <a href="/cotizar" class="btn-primary w-full sm:w-auto">
-              <span aria-hidden="true" set:html={icons.rocket}></span> Cotizar proyecto
+
+            <div class="story-aside">
+              <div class="mini-terminal">
+                <div class="terminal-top">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="terminal-lines">
+                  <p><span>01</span> Diagnosticar operación</p>
+                  <p><span>02</span> Diseñar solución viable</p>
+                  <p><span>03</span> Implementar con soporte</p>
+                  <p><span>04</span> Medir, ajustar y escalar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESO -->
+      <section class="section-space">
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="section-heading">
+            <span class="section-pill">
+              Proceso
+            </span>
+
+            <h2>De la idea a una solución lista para operar</h2>
+
+            <p>
+              Trabajamos por etapas para reducir improvisación, ordenar prioridades
+              y entregar soluciones que sí puedan usarse en operación diaria.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            {
+              process.map((step, index) => (
+                <article class="process-card">
+                  <span class="process-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- VALORES / DIFERENCIADORES -->
+      <section class="section-space">
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="values-grid">
+            <article class="values-main">
+              <span class="section-pill">
+                Por qué elegirnos
+              </span>
+
+              <h2>Porque una solución bonita no sirve si no resuelve nada</h2>
+
+              <p>
+                Nos importa el diseño, claro. Pero nos importa más que el sistema
+                funcione, que el cliente entienda cómo usarlo, que el negocio
+                gane control y que cada entrega tenga una razón estratégica.
+              </p>
+            </article>
+
+            <div class="values-list">
+              <div class="value-item">
+                <span set:html={icons.check}></span>
+                <div>
+                  <h3>Claridad antes que humo</h3>
+                  <p>Alcances, costos, tiempos y entregables bien definidos.</p>
+                </div>
+              </div>
+
+              <div class="value-item">
+                <span set:html={icons.check}></span>
+                <div>
+                  <h3>Soluciones escalables</h3>
+                  <p>Pensadas para crecer con el negocio, no para estorbar en tres meses.</p>
+                </div>
+              </div>
+
+              <div class="value-item">
+                <span set:html={icons.check}></span>
+                <div>
+                  <h3>Acompañamiento real</h3>
+                  <p>Implementación, capacitación y soporte para que la solución no se quede de adorno.</p>
+                </div>
+              </div>
+
+              <div class="value-item">
+                <span set:html={icons.check}></span>
+                <div>
+                  <h3>Visión técnica y comercial</h3>
+                  <p>Unimos desarrollo, operación y comunicación para resolver con más contexto.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA FINAL -->
+      <section class="section-space">
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div class="final-cta">
+            <div>
+              <span class="section-pill">
+                Siguiente paso
+              </span>
+
+              <h2>Cuéntanos qué necesita tu negocio</h2>
+
+              <p>
+                Podemos ayudarte a aterrizar la idea, definir el alcance y crear
+                una propuesta clara para tu proyecto.
+              </p>
+            </div>
+
+            <a href="/cotizar" class="btn-primary">
+              Solicitar cotización
+              <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -218,91 +414,782 @@ const icons = {
     </main>
 
     <Footer logoSrc="/novatec-logo.webp" />
+
+    
   </body>
 </html>
+<style is:global>
+      .section-space {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+      }
 
-<style>
-    body{
+      @media (min-width: 640px) {
+        .section-space {
+          padding-top: 4.5rem;
+          padding-bottom: 4.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .section-space {
+          padding-top: 5.75rem;
+          padding-bottom: 5.75rem;
+        }
+      }
+
+      .section-pill {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        border-radius: 9999px;
+        border: 1px solid rgba(103, 232, 249, 0.28);
+        background: rgba(103, 232, 249, 0.09);
+        padding: 0.38rem 0.8rem;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: rgba(207, 250, 254, 0.94);
+      }
+
+      .section-heading {
+        max-width: 52rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-heading h2 {
+        margin-top: 1rem;
+        font-size: clamp(1.55rem, 1.2vw + 1rem, 2.35rem);
+        font-weight: 900;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        color: rgba(248, 250, 252, 0.98);
+      }
+
+      .section-heading p {
+        margin-top: 0.85rem;
+        max-width: 48rem;
+        font-size: 1rem;
+        line-height: 1.75;
+        color: rgba(203, 213, 225, 0.88);
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        border-radius: 0.95rem;
+        background: linear-gradient(135deg, #67e8f9, #22d3ee);
+        padding: 0.95rem 1.7rem;
+        font-weight: 900;
+        color: #020617;
+        box-shadow: 0 14px 32px rgba(34, 211, 238, 0.22);
+        transition:
+          transform 0.12s ease,
+          box-shadow 0.2s ease,
+          filter 0.2s ease;
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+        box-shadow: 0 18px 42px rgba(34, 211, 238, 0.3);
+      }
+
+      .btn-primary:active {
+        transform: translateY(1px);
+      }
+
+      .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        border-radius: 0.95rem;
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        background: rgba(15, 23, 42, 0.68);
+        padding: 0.95rem 1.7rem;
+        font-weight: 850;
+        color: rgba(248, 250, 252, 0.96);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+          0 12px 28px rgba(0, 0, 0, 0.22);
+        transition:
+          background 0.2s ease,
+          border-color 0.2s ease,
+          transform 0.12s ease;
+      }
+
+      .btn-ghost:hover {
+        border-color: rgba(103, 232, 249, 0.34);
+        background: rgba(15, 23, 42, 0.86);
+        transform: translateY(-1px);
+      }
+
+      .about-hero-grid {
+        display: grid;
+        gap: 2.25rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .about-hero-grid {
+          grid-template-columns: 1.08fr 0.92fr;
+          gap: 4.5rem;
+        }
+      }
+
+      .about-hero-copy {
+        max-width: 52rem;
+      }
+
+      .about-title {
+        margin-top: 1.25rem;
+        font-size: clamp(2rem, 3vw + 1rem, 4.3rem);
+        font-weight: 950;
+        line-height: 1.03;
+        letter-spacing: -0.055em;
+        color: rgba(248, 250, 252, 0.98);
+        text-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+      }
+
+      .about-lead {
+        margin-top: 1.35rem;
+        max-width: 46rem;
+        font-size: clamp(1rem, 0.25vw + 1rem, 1.18rem);
+        line-height: 1.78;
+        color: rgba(226, 232, 240, 0.92);
+      }
+
+      .about-text {
+        margin-top: 1rem;
+        max-width: 44rem;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        color: rgba(203, 213, 225, 0.84);
+      }
+
+      .about-actions {
+        margin-top: 1.8rem;
         display: flex;
         flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      @media (min-width: 640px) {
+        .about-actions {
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+
+      .about-hero-panel {
+        position: relative;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .panel-glow {
+        position: absolute;
+        inset: -2.5rem;
+        z-index: -1;
+        border-radius: 2rem;
+        background:
+          radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.22), transparent 34%),
+          radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.14), transparent 42%);
+        filter: blur(32px);
+        opacity: 0.82;
+        pointer-events: none;
+      }
+
+      .company-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.45rem;
+        border: 1px solid rgba(125, 211, 252, 0.28);
+        background:
+          radial-gradient(circle at 18% 12%, rgba(34, 211, 238, 0.16), transparent 38%),
+          linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.82));
+        padding: 1.6rem;
+        box-shadow:
+          0 24px 70px rgba(0, 0, 0, 0.44),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+        backdrop-filter: blur(14px);
+      }
+
+      .company-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(115deg, rgba(255, 255, 255, 0.08), transparent 28%, transparent 70%, rgba(103, 232, 249, 0.08)),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.035) 0px,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px,
+            transparent 9px
+          );
+        opacity: 0.22;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+      }
+
+      .company-card-header {
+        position: relative;
+        z-index: 1;
+        display: flex;
         align-items: center;
-    }
-/* ====== Tipografía y medida ====== */
-.measure { max-width: 65ch; line-height: 1.75; font-size: 1rem; }
-.measure-sm { max-width: 72ch; line-height: 1.65; }
+        gap: 1rem;
+      }
 
-/* ====== Secciones con mejor ritmo vertical ====== */
-.section-space { padding-top: 3.5rem; padding-bottom: 3.5rem; }
-@media (min-width:640px){ .section-space{ padding-top: 4.5rem; padding-bottom: 4.5rem; } }
-@media (min-width:1024px){ .section-space{ padding-top: 5.75rem; padding-bottom: 5.75rem; } }
+      .company-icon {
+        display: inline-flex;
+        height: 3.2rem;
+        width: 3.2rem;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        border: 1px solid rgba(125, 211, 252, 0.34);
+        background: rgba(8, 47, 73, 0.72);
+        color: #cffafe;
+        box-shadow:
+          0 12px 32px rgba(14, 165, 233, 0.16),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.055);
+      }
 
-/* ====== Chips ====== */
-.chip{
-  font-size:.85rem; border-radius:9999px; border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.07); padding:.5rem .95rem; color:rgba(236,244,255,.92);
-}
+      .company-kicker {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(103, 232, 249, 0.82);
+      }
 
-/* ====== Botones ====== */
-.btn-primary{
-  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
-  border-radius:.95rem; background:rgba(6,182,212,.95);
-  padding:.95rem 1.7rem; font-weight:800; color:#0f172a;
-  transition:background .2s ease, transform .08s ease, box-shadow .2s ease;
-  box-shadow: 0 8px 24px rgba(34,211,238,.18);
-}
-.btn-primary:hover{ background:rgba(103,232,249,1); box-shadow: 0 10px 28px rgba(103,232,249,.22); }
-.btn-primary:active{ transform:translateY(1px); }
+      .company-card h2 {
+        margin-top: 0.1rem;
+        font-size: 1.35rem;
+        font-weight: 900;
+        color: rgba(248, 250, 252, 0.98);
+      }
 
-.btn-ghost{
-  display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-weight:800; color:#fff;
-  border-radius:.95rem; background:rgba(255,255,255,.09);
-  padding:.95rem 1.7rem; border:1px solid rgba(255,255,255,.15);
-  transition:background .2s ease, transform .08s ease, border-color .2s ease;
-}
-.btn-ghost:hover{ background:rgba(255,255,255,.18); border-color: rgba(255,255,255,.22); }
-.btn-ghost:active{ transform:translateY(1px); }
+      .company-card p {
+        position: relative;
+        z-index: 1;
+        margin-top: 1.25rem;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        color: rgba(226, 232, 240, 0.88);
+      }
 
-/* ====== Icon wrapper ====== */
-.icon{
-  display:flex; width:2.5rem; height:2.5rem; align-items:center; justify-content:center;
-  border-radius:.8rem; background:rgba(2,6,23,.68); box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);
-}
+      .company-tags {
+        position: relative;
+        z-index: 1;
+        margin-top: 1.35rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
 
-/* ====== Holo (borde iridiscente + vidrio) ====== */
-@property --angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
-@keyframes holo-spin { 0% { --angle: 0deg; } 100% { --angle: 360deg; } }
+      .company-tags span {
+        border-radius: 9999px;
+        border: 1px solid rgba(103, 232, 249, 0.2);
+        background: rgba(103, 232, 249, 0.08);
+        padding: 0.42rem 0.72rem;
+        font-size: 0.78rem;
+        color: rgba(207, 250, 254, 0.92);
+      }
 
-.holo-card{
-  position:relative; display:grid; border-radius:1.05rem; overflow:hidden; isolation:isolate;
-  transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
-}
-.holo-card::before{
-  content:""; position:absolute; inset:0; border-radius:inherit; padding:1.6px;
-  background: conic-gradient(from var(--angle),
-    #22d3ee 0deg, #a855f7 60deg, #60a5fa 120deg,
-    #14b8a6 180deg, #a855f7 240deg, #22d3ee 300deg, #22d3ee 360deg);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude;
-  animation: holo-spin 12s linear infinite; z-index:-1; opacity:.85;
-}
-.holo-card::after{
-  content:""; position:absolute; inset:0; border-radius:inherit;
-  background:
-    repeating-linear-gradient(115deg, rgba(255,255,255,.06) 0px, rgba(255,255,255,.06) 1px, transparent 2px, transparent 7px),
-    linear-gradient(45deg, rgba(255,255,255,.08), rgba(255,255,255,0));
-  mix-blend-mode:overlay; opacity:.35; pointer-events:none; z-index:1;
-}
-.holo-inner{
-  position:relative; height:100%; border-radius:inherit;
-  background:rgba(15,23,42,.64); backdrop-filter:blur(14px) saturate(1.35);
-  -webkit-backdrop-filter:blur(14px) saturate(1.35);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), 0 10px 26px rgba(0,0,0,.36);
-  z-index:2;
-}
-@media (prefers-reduced-motion:no-preference){
-  .holo-card:hover{ transform:translateY(-6px) scale(1.012); filter: saturate(1.05); }
-  .holo-card:hover::before{ animation-duration:8s; opacity:.98; filter:brightness(1.12); }
-  .holo-card:hover::after{ opacity:.48; }
-}
-</style>
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+
+      .stat-card {
+        border-radius: 1rem;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: rgba(15, 23, 42, 0.68);
+        padding: 1rem;
+        text-align: center;
+        box-shadow:
+          0 16px 38px rgba(0, 0, 0, 0.28),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-card strong {
+        display: block;
+        font-size: 1.45rem;
+        font-weight: 950;
+        color: rgba(103, 232, 249, 0.95);
+      }
+
+      .stat-card span {
+        margin-top: 0.25rem;
+        display: block;
+        font-size: 0.76rem;
+        line-height: 1.35;
+        color: rgba(203, 213, 225, 0.78);
+      }
+
+      .pill-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+
+      @media (min-width: 640px) {
+        .pill-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .pill-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      .solution-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(125, 211, 252, 0.18);
+        background:
+          linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(2, 6, 23, 0.58)),
+          rgba(15, 23, 42, 0.7);
+        padding: 0.9rem 1rem;
+        color: rgba(226, 232, 240, 0.94);
+        box-shadow:
+          0 14px 34px rgba(0, 0, 0, 0.24),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(10px);
+      }
+
+      .solution-pill span:first-child {
+        display: inline-flex;
+        height: 1.45rem;
+        width: 1.45rem;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: rgba(103, 232, 249, 0.12);
+        color: #67e8f9;
+      }
+
+      .neo-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1.35rem;
+        border: 1px solid rgba(125, 211, 252, 0.22);
+        background:
+          radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.12), transparent 36%),
+          linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(2, 6, 23, 0.74));
+        padding: 1.6rem;
+        min-height: 17rem;
+        box-shadow:
+          0 22px 55px rgba(0, 0, 0, 0.36),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+      }
+
+      .neo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(115deg, rgba(255, 255, 255, 0.07), transparent 24%, transparent 70%, rgba(103, 232, 249, 0.07));
+        opacity: 0.22;
+        pointer-events: none;
+      }
+
+      .neo-card-icon {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        height: 3rem;
+        width: 3rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1rem;
+        border: 1px solid rgba(125, 211, 252, 0.34);
+        background: rgba(8, 47, 73, 0.72);
+        color: #cffafe;
+        box-shadow:
+          0 12px 32px rgba(14, 165, 233, 0.14),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.055);
+      }
+
+      .neo-card h3 {
+        position: relative;
+        z-index: 1;
+        margin-top: 1.15rem;
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: rgba(248, 250, 252, 0.98);
+      }
+
+      .neo-card p {
+        position: relative;
+        z-index: 1;
+        margin-top: 0.75rem;
+        font-size: 0.98rem;
+        line-height: 1.72;
+        color: rgba(203, 213, 225, 0.86);
+      }
+
+      .story-card {
+        display: grid;
+        gap: 2rem;
+        overflow: hidden;
+        border-radius: 1.55rem;
+        border: 1px solid rgba(125, 211, 252, 0.24);
+        background:
+          radial-gradient(circle at 18% 10%, rgba(34, 211, 238, 0.14), transparent 34%),
+          linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.78));
+        padding: 1.5rem;
+        box-shadow:
+          0 26px 70px rgba(0, 0, 0, 0.42),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+        backdrop-filter: blur(14px);
+      }
+
+      @media (min-width: 1024px) {
+        .story-card {
+          grid-template-columns: 1.1fr 0.9fr;
+          padding: 2.2rem;
+        }
+      }
+
+      .story-content {
+        padding: 0.5rem;
+      }
+
+      @media (min-width: 640px) {
+        .story-content {
+          padding: 1rem;
+        }
+      }
+
+      .story-content h2 {
+        margin-top: 1rem;
+        max-width: 48rem;
+        font-size: clamp(1.55rem, 1.25vw + 1rem, 2.4rem);
+        font-weight: 950;
+        line-height: 1.12;
+        letter-spacing: -0.04em;
+      }
+
+      .story-content p {
+        margin-top: 1rem;
+        max-width: 52rem;
+        font-size: 0.99rem;
+        line-height: 1.78;
+        color: rgba(203, 213, 225, 0.88);
+      }
+
+      .story-aside {
+        display: flex;
+        align-items: stretch;
+      }
+
+      .mini-terminal {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 1.2rem;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        background:
+          linear-gradient(135deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.76));
+        box-shadow:
+          0 20px 55px rgba(0, 0, 0, 0.36),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+
+      .terminal-top {
+        display: flex;
+        gap: 0.45rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+        padding: 0.9rem 1rem;
+      }
+
+      .terminal-top span {
+        height: 0.7rem;
+        width: 0.7rem;
+        border-radius: 9999px;
+        background: rgba(103, 232, 249, 0.34);
+      }
+
+      .terminal-top span:nth-child(2) {
+        background: rgba(56, 189, 248, 0.24);
+      }
+
+      .terminal-top span:nth-child(3) {
+        background: rgba(168, 85, 247, 0.28);
+      }
+
+      .terminal-lines {
+        padding: 1.1rem;
+      }
+
+      .terminal-lines p {
+        display: flex;
+        gap: 0.8rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.11);
+        padding: 0.85rem 0;
+        font-family:
+          ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          Monaco,
+          Consolas,
+          monospace;
+        font-size: 0.88rem;
+        color: rgba(226, 232, 240, 0.88);
+      }
+
+      .terminal-lines p:last-child {
+        border-bottom: 0;
+      }
+
+      .terminal-lines span {
+        color: rgba(103, 232, 249, 0.8);
+      }
+
+      .process-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .process-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .process-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+
+      .process-card {
+        min-height: 15rem;
+        border-radius: 1.25rem;
+        border: 1px solid rgba(125, 211, 252, 0.18);
+        background:
+          radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.1), transparent 36%),
+          linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(2, 6, 23, 0.66));
+        padding: 1.35rem;
+        box-shadow:
+          0 18px 45px rgba(0, 0, 0, 0.3),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(12px);
+      }
+
+      .process-number {
+        display: inline-flex;
+        font-size: 0.82rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        color: rgba(103, 232, 249, 0.86);
+      }
+
+      .process-card h3 {
+        margin-top: 1rem;
+        font-size: 1.08rem;
+        font-weight: 900;
+        color: rgba(248, 250, 252, 0.96);
+      }
+
+      .process-card p {
+        margin-top: 0.75rem;
+        font-size: 0.94rem;
+        line-height: 1.68;
+        color: rgba(203, 213, 225, 0.84);
+      }
+
+      .values-grid {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 1024px) {
+        .values-grid {
+          grid-template-columns: 0.95fr 1.05fr;
+          gap: 2rem;
+          align-items: stretch;
+        }
+      }
+
+      .values-main {
+        border-radius: 1.45rem;
+        border: 1px solid rgba(125, 211, 252, 0.24);
+        background:
+          radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.14), transparent 36%),
+          linear-gradient(135deg, rgba(15, 23, 42, 0.84), rgba(2, 6, 23, 0.72));
+        padding: 1.6rem;
+        box-shadow:
+          0 24px 65px rgba(0, 0, 0, 0.38),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(14px);
+      }
+
+      @media (min-width: 640px) {
+        .values-main {
+          padding: 2rem;
+        }
+      }
+
+      .values-main h2 {
+        margin-top: 1rem;
+        font-size: clamp(1.55rem, 1.25vw + 1rem, 2.4rem);
+        font-weight: 950;
+        line-height: 1.12;
+        letter-spacing: -0.04em;
+      }
+
+      .values-main p {
+        margin-top: 1rem;
+        font-size: 0.99rem;
+        line-height: 1.78;
+        color: rgba(203, 213, 225, 0.88);
+      }
+
+      .values-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .value-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.85rem;
+        border-radius: 1.15rem;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: rgba(15, 23, 42, 0.68);
+        padding: 1.1rem;
+        box-shadow:
+          0 16px 40px rgba(0, 0, 0, 0.26),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(12px);
+      }
+
+      .value-item > span {
+        display: inline-flex;
+        height: 1.8rem;
+        width: 1.8rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: rgba(103, 232, 249, 0.12);
+        color: #67e8f9;
+      }
+
+      .value-item h3 {
+        font-size: 0.98rem;
+        font-weight: 900;
+        color: rgba(248, 250, 252, 0.96);
+      }
+
+      .value-item p {
+        margin-top: 0.25rem;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: rgba(203, 213, 225, 0.8);
+      }
+
+      .final-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        border-radius: 1.55rem;
+        border: 1px solid rgba(34, 211, 238, 0.28);
+        background:
+          radial-gradient(circle at 12% 20%, rgba(34, 211, 238, 0.16), transparent 36%),
+          linear-gradient(135deg, rgba(15, 23, 42, 0.86), rgba(2, 6, 23, 0.78));
+        padding: 1.6rem;
+        box-shadow:
+          0 26px 70px rgba(0, 0, 0, 0.4),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+        backdrop-filter: blur(14px);
+      }
+
+      @media (min-width: 768px) {
+        .final-cta {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 2rem;
+        }
+      }
+
+      .final-cta h2 {
+        margin-top: 1rem;
+        font-size: clamp(1.45rem, 1vw + 1rem, 2.1rem);
+        font-weight: 950;
+        letter-spacing: -0.035em;
+      }
+
+      .final-cta p {
+        margin-top: 0.65rem;
+        max-width: 48rem;
+        color: rgba(203, 213, 225, 0.88);
+        line-height: 1.65;
+      }
+
+      .final-cta .btn-primary {
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .final-cta .btn-primary {
+          width: auto;
+          white-space: nowrap;
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .neo-card,
+        .process-card,
+        .value-item,
+        .solution-pill,
+        .company-card,
+        .stat-card {
+          transition:
+            transform 0.24s ease,
+            border-color 0.24s ease,
+            box-shadow 0.24s ease,
+            background 0.24s ease;
+        }
+
+        .neo-card:hover,
+        .process-card:hover,
+        .value-item:hover,
+        .solution-pill:hover,
+        .company-card:hover,
+        .stat-card:hover {
+          transform: translateY(-4px);
+          border-color: rgba(125, 211, 252, 0.36);
+          box-shadow:
+            0 24px 62px rgba(0, 0, 0, 0.44),
+            0 0 38px rgba(14, 165, 233, 0.08),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .company-card {
+          padding: 1.25rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>

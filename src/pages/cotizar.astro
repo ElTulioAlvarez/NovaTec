@@ -7,7 +7,55 @@ import "../styles/global.css";
 
 const title = "Cotizar — NeoTec Business Solutions";
 const description =
-  "Solicita una cotización profesional para desarrollo web, software a medida, e-commerce, POS, automatización o social media.";
+  "Solicita una cotización profesional para desarrollo web, software a medida, e-commerce, POS, automatización, social media o soluciones digitales para tu negocio.";
+
+const projectTypes = [
+  {
+    title: "Web / Landing",
+    text: "Sitios profesionales para presentar tu negocio, captar clientes y generar confianza.",
+    tag: "Presencia digital",
+  },
+  {
+    title: "Software / POS",
+    text: "Sistemas para ventas, caja, inventario, administración, reportes y operación diaria.",
+    tag: "Operación",
+  },
+  {
+    title: "Social Media",
+    text: "Gestión de redes, contenido, campañas y presencia digital para marcas y negocios.",
+    tag: "Marketing",
+  },
+  {
+    title: "Automatización",
+    text: "Flujos, reportes, integraciones y herramientas para reducir trabajo manual.",
+    tag: "Procesos",
+  },
+];
+
+const proposalItems = [
+  "Diagnóstico inicial",
+  "Alcance funcional",
+  "Tiempo estimado",
+  "Costo por etapas",
+  "Recomendaciones técnicas",
+  "Opciones de soporte",
+];
+
+const examples = [
+  "Sistema POS para tienda, restaurante o servicios",
+  "Página web corporativa",
+  "Landing page para campaña",
+  "E-commerce",
+  "Sistema administrativo interno",
+  "CRM básico",
+  "Control de inventario",
+  "Automatización de reportes",
+  "Gestión de redes sociales",
+  "MicroWeb para negocio",
+];
+
+const whatsappHref =
+  "https://wa.me/524433711589?text=Hola%20NeoTec%2C%20quiero%20cotizar%20un%20proyecto%20por%20favor.";
 ---
 
 <html lang="es">
@@ -35,87 +83,149 @@ const description =
     class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/30 selection:text-white"
   >
     <Navbar logoSrc="/novatec-logo.webp" />
-    <CircuitBG />
+    <CircuitBG opacity={0.24} />
 
     <main class="relative z-10 overflow-x-clip">
       <!-- HERO -->
-      <header class="relative pt-28 pb-10 sm:pt-32 sm:pb-12 lg:pt-40 lg:pb-14">
+      <header class="relative pt-28 pb-10 sm:pt-32 sm:pb-12 lg:pt-40 lg:pb-16">
         <section class="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div class="max-w-4xl space-y-5">
-            <span
-              class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] sm:text-xs tracking-wide text-cyan-200"
-            >
-              Cotización profesional
-            </span>
+          <div class="quote-hero">
+            <div class="quote-hero-copy">
+              <span class="section-pill">
+                Cotización profesional
+              </span>
 
-            <h1
-              class="font-extrabold leading-tight tracking-tight text-[clamp(2rem,2.6vw+1rem,3.45rem)]"
-            >
-              Construyamos una solución para tu negocio
-            </h1>
+              <h1 class="quote-title">
+                Cuéntanos tu idea, problema o proceso. Lo aterrizamos en una solución.
+              </h1>
 
-            <p class="measure text-[15.8px] sm:text-[16.4px] text-slate-200/90">
-              En NeoTec Business Solutions desarrollamos páginas web, sistemas a
-              medida, e-commerce, POS, automatización de procesos y estrategias
-              digitales para negocios que quieren operar mejor, vender más y
-              crecer con tecnología.
-            </p>
+              <p class="quote-lead">
+                En NeoTec Business Solutions desarrollamos páginas web, sistemas
+                a medida, POS, e-commerce, automatización y estrategias digitales
+                para negocios que quieren operar mejor, vender más y crecer con
+                tecnología.
+              </p>
 
-            <div class="flex flex-wrap gap-3 pt-2">
-              <span class="mini-pill">Desarrollo web</span>
-              <span class="mini-pill">Software a medida</span>
-              <span class="mini-pill">POS / ERP</span>
-              <span class="mini-pill">E-commerce</span>
-              <span class="mini-pill">Social media</span>
+              <div class="hero-actions">
+                <a href="#cotizarForm" class="btn-primary">
+                  Iniciar solicitud
+                  <span aria-hidden="true">→</span>
+                </a>
+
+                <a href={whatsappHref} target="_blank" rel="noopener" class="btn-ghost">
+                  Hablar por WhatsApp
+                </a>
+              </div>
             </div>
+
+            <aside class="quote-hero-panel">
+              <div class="quote-terminal">
+                <div class="terminal-top">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="terminal-body">
+                  <p><span>$</span> analizar_necesidad</p>
+                  <p><span>✓</span> operación · ventas · procesos · marca</p>
+                  <p><span>$</span> generar_propuesta --clara --viable</p>
+                </div>
+              </div>
+
+              <div class="quote-mini-stats">
+                <div>
+                  <strong>360°</strong>
+                  <span>Visión integral</span>
+                </div>
+                <div>
+                  <strong>B2B</strong>
+                  <span>Enfoque negocio</span>
+                </div>
+                <div>
+                  <strong>MX</strong>
+                  <span>Atención remota</span>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
       </header>
 
-      <!-- FORMULARIO + CONTACTO -->
+      <!-- QUÉ PUEDES COTIZAR -->
       <section class="section-space pt-0">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div
-            class="grid gap-8 sm:gap-10 lg:grid-cols-[1.18fr,0.82fr] lg:gap-12"
-          >
+          <div class="section-heading">
+            <span class="section-pill">
+              Qué puedes cotizar
+            </span>
+
+            <h2>Soluciones digitales para diferentes necesidades</h2>
+
+            <p>
+              No necesitas tener todo definido. Puedes partir de una idea, una
+              necesidad operativa o un problema concreto que quieras resolver.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            {
+              projectTypes.map((item) => (
+                <article class="project-card">
+                  <span>{item.tag}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMULARIO + PANEL COMERCIAL -->
+      <section class="section-space pt-0">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div class="quote-layout">
             <!-- FORMULARIO -->
-            <article class="holo-card">
-              <div class="holo-inner p-6 sm:p-8 lg:p-10">
-                <div class="mb-7">
-                  <span
-                    class="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[11px] tracking-wide text-slate-300"
-                  >
-                    Brief inicial
-                  </span>
+            <article class="quote-form-card">
+              <div class="form-head">
+                <span class="section-pill">
+                  Brief inicial
+                </span>
 
-                  <h2 class="mt-4 text-2xl font-bold">
-                    Solicita tu cotización
-                  </h2>
+                <h2>Solicita tu cotización</h2>
 
-                  <p class="mt-3 text-sm leading-6 text-slate-300/90">
-                    Compártenos la información principal de tu proyecto. Entre
-                    más claro sea el brief, más precisa será la propuesta.
-                  </p>
+                <p>
+                  Compártenos la información principal de tu proyecto. Entre más
+                  claro sea el brief, más precisa será la propuesta.
+                </p>
+              </div>
+
+              <form
+                id="cotizarForm"
+                class="quote-form"
+                enctype="multipart/form-data"
+                novalidate
+              >
+                <!-- Honeypot anti-bots -->
+                <div class="hidden" aria-hidden="true">
+                  <label>
+                    Empresa alternativa
+                    <input
+                      type="text"
+                      name="company"
+                      tabindex="-1"
+                      autocomplete="off"
+                      class="ui-input"
+                    />
+                  </label>
                 </div>
 
-                <form
-                  id="cotizarForm"
-                  class="grid gap-5"
-                  enctype="multipart/form-data"
-                  novalidate
-                >
-                  <!-- Honeypot anti-bots -->
-                  <div class="hidden" aria-hidden="true">
-                    <label>
-                      Empresa alternativa
-                      <input
-                        type="text"
-                        name="company"
-                        tabindex="-1"
-                        autocomplete="off"
-                        class="ui-input"
-                      />
-                    </label>
+                <!-- DATOS DE CONTACTO -->
+                <section class="form-section">
+                  <div class="form-section-title">
+                    <span>01</span>
+                    <h3>Datos de contacto</h3>
                   </div>
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -170,6 +280,14 @@ const description =
                       />
                     </label>
                   </div>
+                </section>
+
+                <!-- PROYECTO -->
+                <section class="form-section">
+                  <div class="form-section-title">
+                    <span>02</span>
+                    <h3>Proyecto</h3>
+                  </div>
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
@@ -178,6 +296,7 @@ const description =
                         <option value="">Selecciona una opción</option>
                         <option>Sitio web corporativo</option>
                         <option>Landing page</option>
+                        <option>MicroWeb para negocio</option>
                         <option>E-commerce</option>
                         <option>Software a medida</option>
                         <option>Sistema POS / Punto de venta</option>
@@ -230,13 +349,25 @@ const description =
                       </select>
                     </label>
                   </div>
+                </section>
+
+                <!-- INVERSIÓN Y CONTEXTO -->
+                <section class="form-section">
+                  <div class="form-section-title">
+                    <span>03</span>
+                    <h3>Inversión y contexto</h3>
+                  </div>
 
                   <fieldset>
                     <legend class="form-label mb-2">
-                      Rango de presupuesto estimado, MXN
+                      Inversión estimada para el proyecto
                     </legend>
 
-                    <div class="flex flex-wrap gap-2.5">
+                    <p class="field-hint">
+                      Esto nos ayuda a recomendar una solución viable según el alcance.
+                    </p>
+
+                    <div class="mt-3 flex flex-wrap gap-2.5">
                       {
                         [
                           "< 10,000",
@@ -266,7 +397,7 @@ const description =
                       required
                       name="descripcion"
                       rows="7"
-                      placeholder="Cuéntanos qué necesitas, objetivos, funcionalidades, referencias, procesos que quieres mejorar, módulos deseados o cualquier detalle importante."
+                      placeholder="Cuéntanos qué necesitas, qué problema quieres resolver, objetivos, funcionalidades, procesos que quieres mejorar o cualquier detalle importante."
                       class="ui-input resize-y"></textarea>
                   </label>
 
@@ -275,7 +406,7 @@ const description =
                     <textarea
                       name="referencias"
                       rows="3"
-                      placeholder="Puedes agregar sitios de referencia, enlaces a redes sociales, documentos, sistemas actuales o ejemplos de lo que buscas."
+                      placeholder="Puedes agregar sitios de referencia, redes sociales, documentos, sistemas actuales o ejemplos de lo que buscas."
                       class="ui-input resize-y"></textarea>
                   </label>
 
@@ -305,159 +436,174 @@ const description =
                       </span>
                     </label>
                   </div>
+                </section>
 
-                  <div class="pt-2">
-                    <button
-                      id="submitBtn"
-                      class="btn-primary w-full sm:w-auto"
-                      type="submit"
-                    >
-                      Enviar solicitud
-                    </button>
+                <div class="form-submit">
+                  <button
+                    id="submitBtn"
+                    class="btn-primary w-full sm:w-auto"
+                    type="submit"
+                  >
+                    Enviar solicitud
+                  </button>
 
-                    <p
-                      id="formMsg"
-                      class="mt-3 text-sm text-slate-300/90"
-                      aria-live="polite"
-                    >
-                    </p>
-                  </div>
-                </form>
-              </div>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener"
+                    class="btn-ghost w-full sm:w-auto"
+                  >
+                    Prefiero WhatsApp
+                  </a>
+
+                  <p
+                    id="formMsg"
+                    class="mt-3 text-sm text-slate-300/90 sm:col-span-2"
+                    aria-live="polite"
+                  >
+                  </p>
+                </div>
+              </form>
             </article>
 
-            <!-- COLUMNA DERECHA -->
-            <aside class="grid gap-8 content-start">
-              <!-- CONTACTO -->
-              <article class="holo-card">
-                <div class="holo-inner p-6 sm:p-8 lg:p-10">
-                  <span
-                    class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] tracking-wide text-cyan-200"
-                  >
-                    Contacto directo
-                  </span>
+            <!-- PANEL DERECHO -->
+            <aside class="quote-side">
+              <!-- PROPUESTA -->
+              <article class="side-card featured">
+                <span class="section-pill">
+                  Qué recibirás
+                </span>
 
-                  <h3 class="mt-4 text-xl font-semibold">
-                    Hablemos de tu proyecto
-                  </h3>
+                <h3>Una propuesta clara, no humo digital</h3>
 
-                  <p class="mt-3 text-sm leading-6 text-slate-300/90">
-                    Te ayudamos a aterrizar la idea en una solución clara,
-                    viable y escalable. Sin humo, sin promesas mágicas y sin
-                    venderte una nave espacial cuando solo necesitas un buen
-                    sistema.
-                  </p>
+                <p>
+                  Revisamos tu solicitud y preparamos una ruta viable según el
+                  alcance, etapa y presupuesto estimado.
+                </p>
 
-                  <ul class="mt-6 space-y-4 text-slate-300/95">
-                    <li>
-                      <span class="block text-sm font-medium text-slate-100">
-                        Dirección comercial
-                      </span>
-                      <a
-                        class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
-                        href="mailto:noe.hdz@neotecmx.com"
-                      >
-                        noe.hdz@neotecmx.com
-                      </a>
-                    </li>
-
-                    <li>
-                      <span class="block text-sm font-medium text-slate-100">
-                        Cotizaciones y desarrollo
-                      </span>
-                      <a
-                        class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
-                        href="mailto:malvarez@neotecmx.com"
-                      >
-                        malvarez@neotecmx.com
-                      </a>
-                    </li>
-
-                    <li>
-                      <span class="block text-sm font-medium text-slate-100">
-                        WhatsApp
-                      </span>
-                      <a
-                        class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
-                        href="https://wa.me/524433711589"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        +52 443 371 1589
-                      </a>
-                    </li>
-
-                    <li>
-                      <span class="block text-sm font-medium text-slate-100">
-                        Ubicación
-                      </span>
-                      <span class="text-slate-300/90">
-                        Morelia, Michoacán — México
-                      </span>
-                    </li>
-                  </ul>
-                </div>
+                <ul class="proposal-list">
+                  {
+                    proposalItems.map((item) => (
+                      <li>
+                        <span aria-hidden="true">✓</span>
+                        {item}
+                      </li>
+                    ))
+                  }
+                </ul>
               </article>
 
               <!-- PROCESO -->
-              <article class="holo-card">
-                <div class="holo-inner p-6 sm:p-8">
-                  <h3 class="text-lg font-semibold">
-                    ¿Qué pasa después?
-                  </h3>
+              <article class="side-card">
+                <h3>¿Qué pasa después?</h3>
 
-                  <ol class="mt-5 space-y-4">
-                    <li class="process-item">
-                      <span class="process-number">1</span>
-                      <div>
-                        <h4 class="process-title">Revisamos tu solicitud</h4>
-                        <p class="process-text">
-                          Analizamos el alcance inicial, objetivos y tipo de
-                          solución que necesitas.
-                        </p>
-                      </div>
-                    </li>
+                <ol class="process-list">
+                  <li>
+                    <span>1</span>
+                    <div>
+                      <h4>Revisamos tu solicitud</h4>
+                      <p>Analizamos necesidad, contexto, alcance inicial y tipo de solución.</p>
+                    </div>
+                  </li>
 
-                    <li class="process-item">
-                      <span class="process-number">2</span>
-                      <div>
-                        <h4 class="process-title">Aclaramos dudas clave</h4>
-                        <p class="process-text">
-                          Te contactamos para afinar requerimientos, tiempos y
-                          prioridades.
-                        </p>
-                      </div>
-                    </li>
+                  <li>
+                    <span>2</span>
+                    <div>
+                      <h4>Aclaramos dudas clave</h4>
+                      <p>Te contactamos para afinar requerimientos, prioridad y tiempos.</p>
+                    </div>
+                  </li>
 
-                    <li class="process-item">
-                      <span class="process-number">3</span>
-                      <div>
-                        <h4 class="process-title">Preparamos propuesta</h4>
-                        <p class="process-text">
-                          Recibes una propuesta con alcance, entregables, costo
-                          estimado y ruta de trabajo.
-                        </p>
-                      </div>
-                    </li>
-                  </ol>
-                </div>
+                  <li>
+                    <span>3</span>
+                    <div>
+                      <h4>Preparamos propuesta</h4>
+                      <p>Recibes alcance, entregables, estimación y ruta de trabajo.</p>
+                    </div>
+                  </li>
+                </ol>
               </article>
 
-              <!-- MAPA -->
-              <article class="holo-card">
-                <div class="holo-inner overflow-hidden p-0">
-                  <div class="aspect-[4/3] sm:aspect-[16/10]">
-                    <iframe
-                      title="Ubicación — Morelia, Michoacán"
-                      loading="lazy"
-                      class="w-full h-full rounded-[1.05rem]"
-                      src="https://www.openstreetmap.org/export/embed.html?bbox=-101.235%2C19.675%2C-101.160%2C19.735&layer=mapnik&marker=19.705%2C-101.194"
-                    >
-                    </iframe>
-                  </div>
-                </div>
+              <!-- CONTACTO -->
+              <article class="side-card">
+                <h3>Contacto directo</h3>
+
+                <ul class="contact-list">
+                  <li>
+                    <span>Dirección comercial</span>
+                    <a href="mailto:noe.hdz@neotecmx.com">
+                      noe.hdz@neotecmx.com
+                    </a>
+                  </li>
+
+                  <li>
+                    <span>Cotizaciones y desarrollo</span>
+                    <a href="mailto:malvarez@neotecmx.com">
+                      malvarez@neotecmx.com
+                    </a>
+                  </li>
+
+                  <li>
+                    <span>WhatsApp</span>
+                    <a href={whatsappHref} target="_blank" rel="noopener">
+                      +52 443 371 1589
+                    </a>
+                  </li>
+
+                  <li>
+                    <span>Ubicación</span>
+                    <p>Morelia, Michoacán · Atención remota en México</p>
+                  </li>
+                </ul>
+              </article>
+
+              <!-- AYUDA -->
+              <article class="side-card help-card">
+                <h3>¿Aún no sabes por dónde empezar?</h3>
+
+                <p>
+                  No hay problema. Describe el problema que quieres resolver y
+                  nosotros te ayudamos a aterrizarlo. La bola de cristal sigue
+                  en beta, pero el diagnóstico sí jala.
+                </p>
+
+                <a href={whatsappHref} target="_blank" rel="noopener" class="side-link">
+                  Orientarme por WhatsApp →
+                </a>
               </article>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- EJEMPLOS -->
+      <section class="section-space pt-0">
+        <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
+          <div class="examples-card">
+            <div>
+              <span class="section-pill">
+                Ejemplos
+              </span>
+
+              <h2>Proyectos que podemos cotizar</h2>
+
+              <p>
+                Si tu necesidad se parece a alguno de estos casos, vas por buen
+                camino. Si no aparece, también puedes escribirnos: muchas soluciones
+                nacen de procesos muy específicos.
+              </p>
+            </div>
+
+            <div class="examples-grid">
+              {
+                examples.map((item) => (
+                  <div class="example-item">
+                    <span aria-hidden="true">✓</span>
+                    <p>{item}</p>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </section>
@@ -465,26 +611,29 @@ const description =
       <!-- CTA FINAL -->
       <section class="section-space">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div
-            class="rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-white/5 to-fuchsia-500/10 p-8 sm:p-10 lg:p-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur"
-          >
-            <div class="space-y-2">
-              <h2 class="font-bold text-[clamp(1.15rem,0.8vw+1rem,1.65rem)]">
-                ¿Listo para convertir tu idea en una solución real?
-              </h2>
+          <div class="final-cta">
+            <div>
+              <span class="section-pill">
+                Siguiente paso
+              </span>
 
-              <p class="measure-sm text-slate-100/90">
-                Cuéntanos qué necesitas construir, vender, automatizar o
-                mejorar. Nosotros nos encargamos de aterrizarlo técnicamente.
+              <h2>¿Tienes una idea, problema o proceso que quieres mejorar?</h2>
+
+              <p>
+                Cuéntanos qué necesitas. Te ayudamos a convertirlo en una
+                propuesta clara, viable y escalable.
               </p>
             </div>
 
-            <a
-              href="#cotizarForm"
-              class="btn-primary w-full sm:w-auto"
-            >
-              Ir al formulario
-            </a>
+            <div class="final-actions">
+              <a href="#cotizarForm" class="btn-primary">
+                Ir al formulario
+              </a>
+
+              <a href={whatsappHref} target="_blank" rel="noopener" class="btn-ghost">
+                Hablar por WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -545,11 +694,6 @@ const description =
 
           const fd = new FormData(form);
 
-          /**
-           * Honeypot:
-           * Si viene lleno, probablemente es bot.
-           * Respondemos como éxito para no darle pistas.
-           */
           const honeypot = String(fd.get("company") || "").trim();
 
           if (honeypot.length > 0) {
@@ -593,14 +737,10 @@ const description =
       })();
     </script>
   </body>
-</html>
-
-<style>
-  /* ====== Medida y ritmo ====== */
+  <style>
   .measure {
     max-width: 70ch;
     line-height: 1.75;
-    font-size: 1rem;
   }
 
   .measure-sm {
@@ -609,25 +749,381 @@ const description =
   }
 
   .section-space {
-    padding-top: 3.25rem;
-    padding-bottom: 3.25rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 
   @media (min-width: 640px) {
     .section-space {
-      padding-top: 4.25rem;
-      padding-bottom: 4.25rem;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .section-space {
-      padding-top: 5.25rem;
-      padding-bottom: 5.25rem;
+      padding-top: 5.75rem;
+      padding-bottom: 5.75rem;
     }
   }
 
-  /* ====== Labels ====== */
+  .section-pill {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.28);
+    background: rgba(103, 232, 249, 0.09);
+    padding: 0.38rem 0.8rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgba(207, 250, 254, 0.94);
+  }
+
+  .section-heading {
+    max-width: 52rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-heading h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.55rem, 1.25vw + 1rem, 2.35rem);
+    font-weight: 950;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    color: rgba(248, 250, 252, 0.98);
+  }
+
+  .section-heading p {
+    margin-top: 0.85rem;
+    max-width: 48rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(203, 213, 225, 0.88);
+  }
+
+  .quote-hero {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .quote-hero {
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 4rem;
+    }
+  }
+
+  .quote-hero-copy {
+    max-width: 56rem;
+  }
+
+  .quote-title {
+    margin-top: 1.25rem;
+    font-size: clamp(2.15rem, 3vw + 1rem, 4.15rem);
+    font-weight: 950;
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    color: rgba(248, 250, 252, 0.98);
+    text-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+  }
+
+  .quote-lead {
+    margin-top: 1.25rem;
+    max-width: 48rem;
+    font-size: clamp(1rem, 0.2vw + 1rem, 1.16rem);
+    line-height: 1.78;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .hero-actions {
+    margin-top: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-actions {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .quote-hero-panel {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .quote-hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: -2.5rem;
+    z-index: -1;
+    border-radius: 2rem;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.22), transparent 34%),
+      radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.13), transparent 42%);
+    filter: blur(34px);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .quote-terminal {
+    overflow: hidden;
+    border-radius: 1.45rem;
+    border: 1px solid rgba(125, 211, 252, 0.24);
+    background:
+      radial-gradient(circle at 18% 12%, rgba(34, 211, 238, 0.14), transparent 38%),
+      linear-gradient(135deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.78));
+    box-shadow:
+      0 24px 70px rgba(0, 0, 0, 0.44),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(14px);
+  }
+
+  .terminal-top {
+    display: flex;
+    gap: 0.45rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+    padding: 0.95rem 1rem;
+  }
+
+  .terminal-top span {
+    height: 0.72rem;
+    width: 0.72rem;
+    border-radius: 9999px;
+    background: rgba(103, 232, 249, 0.42);
+  }
+
+  .terminal-top span:nth-child(2) {
+    background: rgba(59, 130, 246, 0.35);
+  }
+
+  .terminal-top span:nth-child(3) {
+    background: rgba(34, 197, 94, 0.38);
+  }
+
+  .terminal-body {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1.25rem;
+    font-family:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .terminal-body p {
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .terminal-body span {
+    color: #67e8f9;
+  }
+
+  .quote-mini-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+
+  .quote-mini-stats div {
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.68);
+    padding: 1rem;
+    text-align: center;
+    box-shadow:
+      0 16px 38px rgba(0, 0, 0, 0.28),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(10px);
+  }
+
+  .quote-mini-stats strong {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 950;
+    color: rgba(103, 232, 249, 0.95);
+  }
+
+  .quote-mini-stats span {
+    margin-top: 0.25rem;
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: rgba(203, 213, 225, 0.78);
+  }
+
+  .project-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .project-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .project-card {
+    min-height: 13.5rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    background:
+      radial-gradient(circle at 20% 0%, rgba(34, 211, 238, 0.12), transparent 36%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.82), rgba(2, 6, 23, 0.72));
+    padding: 1.25rem;
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.32),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(12px);
+  }
+
+  .project-card span {
+    display: inline-flex;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.2);
+    background: rgba(103, 232, 249, 0.08);
+    padding: 0.32rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: rgba(207, 250, 254, 0.9);
+  }
+
+  .project-card h3 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: rgba(248, 250, 252, 0.98);
+  }
+
+  .project-card p {
+    margin-top: 0.65rem;
+    font-size: 0.92rem;
+    line-height: 1.62;
+    color: rgba(203, 213, 225, 0.84);
+  }
+
+  .quote-layout {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .quote-layout {
+      grid-template-columns: 1.18fr 0.82fr;
+      align-items: start;
+      gap: 2rem;
+    }
+  }
+
+  .quote-form-card,
+  .side-card,
+  .examples-card,
+  .final-cta {
+    border-radius: 1.45rem;
+    border: 1px solid rgba(125, 211, 252, 0.22);
+    background:
+      radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.11), transparent 34%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.86), rgba(2, 6, 23, 0.76));
+    box-shadow:
+      0 24px 65px rgba(0, 0, 0, 0.38),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(14px);
+  }
+
+  .quote-form-card {
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .quote-form-card {
+      padding: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .quote-form-card {
+      padding: 2.35rem;
+    }
+  }
+
+  .form-head h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.45rem, 1vw + 1rem, 2.1rem);
+    font-weight: 950;
+    letter-spacing: -0.035em;
+  }
+
+  .form-head p {
+    margin-top: 0.7rem;
+    max-width: 44rem;
+    line-height: 1.7;
+    color: rgba(203, 213, 225, 0.88);
+  }
+
+  .quote-form {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+  }
+
+  .form-section {
+    display: grid;
+    gap: 1.15rem;
+    border-radius: 1.2rem;
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: rgba(2, 6, 23, 0.25);
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-section {
+      padding: 1.25rem;
+    }
+  }
+
+  .form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .form-section-title span {
+    display: inline-flex;
+    height: 2rem;
+    width: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.3);
+    background: rgba(103, 232, 249, 0.1);
+    color: #cffafe;
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+
+  .form-section-title h3 {
+    font-size: 1rem;
+    font-weight: 900;
+    color: rgba(248, 250, 252, 0.96);
+  }
+
   .form-label {
     display: block;
     margin-bottom: 0.35rem;
@@ -635,26 +1131,19 @@ const description =
     color: rgba(226, 232, 240, 0.92);
   }
 
-  /* ====== Mini pills ====== */
-  .mini-pill {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 9999px;
-    border: 1px solid rgba(103, 232, 249, 0.18);
-    background: rgba(103, 232, 249, 0.07);
-    padding: 0.45rem 0.8rem;
-    font-size: 0.78rem;
-    color: rgba(207, 250, 254, 0.92);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+  .field-hint {
+    margin: -0.15rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: rgba(148, 163, 184, 0.86);
   }
 
-  /* ====== Input base ====== */
   .ui-input {
     width: 100%;
-    border-radius: 0.8rem;
+    border-radius: 0.85rem;
     border: 1px solid rgba(255, 255, 255, 0.14);
     background: rgba(255, 255, 255, 0.06);
-    padding: 0.8rem 0.95rem;
+    padding: 0.85rem 0.95rem;
     color: #eaf2ff;
     outline: none;
     transition:
@@ -674,11 +1163,6 @@ const description =
     box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.15);
   }
 
-  .ui-input:disabled {
-    cursor: not-allowed;
-    opacity: 0.65;
-  }
-
   select.ui-input {
     cursor: pointer;
   }
@@ -688,7 +1172,6 @@ const description =
     color: #eaf2ff;
   }
 
-  /* ====== Chips ====== */
   .chip {
     display: inline-flex;
     align-items: center;
@@ -711,59 +1194,155 @@ const description =
     background: rgba(103, 232, 249, 0.09);
   }
 
-  .chip:active {
-    transform: translateY(1px);
-  }
-
   .chip:has(input:checked) {
     border-color: rgba(103, 232, 249, 0.75);
     background: rgba(103, 232, 249, 0.16);
     color: #cffafe;
     box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.1);
-    font-weight: 700;
+    font-weight: 800;
   }
 
-  /* ====== Botón ====== */
-  .btn-primary {
+  .form-submit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding-top: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .form-submit {
+      grid-template-columns: auto auto;
+      align-items: center;
+    }
+  }
+
+  .btn-primary,
+  .btn-ghost {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.55rem;
     border-radius: 0.95rem;
-    background: rgba(6, 182, 212, 0.95);
     padding: 0.95rem 1.7rem;
-    font-weight: 800;
-    color: #0f172a;
+    font-weight: 900;
     transition:
-      background 0.2s ease,
-      transform 0.08s ease,
+      transform 0.12s ease,
       box-shadow 0.2s ease,
-      opacity 0.2s ease;
-    box-shadow: 0 8px 24px rgba(34, 211, 238, 0.18);
+      filter 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #67e8f9, #22d3ee);
+    color: #020617;
+    box-shadow: 0 14px 32px rgba(34, 211, 238, 0.22);
   }
 
   .btn-primary:hover {
-    background: rgba(103, 232, 249, 1);
-    box-shadow: 0 10px 28px rgba(103, 232, 249, 0.22);
-  }
-
-  .btn-primary:active {
-    transform: translateY(1px);
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 42px rgba(34, 211, 238, 0.3);
   }
 
   .btn-primary:disabled {
     cursor: wait;
-    opacity: 0.7;
+    opacity: 0.68;
   }
 
-  /* ====== Proceso ====== */
-  .process-item {
+  .btn-ghost {
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    background: rgba(15, 23, 42, 0.68);
+    color: rgba(248, 250, 252, 0.96);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+      0 12px 28px rgba(0, 0, 0, 0.22);
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(103, 232, 249, 0.34);
+    background: rgba(15, 23, 42, 0.86);
+    transform: translateY(-1px);
+  }
+
+  .quote-side {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 1024px) {
+    .quote-side {
+      position: sticky;
+      top: 6.5rem;
+    }
+  }
+
+  .side-card {
+    padding: 1.35rem;
+  }
+
+  .side-card.featured {
+    border-color: rgba(103, 232, 249, 0.32);
+    background:
+      radial-gradient(circle at 18% 0%, rgba(34, 211, 238, 0.16), transparent 38%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.78));
+  }
+
+  .side-card h3 {
+    margin-top: 0.85rem;
+    font-size: 1.12rem;
+    font-weight: 950;
+    letter-spacing: -0.02em;
+    color: rgba(248, 250, 252, 0.98);
+  }
+
+  .side-card > p {
+    margin-top: 0.65rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: rgba(203, 213, 225, 0.86);
+  }
+
+  .proposal-list {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .proposal-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: rgba(226, 232, 240, 0.92);
+    font-size: 0.9rem;
+  }
+
+  .proposal-list span {
+    display: inline-flex;
+    height: 1.35rem;
+    width: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgba(103, 232, 249, 0.12);
+    color: #67e8f9;
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+
+  .process-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .process-list li {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0.9rem;
+    gap: 0.8rem;
   }
 
-  .process-number {
+  .process-list > li > span {
     display: inline-flex;
     width: 2rem;
     height: 2rem;
@@ -774,129 +1353,215 @@ const description =
     background: rgba(103, 232, 249, 0.1);
     color: #cffafe;
     font-size: 0.8rem;
-    font-weight: 800;
+    font-weight: 900;
   }
 
-  .process-title {
+  .process-list h4 {
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 850;
     color: rgba(248, 250, 252, 0.96);
   }
 
-  .process-text {
+  .process-list p {
     margin-top: 0.25rem;
-    font-size: 0.86rem;
-    line-height: 1.6;
+    font-size: 0.84rem;
+    line-height: 1.58;
+    color: rgba(203, 213, 225, 0.82);
+  }
+
+  .contact-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .contact-list li {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .contact-list span {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: rgba(248, 250, 252, 0.92);
+  }
+
+  .contact-list a {
+    color: rgba(103, 232, 249, 0.92);
+    text-decoration: underline;
+    text-decoration-color: rgba(103, 232, 249, 0.35);
+    text-underline-offset: 4px;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-list p {
+    color: rgba(203, 213, 225, 0.82);
+    font-size: 0.9rem;
+  }
+
+  .help-card {
+    background:
+      radial-gradient(circle at 18% 0%, rgba(168, 85, 247, 0.12), transparent 38%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.86), rgba(2, 6, 23, 0.76));
+  }
+
+  .side-link {
+    display: inline-flex;
+    margin-top: 1rem;
+    color: #67e8f9;
+    font-weight: 850;
+    text-decoration: underline;
+    text-decoration-color: rgba(103, 232, 249, 0.32);
+    text-underline-offset: 4px;
+  }
+
+  .examples-card {
+    display: grid;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .examples-card {
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+      padding: 2rem;
+    }
+  }
+
+  .examples-card h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.45rem, 1vw + 1rem, 2.1rem);
+    font-weight: 950;
+    letter-spacing: -0.035em;
+  }
+
+  .examples-card p {
+    margin-top: 0.75rem;
+    line-height: 1.7;
     color: rgba(203, 213, 225, 0.88);
   }
 
-  /* ====== Holo card ====== */
-  @property --angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-  }
-
-  @keyframes holo-spin {
-    0% {
-      --angle: 0deg;
-    }
-
-    100% {
-      --angle: 360deg;
-    }
-  }
-
-  .holo-card {
-    position: relative;
+  .examples-grid {
     display: grid;
-    border-radius: 1.05rem;
-    overflow: hidden;
-    isolation: isolate;
-    transition:
-      transform 0.28s ease,
-      box-shadow 0.28s ease,
-      filter 0.28s ease;
+    gap: 0.85rem;
   }
 
-  .holo-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1.6px;
-    background: conic-gradient(
-      from var(--angle),
-      #22d3ee 0deg,
-      #a855f7 60deg,
-      #60a5fa 120deg,
-      #14b8a6 180deg,
-      #a855f7 240deg,
-      #22d3ee 300deg,
-      #22d3ee 360deg
-    );
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: holo-spin 12s linear infinite;
-    z-index: -1;
-    opacity: 0.85;
+  @media (min-width: 640px) {
+    .examples-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
-  .holo-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-      repeating-linear-gradient(
-        115deg,
-        rgba(255, 255, 255, 0.06) 0px,
-        rgba(255, 255, 255, 0.06) 1px,
-        transparent 2px,
-        transparent 7px
-      ),
-      linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.08),
-        rgba(255, 255, 255, 0)
-      );
-    mix-blend-mode: overlay;
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 1;
+  .example-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.65rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    background: rgba(2, 6, 23, 0.32);
+    padding: 0.85rem;
   }
 
-  .holo-inner {
-    position: relative;
-    height: 100%;
-    border-radius: inherit;
-    background: rgba(15, 23, 42, 0.64);
-    backdrop-filter: blur(14px) saturate(1.35);
-    -webkit-backdrop-filter: blur(14px) saturate(1.35);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-      0 10px 26px rgba(0, 0, 0, 0.36);
-    z-index: 2;
+  .example-item span {
+    display: inline-flex;
+    height: 1.35rem;
+    width: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: rgba(103, 232, 249, 0.12);
+    color: #67e8f9;
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+
+  .example-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .final-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .final-cta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+  }
+
+  .final-cta h2 {
+    margin-top: 1rem;
+    max-width: 46rem;
+    font-size: clamp(1.45rem, 1vw + 1rem, 2.15rem);
+    font-weight: 950;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+  }
+
+  .final-cta p {
+    margin-top: 0.65rem;
+    max-width: 48rem;
+    color: rgba(203, 213, 225, 0.88);
+    line-height: 1.65;
+  }
+
+  .final-actions {
+    display: grid;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .final-actions {
+      width: auto;
+      min-width: 15rem;
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .holo-card:hover {
-      transform: translateY(-6px) scale(1.012);
-      filter: saturate(1.05);
+    .project-card,
+    .quote-form-card,
+    .side-card,
+    .examples-card,
+    .example-item,
+    .final-cta,
+    .quote-terminal,
+    .quote-mini-stats div {
+      transition:
+        transform 0.24s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease;
     }
 
-    .holo-card:hover::before {
-      animation-duration: 8s;
-      opacity: 0.98;
-      filter: brightness(1.12);
+    .project-card:hover,
+    .side-card:hover,
+    .example-item:hover,
+    .quote-terminal:hover,
+    .quote-mini-stats div:hover {
+      transform: translateY(-4px);
+      border-color: rgba(125, 211, 252, 0.36);
+      box-shadow:
+        0 24px 62px rgba(0, 0, 0, 0.44),
+        0 0 38px rgba(14, 165, 233, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     }
+  }
 
-    .holo-card:hover::after {
-      opacity: 0.48;
+  @media (max-width: 640px) {
+    .quote-mini-stats {
+      grid-template-columns: 1fr;
     }
   }
 </style>
+</html>
+

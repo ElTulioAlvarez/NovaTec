@@ -1,48 +1,43 @@
 ---
 // CircuitBG.astro
-// Fondo premium tipo PCB / circuitos tecnológicos
-// Diseñado para NeoTec Business Solutions
-// Sutil, responsivo y configurable
+// Fondo estático tipo PCB para NeoTec Business Solutions
+// Estilo: chip central + pistas técnicas discretas
+// Sin animaciones pesadas para mejorar rendimiento
 
 interface Props {
   background?: string;
-  primary?: string;
-  accent?: string;
-  glow?: string;
+  trace?: string;
+  traceSoft?: string;
+  chip?: string;
   opacity?: number;
-  speed?: number;
   showGrid?: boolean;
-  showScanlines?: boolean;
-  showParticles?: boolean;
+  showVignette?: boolean;
 }
 
 const {
   background = "#050b18",
-  primary = "#1a9cff",
-  accent = "#6ad8ff",
-  glow = "#e8fbff",
-  opacity = 0.58,
-  speed = 16,
+  trace = "#7dd3fc",
+  traceSoft = "#38bdf8",
+  chip = "#dbeafe",
+  opacity = 0.34,
   showGrid = true,
-  showScanlines = true,
-  showParticles = true,
+  showVignette = true,
 } = Astro.props as Props;
 ---
 
 <div
   aria-hidden="true"
-  class="circuit-bg"
+  class="pcb-bg"
   style={`
-    --bg:${background};
-    --primary:${primary};
-    --accent:${accent};
-    --glow:${glow};
-    --opacity:${opacity};
-    --speed:${speed}s;
+    --pcb-bg:${background};
+    --pcb-trace:${trace};
+    --pcb-trace-soft:${traceSoft};
+    --pcb-chip:${chip};
+    --pcb-opacity:${opacity};
   `}
 >
   <svg
-    class="circuit-svg"
+    class="pcb-svg"
     viewBox="0 0 1600 900"
     width="100%"
     height="100%"
@@ -50,454 +45,455 @@ const {
     role="img"
   >
     <defs>
-      <!-- Grid técnico, muy tenue -->
+      <!-- Grid muy discreto -->
       <pattern id="pcbGrid" width="80" height="80" patternUnits="userSpaceOnUse">
         <path
-          d="M 80 0 L 0 0 0 80"
+          d="M80 0 L0 0 0 80"
           fill="none"
-          stroke="rgba(255,255,255,0.035)"
+          stroke="rgba(255,255,255,0.025)"
           stroke-width="1"
         />
         <path
-          d="M 40 0 L 40 80 M 0 40 L 80 40"
+          d="M40 0 V80 M0 40 H80"
           fill="none"
-          stroke="rgba(106,216,255,0.025)"
+          stroke="rgba(125,211,252,0.014)"
           stroke-width="1"
         />
       </pattern>
 
-      <!-- Micro patrón tipo fibra/cobre de PCB -->
-      <pattern id="pcbMicro" width="32" height="32" patternUnits="userSpaceOnUse">
-        <path
-          d="M4 16 H14 M18 16 H28 M16 4 V14 M16 18 V28"
-          stroke="rgba(106,216,255,0.035)"
-          stroke-width="1"
-          stroke-linecap="round"
-        />
-        <circle cx="16" cy="16" r="1.5" fill="rgba(106,216,255,0.06)" />
+      <!-- Textura sutil de placa -->
+      <pattern id="pcbDots" width="32" height="32" patternUnits="userSpaceOnUse">
+        <circle cx="4" cy="4" r="0.75" fill="rgba(255,255,255,0.035)" />
       </pattern>
 
-      <!-- Brillo superior -->
-      <radialGradient id="topElectricGlow" cx="50%" cy="0%" r="75%">
-        <stop offset="0%" stop-color="rgba(106,216,255,0.18)" />
-        <stop offset="45%" stop-color="rgba(26,156,255,0.07)" />
+      <!-- Brillos de fondo, no de pistas -->
+      <radialGradient id="topGlow" cx="50%" cy="0%" r="75%">
+        <stop offset="0%" stop-color="rgba(56,189,248,0.095)" />
+        <stop offset="48%" stop-color="rgba(14,165,233,0.035)" />
         <stop offset="100%" stop-color="rgba(0,0,0,0)" />
       </radialGradient>
 
-      <!-- Luz lateral azul -->
-      <radialGradient id="sideGlowLeft" cx="0%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="rgba(26,156,255,0.16)" />
-        <stop offset="60%" stop-color="rgba(26,156,255,0.04)" />
+      <radialGradient id="leftGlow" cx="0%" cy="45%" r="70%">
+        <stop offset="0%" stop-color="rgba(14,165,233,0.08)" />
+        <stop offset="60%" stop-color="rgba(14,165,233,0.025)" />
         <stop offset="100%" stop-color="rgba(0,0,0,0)" />
       </radialGradient>
 
-      <radialGradient id="sideGlowRight" cx="100%" cy="65%" r="65%">
-        <stop offset="0%" stop-color="rgba(106,216,255,0.13)" />
-        <stop offset="58%" stop-color="rgba(26,156,255,0.035)" />
+      <radialGradient id="rightGlow" cx="100%" cy="55%" r="70%">
+        <stop offset="0%" stop-color="rgba(125,211,252,0.075)" />
+        <stop offset="60%" stop-color="rgba(14,165,233,0.02)" />
         <stop offset="100%" stop-color="rgba(0,0,0,0)" />
       </radialGradient>
 
-      <!-- Viñeta para mantener el centro legible -->
-      <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
-        <stop offset="52%" stop-color="rgba(0,0,0,0)" />
-        <stop offset="100%" stop-color="rgba(0,0,0,0.58)" />
+      <radialGradient id="vignette" cx="50%" cy="50%" r="76%">
+        <stop offset="0%" stop-color="rgba(0,0,0,0.06)" />
+        <stop offset="58%" stop-color="rgba(0,0,0,0.12)" />
+        <stop offset="100%" stop-color="rgba(0,0,0,0.55)" />
       </radialGradient>
 
-      <!-- Glow suave para pistas y nodos -->
-      <filter id="circuitGlow" x="-250%" y="-250%" width="500%" height="500%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feColorMatrix
-          in="blur"
-          type="matrix"
-          values="
-            0 0 0 0 0.10
-            0 0 0 0 0.62
-            0 0 0 0 1.00
-            0 0 0 0.85 0
-          "
-          result="blueBlur"
-        />
-        <feMerge>
-          <feMergeNode in="blueBlur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-
-      <filter id="nodeGlow" x="-300%" y="-300%" width="600%" height="600%">
-        <feGaussianBlur stdDeviation="4" result="blur" />
+      <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="1.4" result="blur" />
         <feMerge>
           <feMergeNode in="blur" />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
 
-      <linearGradient id="traceGradient" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="rgba(26,156,255,0.25)" />
-        <stop offset="45%" stop-color="rgba(106,216,255,0.85)" />
-        <stop offset="100%" stop-color="rgba(232,251,255,0.55)" />
-      </linearGradient>
-
-      <linearGradient id="traceGradientDim" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="rgba(26,156,255,0.12)" />
-        <stop offset="60%" stop-color="rgba(106,216,255,0.38)" />
-        <stop offset="100%" stop-color="rgba(232,251,255,0.18)" />
-      </linearGradient>
-
-      <style>
-        @keyframes circuitDash {
-          to {
-            stroke-dashoffset: -720;
-          }
-        }
-
-        @keyframes circuitPulse {
-          0%,
-          100% {
-            opacity: 0.32;
-          }
-          50% {
-            opacity: 0.78;
-          }
-        }
-
-        @keyframes nodePulse {
-          0%,
-          100% {
-            opacity: 0.45;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.18);
-          }
-        }
-
-        @keyframes slowDrift {
-          0%,
-          100% {
-            transform: translate3d(0, 0, 0);
-          }
-          50% {
-            transform: translate3d(-18px, 10px, 0);
-          }
-        }
-
-        @keyframes scanMove {
-          0% {
-            transform: translateY(-900px);
-            opacity: 0;
-          }
-          15% {
-            opacity: 0.35;
-          }
-          50% {
-            opacity: 0.18;
-          }
-          100% {
-            transform: translateY(900px);
-            opacity: 0;
-          }
-        }
-
-        @keyframes particleFloat {
-          0%,
-          100% {
-            transform: translateY(0);
-            opacity: 0.15;
-          }
-          50% {
-            transform: translateY(-22px);
-            opacity: 0.55;
-          }
-        }
-
-        .trace-main {
-          stroke-dasharray: 18 24;
-          stroke-dashoffset: 0;
-          animation: circuitDash calc(var(--speed) * 1.4) linear infinite;
-        }
-
-        .trace-secondary {
-          stroke-dasharray: 10 26;
-          stroke-dashoffset: 0;
-          animation: circuitDash calc(var(--speed) * 1.9) linear infinite;
-        }
-
-        .pulse {
-          animation: circuitPulse calc(var(--speed) * 0.9) ease-in-out infinite;
-        }
-
-        .node {
-          transform-box: fill-box;
-          transform-origin: center;
-          animation: nodePulse calc(var(--speed) * 0.75) ease-in-out infinite;
-        }
-
-        .node.delay-1 {
-          animation-delay: calc(var(--speed) * -0.15);
-        }
-
-        .node.delay-2 {
-          animation-delay: calc(var(--speed) * -0.32);
-        }
-
-        .node.delay-3 {
-          animation-delay: calc(var(--speed) * -0.48);
-        }
-
-        .drift {
-          animation: slowDrift calc(var(--speed) * 4) ease-in-out infinite;
-        }
-
-        .scan {
-          animation: scanMove calc(var(--speed) * 2.3) linear infinite;
-        }
-
-        .particle {
-          animation: particleFloat calc(var(--speed) * 1.7) ease-in-out infinite;
-        }
-
-        .particle.delay-1 {
-          animation-delay: calc(var(--speed) * -0.2);
-        }
-
-        .particle.delay-2 {
-          animation-delay: calc(var(--speed) * -0.45);
-        }
-
-        .particle.delay-3 {
-          animation-delay: calc(var(--speed) * -0.65);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .trace-main,
-          .trace-secondary,
-          .pulse,
-          .node,
-          .drift,
-          .scan,
-          .particle {
-            animation: none !important;
-          }
-        }
-      </style>
+      <filter id="chipShadow" x="-80%" y="-80%" width="260%" height="260%">
+        <feDropShadow
+          dx="0"
+          dy="10"
+          stdDeviation="12"
+          flood-color="rgba(0,0,0,0.45)"
+        />
+      </filter>
     </defs>
 
-    <!-- Base -->
-    <rect width="1600" height="900" fill="var(--bg)" />
-    <rect width="1600" height="900" fill="url(#topElectricGlow)" />
-    <rect width="1600" height="900" fill="url(#sideGlowLeft)" />
-    <rect width="1600" height="900" fill="url(#sideGlowRight)" />
+    <!-- Fondo base -->
+    <rect width="1600" height="900" fill="var(--pcb-bg)" />
+    <rect width="1600" height="900" fill="url(#topGlow)" />
+    <rect width="1600" height="900" fill="url(#leftGlow)" />
+    <rect width="1600" height="900" fill="url(#rightGlow)" />
 
     {showGrid && (
       <>
-        <rect width="1600" height="900" fill="url(#pcbGrid)" opacity="0.62" />
-        <rect width="1600" height="900" fill="url(#pcbMicro)" opacity="0.34" />
+        <rect width="1600" height="900" fill="url(#pcbGrid)" opacity="0.7" />
+        <rect width="1600" height="900" fill="url(#pcbDots)" opacity="0.26" />
       </>
     )}
 
-    <!-- Bloques abstractos tipo chips, muy discretos -->
-    <g class="drift" opacity="0.18">
-      <rect
-        x="1080"
-        y="145"
-        width="260"
-        height="170"
-        rx="18"
-        fill="rgba(255,255,255,0.035)"
-        stroke="rgba(106,216,255,0.18)"
-      />
-      <rect
-        x="1135"
-        y="195"
-        width="150"
-        height="70"
-        rx="10"
-        fill="rgba(26,156,255,0.045)"
-        stroke="rgba(106,216,255,0.2)"
-      />
-
-      <rect
-        x="180"
-        y="560"
-        width="230"
-        height="145"
-        rx="18"
-        fill="rgba(255,255,255,0.03)"
-        stroke="rgba(106,216,255,0.14)"
-      />
-      <rect
-        x="235"
-        y="604"
-        width="120"
-        height="52"
-        rx="9"
-        fill="rgba(26,156,255,0.045)"
-        stroke="rgba(106,216,255,0.16)"
-      />
-    </g>
-
-    <!-- Circuitos principales -->
-    <g
-      opacity="var(--opacity)"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      filter="url(#circuitGlow)"
-    >
-      <!-- Rama superior izquierda -->
-      <path
-        class="trace-main"
-        d="M-40 185 H210 C235 185 245 205 245 225 V290 C245 315 265 325 290 325 H455 C485 325 500 340 500 370 V430"
-        stroke="url(#traceGradient)"
-        stroke-width="2.4"
-      />
-
-      <path
-        class="trace-secondary"
-        d="M70 105 H310 C335 105 350 120 350 145 V210 C350 232 365 245 388 245 H560 C585 245 600 260 600 285 V330"
-        stroke="url(#traceGradientDim)"
-        stroke-width="1.7"
-        opacity="0.82"
-      />
-
-      <!-- Rama central horizontal -->
-      <path
-        class="trace-main"
-        d="M250 465 H455 C485 465 500 450 500 420 V390 C500 365 520 350 545 350 H770 C795 350 815 370 815 395 V475 C815 500 835 520 860 520 H1120 C1150 520 1170 500 1170 470 V410"
-        stroke="url(#traceGradient)"
-        stroke-width="2.2"
-      />
-
-      <!-- Rama derecha superior -->
-      <path
-        class="trace-secondary"
-        d="M980 235 H1215 C1240 235 1255 250 1255 275 V350 C1255 375 1275 395 1300 395 H1640"
-        stroke="url(#traceGradientDim)"
-        stroke-width="1.8"
-        opacity="0.78"
-      />
-
-      <!-- Rama derecha inferior -->
-      <path
-        class="trace-main"
-        d="M720 675 H925 C955 675 970 655 970 630 V595 C970 570 990 550 1015 550 H1235 C1260 550 1275 570 1275 595 V675 C1275 700 1295 720 1320 720 H1640"
-        stroke="url(#traceGradient)"
-        stroke-width="2.3"
-      />
-
-      <!-- Rama inferior izquierda -->
-      <path
-        class="trace-secondary"
-        d="M-30 735 H265 C290 735 305 715 305 690 V655 C305 630 325 610 350 610 H540 C565 610 585 590 585 565 V525"
-        stroke="url(#traceGradientDim)"
-        stroke-width="1.7"
-        opacity="0.72"
-      />
-
-      <!-- Trazos verticales técnicos -->
-      <path
-        class="trace-secondary"
-        d="M700 -40 V135 C700 160 720 180 745 180 H850 C875 180 895 200 895 225 V350"
-        stroke="url(#traceGradientDim)"
-        stroke-width="1.6"
-        opacity="0.65"
-      />
-
-      <path
-        class="trace-secondary"
-        d="M1410 -40 V160 C1410 185 1390 205 1365 205 H1315 C1290 205 1275 220 1275 245 V395"
-        stroke="url(#traceGradientDim)"
-        stroke-width="1.6"
-        opacity="0.65"
-      />
-    </g>
-
-    <!-- Nodos / soldaduras -->
-    <g filter="url(#nodeGlow)" opacity="0.9">
-      <circle class="node" cx="245" cy="225" r="4.5" fill="var(--accent)" />
-      <circle class="node delay-1" cx="455" cy="325" r="3.8" fill="var(--primary)" />
-      <circle class="node delay-2" cx="500" cy="430" r="4.4" fill="var(--glow)" />
-
-      <circle class="node delay-3" cx="600" cy="330" r="3.5" fill="var(--accent)" />
-      <circle class="node delay-1" cx="815" cy="475" r="4.5" fill="var(--accent)" />
-      <circle class="node delay-2" cx="1170" cy="410" r="4.2" fill="var(--glow)" />
-
-      <circle class="node delay-3" cx="970" cy="630" r="4" fill="var(--primary)" />
-      <circle class="node delay-1" cx="1275" cy="675" r="4.5" fill="var(--accent)" />
-
-      <circle class="node delay-2" cx="305" cy="690" r="3.8" fill="var(--primary)" />
-      <circle class="node delay-3" cx="585" cy="525" r="4" fill="var(--glow)" />
-
-      <circle class="node delay-1" cx="895" cy="350" r="3.8" fill="var(--accent)" />
-      <circle class="node delay-2" cx="1275" cy="395" r="4.2" fill="var(--primary)" />
-    </g>
-
-    <!-- Pads/círculos técnicos secundarios -->
-    <g opacity="0.33" stroke="var(--accent)" fill="none">
-      <circle cx="245" cy="225" r="13" />
-      <circle cx="500" cy="430" r="15" />
-      <circle cx="815" cy="475" r="14" />
-      <circle cx="1170" cy="410" r="16" />
-      <circle cx="1275" cy="675" r="14" />
-      <circle cx="585" cy="525" r="12" />
-    </g>
-
-    <!-- Partículas eléctricas sutiles -->
-    {showParticles && (
-      <g opacity="0.42" filter="url(#nodeGlow)">
-        <circle class="particle" cx="180" cy="170" r="1.8" fill="var(--accent)" />
-        <circle class="particle delay-1" cx="390" cy="250" r="1.5" fill="var(--primary)" />
-        <circle class="particle delay-2" cx="720" cy="150" r="1.8" fill="var(--glow)" />
-        <circle class="particle delay-3" cx="980" cy="310" r="1.5" fill="var(--accent)" />
-        <circle class="particle delay-1" cx="1370" cy="250" r="1.8" fill="var(--primary)" />
-        <circle class="particle delay-2" cx="210" cy="790" r="1.7" fill="var(--accent)" />
-        <circle class="particle delay-3" cx="680" cy="735" r="1.5" fill="var(--glow)" />
-        <circle class="particle delay-1" cx="1180" cy="780" r="1.6" fill="var(--accent)" />
-        <circle class="particle delay-2" cx="1490" cy="650" r="1.5" fill="var(--primary)" />
-      </g>
-    )}
-
-    <!-- Línea de escaneo elegante -->
-    {showScanlines && (
-      <g class="scan">
+    <!-- PCB principal -->
+    <g opacity="var(--pcb-opacity)">
+      <!-- =======================================================
+           CHIP CENTRAL
+      ======================================================== -->
+      <g filter="url(#chipShadow)">
+        <!-- cuerpo externo -->
         <rect
-          x="0"
-          y="0"
-          width="1600"
-          height="90"
-          fill="rgba(106,216,255,0.055)"
+          x="742"
+          y="392"
+          width="116"
+          height="116"
+          rx="12"
+          fill="rgba(2,6,23,0.78)"
+          stroke="rgba(219,234,254,0.55)"
+          stroke-width="2"
         />
-        <line
-          x1="0"
-          y1="90"
-          x2="1600"
-          y2="90"
-          stroke="rgba(106,216,255,0.16)"
-          stroke-width="1"
+
+        <!-- cuerpo interno -->
+        <rect
+          x="764"
+          y="414"
+          width="72"
+          height="72"
+          rx="8"
+          fill="rgba(15,23,42,0.88)"
+          stroke="rgba(125,211,252,0.34)"
+          stroke-width="1.4"
+        />
+
+        <text
+          x="800"
+          y="455"
+          text-anchor="middle"
+          fill="rgba(226,232,240,0.28)"
+          font-size="11"
+          font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+          letter-spacing="1.6"
+        >
+          NTC
+        </text>
+
+        <!-- pines superiores -->
+        <g stroke="rgba(219,234,254,0.48)" stroke-width="2" stroke-linecap="round">
+          <path d="M754 380 V392" />
+          <path d="M770 380 V392" />
+          <path d="M786 380 V392" />
+          <path d="M802 380 V392" />
+          <path d="M818 380 V392" />
+          <path d="M834 380 V392" />
+          <path d="M850 380 V392" />
+
+          <!-- pines inferiores -->
+          <path d="M754 508 V520" />
+          <path d="M770 508 V520" />
+          <path d="M786 508 V520" />
+          <path d="M802 508 V520" />
+          <path d="M818 508 V520" />
+          <path d="M834 508 V520" />
+          <path d="M850 508 V520" />
+
+          <!-- pines izquierdos -->
+          <path d="M730 404 H742" />
+          <path d="M730 420 H742" />
+          <path d="M730 436 H742" />
+          <path d="M730 452 H742" />
+          <path d="M730 468 H742" />
+          <path d="M730 484 H742" />
+
+          <!-- pines derechos -->
+          <path d="M858 404 H870" />
+          <path d="M858 420 H870" />
+          <path d="M858 436 H870" />
+          <path d="M858 452 H870" />
+          <path d="M858 468 H870" />
+          <path d="M858 484 H870" />
+        </g>
+      </g>
+
+      <!-- =======================================================
+           TRAZOS PRINCIPALES DESDE EL CHIP
+      ======================================================== -->
+      <g
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        filter="url(#softGlow)"
+      >
+        <!-- Izquierda superior -->
+        <path
+          d="M730 404 H642 C618 404 606 392 606 370 V342 C606 318 588 304 564 304 H420 C396 304 382 290 382 266 V230 C382 206 366 192 342 192 H110"
+          stroke="rgba(125,211,252,0.54)"
+          stroke-width="3"
+        />
+
+        <path
+          d="M730 420 H650 C626 420 612 434 612 458 V486 C612 510 594 524 570 524 H420 C396 524 382 538 382 562 V606 C382 632 362 650 336 650 H72"
+          stroke="rgba(125,211,252,0.45)"
+          stroke-width="2.5"
+        />
+
+        <path
+          d="M730 436 H588 C560 436 544 420 544 392 V356 C544 328 526 312 498 312 H330"
+          stroke="rgba(56,189,248,0.36)"
+          stroke-width="2.3"
+        />
+
+        <path
+          d="M730 452 H520 C492 452 476 468 476 496 V560 C476 588 458 604 430 604 H224"
+          stroke="rgba(56,189,248,0.34)"
+          stroke-width="2.2"
+        />
+
+        <path
+          d="M730 468 H610 C586 468 572 482 572 506 V610 C572 636 554 654 528 654 H430"
+          stroke="rgba(125,211,252,0.38)"
+          stroke-width="2.1"
+        />
+
+        <path
+          d="M730 484 H662 C638 484 624 498 624 522 V710 C624 736 606 754 580 754 H360"
+          stroke="rgba(125,211,252,0.34)"
+          stroke-width="2"
+        />
+
+        <!-- Derecha superior -->
+        <path
+          d="M870 404 H950 C974 404 988 390 988 366 V310 C988 286 1004 270 1028 270 H1210 C1236 270 1252 254 1252 228 V174 C1252 150 1268 134 1292 134 H1540"
+          stroke="rgba(125,211,252,0.50)"
+          stroke-width="3"
+        />
+
+        <path
+          d="M870 420 H1020 C1048 420 1064 404 1064 376 V350 C1064 322 1080 306 1108 306 H1324"
+          stroke="rgba(56,189,248,0.36)"
+          stroke-width="2.4"
+        />
+
+        <path
+          d="M870 436 H942 C966 436 980 450 980 474 V516 C980 540 996 556 1020 556 H1288 C1314 556 1330 572 1330 598 V684 C1330 710 1348 728 1374 728 H1584"
+          stroke="rgba(125,211,252,0.46)"
+          stroke-width="2.7"
+        />
+
+        <path
+          d="M870 452 H1050 C1074 452 1088 466 1088 490 V508"
+          stroke="rgba(56,189,248,0.32)"
+          stroke-width="2.1"
+        />
+
+        <path
+          d="M870 468 H930 C954 468 968 482 968 506 V648 C968 674 986 692 1012 692 H1198"
+          stroke="rgba(125,211,252,0.36)"
+          stroke-width="2.1"
+        />
+
+        <path
+          d="M870 484 H1018 C1044 484 1062 502 1062 528 V610 C1062 636 1080 654 1106 654 H1468"
+          stroke="rgba(56,189,248,0.30)"
+          stroke-width="2"
+        />
+
+        <!-- Arriba desde chip -->
+        <path
+          d="M754 380 V312 C754 286 736 268 710 268 H646 C620 268 602 250 602 224 V150 C602 124 584 106 558 106 H426"
+          stroke="rgba(125,211,252,0.38)"
+          stroke-width="2.1"
+        />
+
+        <path
+          d="M786 380 V296 C786 270 804 252 830 252 H930 C956 252 974 234 974 208 V104"
+          stroke="rgba(56,189,248,0.32)"
+          stroke-width="2"
+        />
+
+        <path
+          d="M818 380 V330 C818 304 836 286 862 286 H910"
+          stroke="rgba(125,211,252,0.32)"
+          stroke-width="2"
+        />
+
+        <path
+          d="M850 380 V314 C850 288 868 270 894 270 H1060"
+          stroke="rgba(56,189,248,0.28)"
+          stroke-width="1.9"
+        />
+
+        <!-- Abajo desde chip -->
+        <path
+          d="M754 520 V610 C754 636 736 654 710 654 H660 C634 654 616 672 616 698 V822"
+          stroke="rgba(125,211,252,0.34)"
+          stroke-width="2"
+        />
+
+        <path
+          d="M786 520 V596 C786 622 804 640 830 640 H890 C916 640 934 658 934 684 V810"
+          stroke="rgba(56,189,248,0.28)"
+          stroke-width="1.9"
+        />
+
+        <path
+          d="M818 520 V570 C818 596 836 614 862 614 H1010"
+          stroke="rgba(125,211,252,0.30)"
+          stroke-width="1.9"
+        />
+
+        <path
+          d="M850 520 V594 C850 620 868 638 894 638 H946"
+          stroke="rgba(56,189,248,0.25)"
+          stroke-width="1.8"
         />
       </g>
-    )}
 
-    <!-- Viñeta final para contraste de contenido -->
-    <rect width="1600" height="900" fill="url(#vignette)" />
+      <!-- =======================================================
+           NODOS / SOLDADURAS
+      ======================================================== -->
+      <g>
+        <!-- nodos principales -->
+        <circle cx="382" cy="266" r="11" fill="none" stroke="rgba(125,211,252,0.26)" />
+        <circle cx="382" cy="266" r="4" fill="rgba(125,211,252,0.42)" />
 
-    <!-- Capa oscura central muy ligera para mejorar lectura -->
-    <rect width="1600" height="900" fill="rgba(0,0,0,0.12)" />
+        <circle cx="606" cy="370" r="11" fill="none" stroke="rgba(125,211,252,0.23)" />
+        <circle cx="606" cy="370" r="4" fill="rgba(125,211,252,0.38)" />
+
+        <circle cx="612" cy="458" r="10" fill="none" stroke="rgba(125,211,252,0.22)" />
+        <circle cx="612" cy="458" r="3.8" fill="rgba(125,211,252,0.36)" />
+
+        <circle cx="476" cy="496" r="10" fill="none" stroke="rgba(125,211,252,0.2)" />
+        <circle cx="476" cy="496" r="3.6" fill="rgba(56,189,248,0.34)" />
+
+        <circle cx="988" cy="366" r="11" fill="none" stroke="rgba(125,211,252,0.24)" />
+        <circle cx="988" cy="366" r="4" fill="rgba(125,211,252,0.40)" />
+
+        <circle cx="980" cy="474" r="10" fill="none" stroke="rgba(125,211,252,0.22)" />
+        <circle cx="980" cy="474" r="3.8" fill="rgba(125,211,252,0.36)" />
+
+        <circle cx="1330" cy="598" r="11" fill="none" stroke="rgba(125,211,252,0.23)" />
+        <circle cx="1330" cy="598" r="4" fill="rgba(125,211,252,0.38)" />
+
+        <circle cx="1062" cy="528" r="9" fill="none" stroke="rgba(125,211,252,0.18)" />
+        <circle cx="1062" cy="528" r="3.5" fill="rgba(56,189,248,0.30)" />
+
+        <!-- terminales pequeños -->
+        <g fill="rgba(219,234,254,0.38)" stroke="rgba(125,211,252,0.28)" stroke-width="1">
+          <circle cx="110" cy="192" r="3.5" />
+          <circle cx="72" cy="650" r="3.5" />
+          <circle cx="330" cy="312" r="3.5" />
+          <circle cx="224" cy="604" r="3.5" />
+          <circle cx="430" cy="654" r="3.5" />
+          <circle cx="360" cy="754" r="3.5" />
+
+          <circle cx="1540" cy="134" r="3.5" />
+          <circle cx="1324" cy="306" r="3.5" />
+          <circle cx="1584" cy="728" r="3.5" />
+          <circle cx="1198" cy="692" r="3.5" />
+          <circle cx="1468" cy="654" r="3.5" />
+          <circle cx="1010" cy="614" r="3.5" />
+        </g>
+      </g>
+
+      <!-- =======================================================
+           BUSES / HEADERS / COMPONENTES
+      ======================================================== -->
+
+      <!-- Header superior izquierdo tipo pines -->
+      <g opacity="0.74">
+        <g stroke="rgba(219,234,254,0.34)" stroke-width="2" stroke-linecap="round">
+          <path d="M156 116 V160" />
+          <path d="M176 116 V160" />
+          <path d="M196 116 V160" />
+          <path d="M216 116 V160" />
+          <path d="M236 116 V160" />
+          <path d="M256 116 V160" />
+          <path d="M276 116 V160" />
+          <path d="M296 116 V160" />
+        </g>
+        <g fill="rgba(219,234,254,0.36)">
+          <rect x="149" y="104" width="14" height="12" rx="1.5" />
+          <rect x="169" y="104" width="14" height="12" rx="1.5" />
+          <rect x="189" y="104" width="14" height="12" rx="1.5" />
+          <rect x="209" y="104" width="14" height="12" rx="1.5" />
+          <rect x="229" y="104" width="14" height="12" rx="1.5" />
+          <rect x="249" y="104" width="14" height="12" rx="1.5" />
+          <rect x="269" y="104" width="14" height="12" rx="1.5" />
+          <rect x="289" y="104" width="14" height="12" rx="1.5" />
+        </g>
+      </g>
+
+      <!-- Bus superior derecho -->
+      <g opacity="0.70">
+        <g stroke="rgba(219,234,254,0.34)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M1196 96 H1304" />
+          <path d="M1196 116 H1340" />
+          <path d="M1196 136 H1376" />
+          <path d="M1196 156 H1420" />
+        </g>
+        <g fill="rgba(219,234,254,0.36)">
+          <rect x="1166" y="89" width="18" height="14" rx="2" />
+          <rect x="1166" y="109" width="18" height="14" rx="2" />
+          <rect x="1166" y="129" width="18" height="14" rx="2" />
+          <rect x="1166" y="149" width="18" height="14" rx="2" />
+        </g>
+      </g>
+
+      <!-- Resistencias discretas -->
+      <g
+        fill="none"
+        stroke="rgba(125,211,252,0.22)"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M140 520 H170 L178 510 L194 530 L210 510 L226 530 L234 520 H268" />
+        <path d="M1124 230 H1154 L1162 220 L1178 240 L1194 220 L1210 240 L1218 230 H1252" />
+        <path d="M1220 612 H1250 L1258 602 L1274 622 L1290 602 L1306 622 L1314 612 H1348" />
+      </g>
+
+      <!-- Capacitores -->
+      <g stroke="rgba(125,211,252,0.24)" stroke-width="1.8" stroke-linecap="round">
+        <path d="M530 172 V210" />
+        <path d="M548 172 V210" />
+        <path d="M512 191 H530" />
+        <path d="M548 191 H566" />
+
+        <path d="M1130 500 V538" />
+        <path d="M1148 500 V538" />
+        <path d="M1112 519 H1130" />
+        <path d="M1148 519 H1166" />
+
+        <path d="M690 740 V778" />
+        <path d="M708 740 V778" />
+        <path d="M672 759 H690" />
+        <path d="M708 759 H726" />
+      </g>
+
+      <!-- Pads cuadrados / controladores pequeños -->
+      <g fill="rgba(219,234,254,0.32)">
+        <rect x="250" y="392" width="15" height="15" rx="2" />
+        <rect x="322" y="392" width="15" height="15" rx="2" />
+        <rect x="394" y="392" width="15" height="15" rx="2" />
+
+        <rect x="1390" y="390" width="15" height="15" rx="2" />
+        <rect x="1430" y="390" width="15" height="15" rx="2" />
+        <rect x="1470" y="390" width="15" height="15" rx="2" />
+
+        <rect x="520" y="804" width="15" height="15" rx="2" />
+        <rect x="560" y="804" width="15" height="15" rx="2" />
+        <rect x="600" y="804" width="15" height="15" rx="2" />
+      </g>
+    </g>
+
+    <!-- Capa de legibilidad -->
+    <rect width="1600" height="900" fill="rgba(0,0,0,0.18)" />
+
+    {showVignette && <rect width="1600" height="900" fill="url(#vignette)" />}
   </svg>
 </div>
 
 <style>
-  .circuit-bg {
+  .pcb-bg {
     position: fixed;
     inset: 0;
     z-index: -1;
     overflow: hidden;
-    background: var(--bg);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.075), transparent 42%),
+      var(--pcb-bg);
     pointer-events: none;
+    contain: strict;
   }
 
-  .circuit-svg {
+  .pcb-svg {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -505,15 +501,21 @@ const {
     display: block;
   }
 
+  @media (max-width: 1024px) {
+    .pcb-bg {
+      opacity: 0.9;
+    }
+  }
+
   @media (max-width: 768px) {
-    .circuit-bg {
-      opacity: 0.86;
+    .pcb-bg {
+      opacity: 0.78;
     }
   }
 
   @media (max-width: 480px) {
-    .circuit-bg {
-      opacity: 0.76;
+    .pcb-bg {
+      opacity: 0.68;
     }
   }
 </style>
