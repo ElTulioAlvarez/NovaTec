@@ -7,24 +7,27 @@ import "../styles/global.css";
 
 const title = "Cotizar — NeoTec Business Solutions";
 const description =
-  "Cuéntanos sobre tu proyecto: software a medida, web, e-commerce o social media. Te respondemos con una propuesta clara.";
+  "Solicita una cotización profesional para desarrollo web, software a medida, e-commerce, POS, automatización o social media.";
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <SEO
       title={title}
       description={description}
       type="website"
       locale="es_MX"
     />
+
     <title>{title}</title>
   </head>
 
@@ -35,41 +38,65 @@ const description =
     <CircuitBG />
 
     <main class="relative z-10 overflow-x-clip">
-      <!-- HERO / Intro -->
+      <!-- HERO -->
       <header class="relative pt-28 pb-10 sm:pt-32 sm:pb-12 lg:pt-40 lg:pb-14">
         <section class="mx-auto w-full max-w-[76rem] px-5 sm:px-6 lg:px-8">
-          <div class="space-y-4 sm:space-y-5">
+          <div class="max-w-4xl space-y-5">
             <span
               class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] sm:text-xs tracking-wide text-cyan-200"
             >
-              Solicita una propuesta
+              Cotización profesional
             </span>
+
             <h1
-              class="font-extrabold leading-tight tracking-tight text-[clamp(1.9rem,2.4vw+1rem,3.2rem)]"
+              class="font-extrabold leading-tight tracking-tight text-[clamp(2rem,2.6vw+1rem,3.45rem)]"
             >
-              Cuéntanos tu proyecto
+              Construyamos una solución para tu negocio
             </h1>
-            <p class="measure text-[15.8px] sm:text-[16.2px] text-slate-200/90">
-              Integramos <em>software</em>, <em>web</em> y <em>social media</em
-              >. Completa el formulario y te contactamos con los siguientes
-              pasos.
+
+            <p class="measure text-[15.8px] sm:text-[16.4px] text-slate-200/90">
+              En NeoTec Business Solutions desarrollamos páginas web, sistemas a
+              medida, e-commerce, POS, automatización de procesos y estrategias
+              digitales para negocios que quieren operar mejor, vender más y
+              crecer con tecnología.
             </p>
+
+            <div class="flex flex-wrap gap-3 pt-2">
+              <span class="mini-pill">Desarrollo web</span>
+              <span class="mini-pill">Software a medida</span>
+              <span class="mini-pill">POS / ERP</span>
+              <span class="mini-pill">E-commerce</span>
+              <span class="mini-pill">Social media</span>
+            </div>
           </div>
         </section>
       </header>
 
-      <!-- Grid: Formulario + Mapa/Contacto -->
+      <!-- FORMULARIO + CONTACTO -->
       <section class="section-space pt-0">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
           <div
-            class="grid gap-8 sm:gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:gap-12"
+            class="grid gap-8 sm:gap-10 lg:grid-cols-[1.18fr,0.82fr] lg:gap-12"
           >
-            <!-- Formulario -->
+            <!-- FORMULARIO -->
             <article class="holo-card">
               <div class="holo-inner p-6 sm:p-8 lg:p-10">
-                <h2 class="text-xl font-semibold mb-6">
-                  Formulario de cotización
-                </h2>
+                <div class="mb-7">
+                  <span
+                    class="inline-flex w-fit items-center rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[11px] tracking-wide text-slate-300"
+                  >
+                    Brief inicial
+                  </span>
+
+                  <h2 class="mt-4 text-2xl font-bold">
+                    Solicita tu cotización
+                  </h2>
+
+                  <p class="mt-3 text-sm leading-6 text-slate-300/90">
+                    Compártenos la información principal de tu proyecto. Entre
+                    más claro sea el brief, más precisa será la propuesta.
+                  </p>
+                </div>
 
                 <form
                   id="cotizarForm"
@@ -78,9 +105,9 @@ const description =
                   novalidate
                 >
                   <!-- Honeypot anti-bots -->
-                  <div class="hidden">
-                    <label
-                      >Empresa (no llenar)
+                  <div class="hidden" aria-hidden="true">
+                    <label>
+                      Empresa alternativa
                       <input
                         type="text"
                         name="company"
@@ -93,9 +120,7 @@ const description =
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Nombre completo*</span
-                      >
+                      <span class="form-label">Nombre completo*</span>
                       <input
                         required
                         name="nombre"
@@ -105,13 +130,13 @@ const description =
                         class="ui-input"
                       />
                     </label>
+
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Empresa</span
-                      >
+                      <span class="form-label">Empresa / negocio</span>
                       <input
                         name="empresa"
                         type="text"
+                        autocomplete="organization"
                         placeholder="Opcional"
                         class="ui-input"
                       />
@@ -120,9 +145,7 @@ const description =
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Email*</span
-                      >
+                      <span class="form-label">Email*</span>
                       <input
                         required
                         name="email"
@@ -133,11 +156,11 @@ const description =
                         class="ui-input"
                       />
                     </label>
+
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Teléfono</span
-                      >
+                      <span class="form-label">WhatsApp / teléfono*</span>
                       <input
+                        required
                         name="telefono"
                         type="tel"
                         autocomplete="tel"
@@ -150,37 +173,69 @@ const description =
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Tipo de proyecto*</span
-                      >
+                      <span class="form-label">Tipo de proyecto*</span>
                       <select required name="tipo" class="ui-input">
                         <option value="">Selecciona una opción</option>
-                        <option>Sitio web</option>
-                        <option>Software a medida</option>
+                        <option>Sitio web corporativo</option>
+                        <option>Landing page</option>
                         <option>E-commerce</option>
-                        <option>Social media</option>
-                        <option>POS / ERP</option>
+                        <option>Software a medida</option>
+                        <option>Sistema POS / Punto de venta</option>
+                        <option>Sistema ERP / administrativo</option>
+                        <option>Automatización de procesos</option>
+                        <option>Aplicación web</option>
+                        <option>Aplicación móvil</option>
+                        <option>Gestión de redes sociales</option>
+                        <option>Branding / identidad visual</option>
+                        <option>Soporte o mantenimiento</option>
                         <option>Otro</option>
                       </select>
                     </label>
+
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Horizonte / Entrega</span
-                      >
+                      <span class="form-label">Etapa del proyecto*</span>
+                      <select required name="etapa" class="ui-input">
+                        <option value="">Selecciona una opción</option>
+                        <option>Solo tengo la idea</option>
+                        <option>Ya tengo requerimientos definidos</option>
+                        <option>Ya tengo diseño o referencias</option>
+                        <option>Ya existe un sistema y quiero mejorarlo</option>
+                        <option>Necesito soporte o mantenimiento</option>
+                        <option>Quiero migrar o modernizar una solución existente</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <label class="block">
+                      <span class="form-label">Horizonte de entrega</span>
                       <select name="tiempo" class="ui-input">
                         <option value="">Flexible</option>
+                        <option>Lo antes posible</option>
                         <option>2–4 semanas</option>
                         <option>1–2 meses</option>
                         <option>3–4 meses</option>
                         <option>+4 meses</option>
                       </select>
                     </label>
+
+                    <label class="block">
+                      <span class="form-label">Prioridad</span>
+                      <select name="prioridad" class="ui-input">
+                        <option value="">Selecciona una opción</option>
+                        <option>Exploratoria: quiero evaluar opciones</option>
+                        <option>Media: necesito iniciar pronto</option>
+                        <option>Alta: tengo una fecha límite</option>
+                        <option>Crítica: el proyecto ya urge</option>
+                      </select>
+                    </label>
                   </div>
 
                   <fieldset>
-                    <legend class="block text-sm text-slate-200/90 mb-2"
-                      >Rango de presupuesto (MXN)</legend
-                    >
+                    <legend class="form-label mb-2">
+                      Rango de presupuesto estimado, MXN
+                    </legend>
+
                     <div class="flex flex-wrap gap-2.5">
                       {
                         [
@@ -189,6 +244,7 @@ const description =
                           "30,000 – 60,000",
                           "60,000 – 120,000",
                           "> 120,000",
+                          "Aún no lo tengo definido",
                         ].map((p) => (
                           <label class="chip cursor-pointer">
                             <input
@@ -197,7 +253,7 @@ const description =
                               value={p}
                               class="sr-only peer"
                             />
-                            <span class="peer-checked:font-semibold">{p}</span>
+                            <span>{p}</span>
                           </label>
                         ))
                       }
@@ -205,48 +261,60 @@ const description =
                   </fieldset>
 
                   <label class="block">
-                    <span class="block text-sm text-slate-200/90 mb-1"
-                      >Descripción del proyecto*</span
-                    >
+                    <span class="form-label">Descripción del proyecto*</span>
                     <textarea
                       required
                       name="descripcion"
-                      rows="6"
-                      placeholder="Cuéntanos objetivos, funcionalidades clave, referencias…"
+                      rows="7"
+                      placeholder="Cuéntanos qué necesitas, objetivos, funcionalidades, referencias, procesos que quieres mejorar, módulos deseados o cualquier detalle importante."
+                      class="ui-input resize-y"></textarea>
+                  </label>
+
+                  <label class="block">
+                    <span class="form-label">Referencias o enlaces útiles</span>
+                    <textarea
+                      name="referencias"
+                      rows="3"
+                      placeholder="Puedes agregar sitios de referencia, enlaces a redes sociales, documentos, sistemas actuales o ejemplos de lo que buscas."
                       class="ui-input resize-y"></textarea>
                   </label>
 
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <label class="block">
-                      <span class="block text-sm text-slate-200/90 mb-1"
-                        >Adjuntar archivo (opcional)</span
-                      >
+                      <span class="form-label">Adjuntar archivo opcional</span>
                       <input
                         name="archivo"
                         type="file"
                         class="ui-input file:mr-3 file:rounded-md file:border-0 file:bg-white/10 file:px-3 file:py-2 file:text-sm file:text-slate-100 hover:file:bg-white/20"
                       />
+                      <span class="mt-2 block text-xs text-slate-400">
+                        Puedes adjuntar brief, logo, captura, PDF o referencia.
+                      </span>
                     </label>
-                    <label class="flex items-center gap-3 mt-6 sm:mt-8">
+
+                    <label class="flex items-start gap-3 mt-2 sm:mt-8">
                       <input
                         type="checkbox"
                         name="privacidad"
                         required
-                        class="h-4 w-4 rounded border-white/20 bg-white/10"
+                        class="mt-1 h-4 w-4 rounded border-white/20 bg-white/10"
                       />
-                      <span class="text-sm text-slate-300/90"
-                        >Acepto el uso de mis datos para contactarme sobre esta
-                        solicitud.</span
-                      >
+                      <span class="text-sm leading-6 text-slate-300/90">
+                        Acepto el uso de mis datos para que NeoTec Business
+                        Solutions me contacte sobre esta solicitud.
+                      </span>
                     </label>
                   </div>
 
-                  <div class="pt-1">
+                  <div class="pt-2">
                     <button
                       id="submitBtn"
                       class="btn-primary w-full sm:w-auto"
-                      type="submit">Enviar solicitud</button
+                      type="submit"
                     >
+                      Enviar solicitud
+                    </button>
+
                     <p
                       id="formMsg"
                       class="mt-3 text-sm text-slate-300/90"
@@ -257,40 +325,128 @@ const description =
                 </form>
               </div>
             </article>
-            <article class="holo-card">
-              <div class="holo-inner p-6 sm:p-8 lg:p-10">
-                <h3 class="text-lg font-semibold mb-4">Contacto</h3>
-                <ul class="space-y-3 text-slate-300/95">
-                  <li>
-                    <span class="font-medium text-slate-100">Email:</span>
-                    <a
-                      class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
-                      href="mailto:jnoehdzesq91@gmail.com">jnoehdzesq91@gmail.com</a
-                    >
-                  </li>
-                  <li>
-                    <span class="font-medium text-slate-100">WhatsApp:</span>
-                    <a
-                      class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
-                      href="https://wa.me/524433711589"
-                      target="_blank"
-                      rel="noopener">+52 4433711589</a
-                    >
-                  </li>
-                  <li class="text-slate-300/90">Morelia, Michoacán — México</li>
-                </ul>
-                <p class="mt-5 text-sm text-slate-400/90">
-                  ¿Prefieres agendar llamada? Escríbenos por WhatsApp y
-                  coordinamos horario.
-                </p>
-              </div>
-            </article>
-            <!-- Mapa + contacto -->
-            <aside class="grid gap-8">
+
+            <!-- COLUMNA DERECHA -->
+            <aside class="grid gap-8 content-start">
+              <!-- CONTACTO -->
+              <article class="holo-card">
+                <div class="holo-inner p-6 sm:p-8 lg:p-10">
+                  <span
+                    class="inline-flex w-fit items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1 text-[11px] tracking-wide text-cyan-200"
+                  >
+                    Contacto directo
+                  </span>
+
+                  <h3 class="mt-4 text-xl font-semibold">
+                    Hablemos de tu proyecto
+                  </h3>
+
+                  <p class="mt-3 text-sm leading-6 text-slate-300/90">
+                    Te ayudamos a aterrizar la idea en una solución clara,
+                    viable y escalable. Sin humo, sin promesas mágicas y sin
+                    venderte una nave espacial cuando solo necesitas un buen
+                    sistema.
+                  </p>
+
+                  <ul class="mt-6 space-y-4 text-slate-300/95">
+                    <li>
+                      <span class="block text-sm font-medium text-slate-100">
+                        Dirección comercial
+                      </span>
+                      <a
+                        class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
+                        href="mailto:noe.hdz@neotecmx.com"
+                      >
+                        noe.hdz@neotecmx.com
+                      </a>
+                    </li>
+
+                    <li>
+                      <span class="block text-sm font-medium text-slate-100">
+                        Cotizaciones y desarrollo
+                      </span>
+                      <a
+                        class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
+                        href="mailto:malvarez@neotecmx.com"
+                      >
+                        malvarez@neotecmx.com
+                      </a>
+                    </li>
+
+                    <li>
+                      <span class="block text-sm font-medium text-slate-100">
+                        WhatsApp
+                      </span>
+                      <a
+                        class="underline decoration-cyan-400/40 underline-offset-4 hover:decoration-cyan-300"
+                        href="https://wa.me/524433711589"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        +52 443 371 1589
+                      </a>
+                    </li>
+
+                    <li>
+                      <span class="block text-sm font-medium text-slate-100">
+                        Ubicación
+                      </span>
+                      <span class="text-slate-300/90">
+                        Morelia, Michoacán — México
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- PROCESO -->
+              <article class="holo-card">
+                <div class="holo-inner p-6 sm:p-8">
+                  <h3 class="text-lg font-semibold">
+                    ¿Qué pasa después?
+                  </h3>
+
+                  <ol class="mt-5 space-y-4">
+                    <li class="process-item">
+                      <span class="process-number">1</span>
+                      <div>
+                        <h4 class="process-title">Revisamos tu solicitud</h4>
+                        <p class="process-text">
+                          Analizamos el alcance inicial, objetivos y tipo de
+                          solución que necesitas.
+                        </p>
+                      </div>
+                    </li>
+
+                    <li class="process-item">
+                      <span class="process-number">2</span>
+                      <div>
+                        <h4 class="process-title">Aclaramos dudas clave</h4>
+                        <p class="process-text">
+                          Te contactamos para afinar requerimientos, tiempos y
+                          prioridades.
+                        </p>
+                      </div>
+                    </li>
+
+                    <li class="process-item">
+                      <span class="process-number">3</span>
+                      <div>
+                        <h4 class="process-title">Preparamos propuesta</h4>
+                        <p class="process-text">
+                          Recibes una propuesta con alcance, entregables, costo
+                          estimado y ruta de trabajo.
+                        </p>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </article>
+
+              <!-- MAPA -->
               <article class="holo-card">
                 <div class="holo-inner overflow-hidden p-0">
                   <div class="aspect-[4/3] sm:aspect-[16/10]">
-                    <!-- OpenStreetMap embed | Morelia, Michoacán -->
                     <iframe
                       title="Ubicación — Morelia, Michoacán"
                       loading="lazy"
@@ -306,26 +462,29 @@ const description =
         </div>
       </section>
 
-      <!-- CTA final -->
+      <!-- CTA FINAL -->
       <section class="section-space">
         <div class="mx-auto max-w-[76rem] px-5 sm:px-6 lg:px-8">
           <div
             class="rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 via-white/5 to-fuchsia-500/10 p-8 sm:p-10 lg:p-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur"
           >
             <div class="space-y-2">
-              <h2 class="font-bold text-[clamp(1.1rem,0.7vw+1rem,1.55rem)]">
-                ¿Listo para empezar?
+              <h2 class="font-bold text-[clamp(1.15rem,0.8vw+1rem,1.65rem)]">
+                ¿Listo para convertir tu idea en una solución real?
               </h2>
+
               <p class="measure-sm text-slate-100/90">
-                Compártenos los detalles y te respondemos con una propuesta
-                clara.
+                Cuéntanos qué necesitas construir, vender, automatizar o
+                mejorar. Nosotros nos encargamos de aterrizarlo técnicamente.
               </p>
             </div>
+
             <a
-              href="#"
-              onclick="document.getElementById('cotizarForm')?.scrollIntoView({behavior: 'smooth'})"
-              class="btn-primary w-full sm:w-auto">Ir al formulario</a
+              href="#cotizarForm"
+              class="btn-primary w-full sm:w-auto"
             >
+              Ir al formulario
+            </a>
           </div>
         </div>
       </section>
@@ -334,100 +493,133 @@ const description =
     <Footer />
 
     <script is:inline>
-  (function () {
-    const form = document.getElementById("cotizarForm");
-    const btn  = document.getElementById("submitBtn");
-    const msg  = document.getElementById("formMsg");
+      (function () {
+        const form = document.getElementById("cotizarForm");
+        const btn = document.getElementById("submitBtn");
+        const msg = document.getElementById("formMsg");
 
-    if (!form) return;
+        if (!form || !btn || !msg) return;
 
-    const endpoint = new URL("/api/cotizar", location.origin);
+        const endpoint = new URL("/api/cotizar", location.origin);
 
-    function getPayload(fd) {
-      const entries = [...fd.entries()].filter(([k]) => k !== "archivo");
-      return Object.fromEntries(entries);
-    }
+        function getPayload(fd) {
+          const entries = [...fd.entries()].filter(([key, value]) => {
+            if (key === "archivo") return false;
+            if (value instanceof File) return false;
+            return true;
+          });
 
-    async function postJSON(url, payload) {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        // credentials same-origin por si en el futuro agregas sesión/csrftoken
-        credentials: "same-origin",
-      });
-      let data = {};
-      try { data = await res.json(); } catch {}
-      if (!res.ok || !data.ok) {
-        const reason = data.error || `${res.status} ${res.statusText}`;
-        throw new Error(reason);
-      }
-      return data;
-    }
+          return Object.fromEntries(entries);
+        }
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+        async function postJSON(url, payload) {
+          const res = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+            credentials: "same-origin",
+          });
 
-      // ✅ usa validación nativa del navegador
-      if (!form.reportValidity()) return;
+          let data = {};
 
-      msg.textContent = "";
-      btn.disabled = true;
-      const oldLabel = btn.textContent;
-      btn.textContent = "Enviando…";
+          try {
+            data = await res.json();
+          } catch {
+            data = {};
+          }
 
-      const fd = new FormData(form);
-      const payload = getPayload(fd);
+          if (!res.ok || !data.ok) {
+            const reason = data.error || `${res.status} ${res.statusText}`;
+            throw new Error(reason);
+          }
 
-      try {
-        const data = await postJSON(endpoint, payload);
-        msg.textContent = "¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.";
-        form.reset();
-      } catch (err) {
-        // Muestra el motivo real en UI y consola
-        console.error("cotizar fetch error:", err);
-        msg.textContent = "No se pudo enviar: " + (err?.message || "Error");
-        // fallback opcional: submit nativo si quieres degradación elegante
-        // form.setAttribute("action", endpoint.href);
-        // form.setAttribute("method", "post");
-        // form.submit();
-      } finally {
-        btn.disabled = false;
-        btn.textContent = oldLabel;
-      }
-    });
+          return data;
+        }
 
-    // 🔎 Diagnóstico rápido en producción (opcional):
-    // fetch(new URL("/api/cotizar", location.origin))
-    //   .then(r => r.json())
-    //   .then(d => console.log("Health /api/cotizar:", d))
-    //   .catch(console.warn);
-  })();
-</script>
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (!form.reportValidity()) return;
+
+          const fd = new FormData(form);
+
+          /**
+           * Honeypot:
+           * Si viene lleno, probablemente es bot.
+           * Respondemos como éxito para no darle pistas.
+           */
+          const honeypot = String(fd.get("company") || "").trim();
+
+          if (honeypot.length > 0) {
+            msg.textContent =
+              "¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.";
+            form.reset();
+            return;
+          }
+
+          msg.textContent = "";
+          btn.disabled = true;
+
+          const oldLabel = btn.textContent;
+          btn.textContent = "Enviando…";
+
+          const payload = getPayload(fd);
+
+          try {
+            await postJSON(endpoint, payload);
+
+            msg.textContent =
+              "¡Gracias! Recibimos tu solicitud. Te contactaremos pronto.";
+            msg.classList.remove("text-red-300");
+            msg.classList.add("text-cyan-200");
+
+            form.reset();
+          } catch (err) {
+            console.error("cotizar fetch error:", err);
+
+            msg.textContent =
+              "No se pudo enviar la solicitud: " +
+              (err?.message || "Error inesperado");
+
+            msg.classList.remove("text-cyan-200");
+            msg.classList.add("text-red-300");
+          } finally {
+            btn.disabled = false;
+            btn.textContent = oldLabel;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
 
 <style>
   /* ====== Medida y ritmo ====== */
   .measure {
-    max-width: 65ch;
+    max-width: 70ch;
     line-height: 1.75;
     font-size: 1rem;
   }
+
   .measure-sm {
     max-width: 72ch;
     line-height: 1.65;
   }
+
   .section-space {
     padding-top: 3.25rem;
     padding-bottom: 3.25rem;
   }
+
   @media (min-width: 640px) {
     .section-space {
       padding-top: 4.25rem;
       padding-bottom: 4.25rem;
     }
   }
+
   @media (min-width: 1024px) {
     .section-space {
       padding-top: 5.25rem;
@@ -435,7 +627,28 @@ const description =
     }
   }
 
-  /* ====== Input base (holo) ====== */
+  /* ====== Labels ====== */
+  .form-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.875rem;
+    color: rgba(226, 232, 240, 0.92);
+  }
+
+  /* ====== Mini pills ====== */
+  .mini-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.18);
+    background: rgba(103, 232, 249, 0.07);
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+    color: rgba(207, 250, 254, 0.92);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+  }
+
+  /* ====== Input base ====== */
   .ui-input {
     width: 100%;
     border-radius: 0.8rem;
@@ -450,29 +663,67 @@ const description =
       box-shadow 0.2s ease;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
+
   .ui-input::placeholder {
-    color: rgba(226, 232, 240, 0.6);
+    color: rgba(226, 232, 240, 0.55);
   }
+
   .ui-input:focus {
     border-color: rgba(103, 232, 249, 0.65);
     background: rgba(255, 255, 255, 0.08);
     box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.15);
   }
 
-  /* ====== Chips / radios invisibles ====== */
+  .ui-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  select.ui-input {
+    cursor: pointer;
+  }
+
+  select.ui-input option {
+    background: #0f172a;
+    color: #eaf2ff;
+  }
+
+  /* ====== Chips ====== */
   .chip {
+    display: inline-flex;
+    align-items: center;
     font-size: 0.85rem;
     border-radius: 9999px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     background: rgba(255, 255, 255, 0.07);
     padding: 0.5rem 0.95rem;
     color: rgba(236, 244, 255, 0.92);
-  }
-  .peer:checked + span {
-    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.08s ease;
   }
 
-  /* ====== Botones reutilizados ====== */
+  .chip:hover {
+    border-color: rgba(103, 232, 249, 0.35);
+    background: rgba(103, 232, 249, 0.09);
+  }
+
+  .chip:active {
+    transform: translateY(1px);
+  }
+
+  .chip:has(input:checked) {
+    border-color: rgba(103, 232, 249, 0.75);
+    background: rgba(103, 232, 249, 0.16);
+    color: #cffafe;
+    box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.1);
+    font-weight: 700;
+  }
+
+  /* ====== Botón ====== */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -486,31 +737,76 @@ const description =
     transition:
       background 0.2s ease,
       transform 0.08s ease,
-      box-shadow 0.2s ease;
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
     box-shadow: 0 8px 24px rgba(34, 211, 238, 0.18);
   }
+
   .btn-primary:hover {
     background: rgba(103, 232, 249, 1);
     box-shadow: 0 10px 28px rgba(103, 232, 249, 0.22);
   }
+
   .btn-primary:active {
     transform: translateY(1px);
   }
 
-  /* ====== Holo ====== */
+  .btn-primary:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
+  /* ====== Proceso ====== */
+  .process-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+  }
+
+  .process-number {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.3);
+    background: rgba(103, 232, 249, 0.1);
+    color: #cffafe;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .process-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: rgba(248, 250, 252, 0.96);
+  }
+
+  .process-text {
+    margin-top: 0.25rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: rgba(203, 213, 225, 0.88);
+  }
+
+  /* ====== Holo card ====== */
   @property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
   }
+
   @keyframes holo-spin {
     0% {
       --angle: 0deg;
     }
+
     100% {
       --angle: 360deg;
     }
   }
+
   .holo-card {
     position: relative;
     display: grid;
@@ -522,6 +818,7 @@ const description =
       box-shadow 0.28s ease,
       filter 0.28s ease;
   }
+
   .holo-card::before {
     content: "";
     position: absolute;
@@ -547,24 +844,31 @@ const description =
     z-index: -1;
     opacity: 0.85;
   }
+
   .holo-card::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: repeating-linear-gradient(
+    background:
+      repeating-linear-gradient(
         115deg,
         rgba(255, 255, 255, 0.06) 0px,
         rgba(255, 255, 255, 0.06) 1px,
         transparent 2px,
         transparent 7px
       ),
-      linear-gradient(45deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+      linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0)
+      );
     mix-blend-mode: overlay;
     opacity: 0.35;
     pointer-events: none;
     z-index: 1;
   }
+
   .holo-inner {
     position: relative;
     height: 100%;
@@ -578,26 +882,21 @@ const description =
       0 10px 26px rgba(0, 0, 0, 0.36);
     z-index: 2;
   }
+
   @media (prefers-reduced-motion: no-preference) {
     .holo-card:hover {
       transform: translateY(-6px) scale(1.012);
       filter: saturate(1.05);
     }
+
     .holo-card:hover::before {
       animation-duration: 8s;
       opacity: 0.98;
       filter: brightness(1.12);
     }
+
     .holo-card:hover::after {
       opacity: 0.48;
     }
   }
 </style>
-
-<!--
-===================== API ROUTE (archivo separado) =====================
-Archivo: src/pages/api/cotizar.ts
-Descripción: Función de API para Vercel que envía correo usando Resend.
-Requiere: RESEND_API_KEY, CONTACT_TO, CONTACT_FROM en Vercel.
-=======================================================================
--->
