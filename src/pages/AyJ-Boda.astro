@@ -1,0 +1,300 @@
+---
+/**
+ * Invitación independiente de NeoTec Business Solutions.
+ * Ruta pública: https://neotecmx.com/AyJ-Boda
+ * El sitio corporativo no comparte componentes ni estilos con esta página.
+ */
+import "../styles/ayj-boda.css";
+
+const WEDDING = {
+  bride: "Aranza Alejandra Rovira Fierro",
+  groom: "José Bladimir Barrientos Vinalay",
+  names: "Aranza & Bladimir",
+  dateLabel: "Sábado 30 de enero de 2027",
+  ceremony: "5:30 p. m.",
+  reception: "6:30 p. m.",
+  venue: "Jardín Los Olivos",
+  address: "Cam. al Edén, Tenencia Morelos, 58341 Morelos, Mich., México",
+};
+
+const canonical = new URL("/AyJ-Boda", Astro.site ?? "https://neotecmx.com").toString();
+const ogImage = new URL("/boda/ayj-og.jpg", Astro.site ?? "https://neotecmx.com").toString();
+const mapsUrl = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(`${WEDDING.venue}, ${WEDDING.address}`);
+
+const oliveLeaf = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 70" fill="none" aria-hidden="true"><path d="M8 54c34-8 70-29 147-39" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M40 42c-17 0-23-9-23-18 14 1 24 8 23 18Zm22-10C49 27 46 16 51 7c12 6 17 16 11 25Zm21-8c-1-13 7-21 16-22 2 13-5 22-16 22Zm22-5c8-13 20-16 30-11-7 11-18 15-30 11ZM48 38c3 12-1 21-12 26-4-12-1-22 12-26Zm31-11c8 9 7 20 0 27-8-9-8-19 0-27Zm30-9c9 7 11 16 7 25-10-6-12-16-7-25Z" fill="currentColor" opacity=".45"/></svg>`;
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f0e8" />
+    <!-- Invitación personal: se puede compartir, pero no queremos indexar los nombres y el evento. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={`¡Nos casamos! ${WEDDING.names} te invitamos a celebrar el sábado 30 de enero de 2027 en ${WEDDING.venue}, Morelia.`} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/boda/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="image" href="/boda/1.webp" type="image/webp" fetchpriority="high" />
+    <title>Aranza & Bladimir | Nuestra boda · 30 de enero de 2027</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="La boda de Aranza & Bladimir" />
+    <meta property="og:title" content="Aranza & Bladimir · ¡Nos casamos!" />
+    <meta property="og:description" content="Sábado 30 de enero de 2027 · Jardín Los Olivos · Te esperamos para compartir este día tan especial." />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Aranza y Bladimir juntos en la playa. Invitación a su boda, 30 de enero de 2027." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Aranza & Bladimir · 30.01.2027" />
+    <meta name="twitter:description" content="Te invitamos a celebrar nuestro gran día." />
+    <meta name="twitter:image" content={ogImage} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+
+  <body class="wedding-page">
+    <a class="skip-link" href="#invitacion">Saltar a la invitación</a>
+
+    <!-- Pantalla de bienvenida. El usuario decide abrir la invitación y activar el audio. -->
+    <div class="invitation-gate" id="invitationGate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+      <div class="gate-grain" aria-hidden="true"></div>
+      <span class="gate-corner gate-corner--tl" aria-hidden="true"></span>
+      <span class="gate-corner gate-corner--tr" aria-hidden="true"></span>
+      <span class="gate-corner gate-corner--bl" aria-hidden="true"></span>
+      <span class="gate-corner gate-corner--br" aria-hidden="true"></span>
+      <div class="gate-inner">
+        <span class="eyebrow gate-eyebrow">Una invitación muy especial</span>
+        <div class="gate-symbol" aria-hidden="true">A <span>&</span> J</div>
+        <div class="mini-flourish" aria-hidden="true" set:html={oliveLeaf}></div>
+        <p class="gate-prelude">Nos llena de alegría compartir contigo<br />el comienzo de una nueva historia.</p>
+        <h1 id="gateTitle" class="gate-title">Aranza <i>&</i> Bladimir</h1>
+        <p class="gate-date">30 · 01 · 2027</p>
+        <button type="button" class="button button--dark gate-enter" id="openInvitation">
+          <span>Abrir invitación</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
+        </button>
+        <span class="gate-hint">La invitación incluye música de fondo</span>
+      </div>
+    </div>
+
+    <main id="invitacion">
+      <!-- PORTADA -->
+      <section class="hero" aria-labelledby="heroNames">
+        <picture class="hero-picture" aria-hidden="true">
+          <source srcset="/boda/1.webp" type="image/webp" />
+          <img class="hero-photo" src="/boda/1.jpeg" alt="" width="960" height="1280" fetchpriority="high" decoding="async" />
+        </picture>
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-sideword" aria-hidden="true">THE WEDDING · 2027</div>
+        <header class="hero-header">
+          <a class="hero-monogram" href="#invitacion" aria-label="Aranza y Bladimir, inicio">A<span>·</span>J</a>
+          <span class="hero-header-date">30 ENERO 2027</span>
+          <a class="hero-header-link" href="#detalles">Ver detalles <span aria-hidden="true">↗</span></a>
+        </header>
+        <div class="hero-content">
+          <p class="hero-kicker">Con muchísimo amor, anunciamos</p>
+          <div class="hero-ornament" aria-hidden="true"><span></span> ✦ <span></span></div>
+          <h2 id="heroNames" class="hero-title">
+            <span class="hero-name">Aranza</span>
+            <span class="hero-ampersand">&</span>
+            <span class="hero-name">Bladimir</span>
+          </h2>
+          <p class="hero-subtitle">¡Nos casamos!</p>
+          <div class="hero-date-lockup"><span>SÁBADO</span><strong>30</strong><span>ENERO<br/>2027</span></div>
+        </div>
+        <div class="hero-bottom">
+          <span class="hero-location">Jardín Los Olivos <span aria-hidden="true">·</span> Morelia, Michoacán</span>
+          <a class="scroll-cue" href="#historia" aria-label="Desliza para conocer la invitación">
+            <span>DESLIZA PARA DESCUBRIR</span>
+            <svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 0v27m-7-7 7 7 7-7" /></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- CARTA -->
+      <section class="letter section-pad" id="historia" aria-labelledby="letterHeading">
+        <div class="letter-outer container">
+          <div class="letter-intro" data-reveal>
+            <span class="section-overline"><span class="overline-rule"></span> UNA HISTORIA PARA CELEBRAR <span class="overline-rule"></span></span>
+            <div class="flourish" aria-hidden="true" set:html={oliveLeaf}></div>
+            <h2 id="letterHeading" class="letter-heading">Hay momentos que<br/>se vuelven <em>eternos.</em></h2>
+            <p class="letter-copy">Y hay personas con quienes queremos vivirlos todos. Con mucha ilusión, queremos compartir contigo uno de los días más especiales de nuestra historia.</p>
+            <p class="letter-signature">Con amor, <span>Aranza & Bladimir</span></p>
+            <p class="letter-fullnames">{WEDDING.bride}<br />&amp;<br />{WEDDING.groom}</p>
+          </div>
+
+          <div class="letter-photo-block" data-reveal>
+            <div class="letter-outline" aria-hidden="true"></div>
+            <picture class="letter-picture">
+              <source srcset="/boda/2.webp" type="image/webp" />
+              <img src="/boda/2.jpeg" alt="Aranza y Bladimir compartiendo un beso en la playa al atardecer." loading="lazy" width="960" height="1280" decoding="async" />
+            </picture>
+            <span class="letter-photo-label">un amor, una aventura, toda una vida.</span>
+            <span class="letter-stamp" aria-hidden="true">A <small>&</small> J</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FECHA + CUENTA REGRESIVA -->
+      <section class="date-section section-pad" aria-labelledby="dateHeading">
+        <div class="date-panel container" data-reveal>
+          <span class="section-overline">SAVE THE DATE</span>
+          <h2 id="dateHeading" class="date-heading">El día en que empieza<br/><em>nuestro para siempre</em></h2>
+          <div class="date-number" aria-label="30 de enero de 2027"><span>ENERO</span><strong>30</strong><span>2027</span></div>
+          <div class="date-weekday">S Á B A D O</div>
+          <div class="countdown" id="countdown" role="timer" aria-label="Tiempo restante para la ceremonia">
+            <div><strong id="days">--</strong><span>DÍAS</span></div>
+            <div><strong id="hours">--</strong><span>HORAS</span></div>
+            <div><strong id="minutes">--</strong><span>MINUTOS</span></div>
+            <div><strong id="seconds">--</strong><span>SEGUNDOS</span></div>
+          </div>
+          <p class="countdown-ended" id="countdownEnded" hidden>¡Hoy celebramos nuestro gran día!</p>
+          <a href="/boda/Aranza-y-Bladimir.ics" download="Boda-Aranza-y-Bladimir.ics" class="text-link date-action">
+            Guardar fecha en mi calendario <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- CEREMONIA Y RECEPCIÓN -->
+      <section class="details section-pad" id="detalles" aria-labelledby="detailsHeading">
+        <div class="container details-content">
+          <div class="section-heading" data-reveal>
+            <span class="section-overline">EL GRAN DÍA</span>
+            <h2 id="detailsHeading">Cada momento,<br/><em>una razón para brindar.</em></h2>
+            <p>Nos encantará tenerte con nosotros desde el primer instante.</p>
+          </div>
+          <div class="schedule" data-reveal>
+            <div class="schedule-line" aria-hidden="true"></div>
+            <article class="schedule-item">
+              <div class="schedule-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25"><circle cx="18" cy="29" r="10"/><circle cx="30" cy="29" r="10"/><path d="m22 11 2-6 2 6 6 2-6 2-2 6-2-6-6-2Z"/></svg>
+              </div>
+              <span class="schedule-when">PRIMER MOMENTO</span>
+              <h3>Ceremonia</h3>
+              <time datetime="2027-01-30T17:30:00-06:00">5:30 <span>p. m.</span></time>
+              <p>El inicio de nuestra nueva historia.</p>
+            </article>
+            <span class="schedule-middle" aria-hidden="true">✳</span>
+            <article class="schedule-item">
+              <div class="schedule-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M10 10v8c0 7 4 12 10 12s10-5 10-12v-8H10Zm20 0h9v7c0 6-4 10-10 10M20 30v9M12 39h16"/></svg>
+              </div>
+              <span class="schedule-when">DESPUÉS, A CELEBRAR</span>
+              <h3>Recepción</h3>
+              <time datetime="2027-01-30T18:30:00-06:00">6:30 <span>p. m.</span></time>
+              <p>La mejor celebración será tenerte ahí.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- LUGAR -->
+      <section class="venue section-pad" id="ubicacion" aria-labelledby="venueHeading">
+        <div class="container venue-layout">
+          <div class="venue-copy" data-reveal>
+            <span class="section-overline section-overline--light">EL ESCENARIO DE NUESTRO SÍ</span>
+            <div class="flourish flourish--light" aria-hidden="true" set:html={oliveLeaf}></div>
+            <h2 id="venueHeading">Un lugar para<br/><em>recordar siempre.</em></h2>
+            <p class="venue-name">Jardín Los Olivos</p>
+            <p class="venue-note">Ceremonia y recepción en el mismo lugar.</p>
+            <address>Cam. al Edén, Tenencia Morelos,<br/>58341 Morelos, Michoacán, México.</address>
+            <a class="button button--outline-light" href={mapsUrl} target="_blank" rel="noopener noreferrer">
+              <span>Cómo llegar</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5" /></svg>
+            </a>
+          </div>
+          <div class="venue-picture-wrap" data-reveal>
+            <div class="venue-picture-frame">
+              <picture>
+                <source srcset="/boda/3.webp" type="image/webp" />
+                <img src="/boda/3.jpeg" alt="Aranza y Bladimir frente al mar durante su sesión fotográfica." loading="lazy" width="960" height="1280" decoding="async" />
+              </picture>
+            </div>
+            <span class="venue-picture-caption">30 / 01 / 27 <span>—</span> A & J</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- VESTIMENTA -->
+      <section class="dress-section section-pad" id="vestimenta" aria-labelledby="dressHeading">
+        <div class="container dress-container">
+          <div class="section-heading dress-heading" data-reveal>
+            <span class="section-overline">DRESS CODE</span>
+            <h2 id="dressHeading">Una noche especial<br/>merece <em>un toque de elegancia.</em></h2>
+            <p class="dress-formal">Formal de noche</p>
+          </div>
+          <div class="dress-cards" data-reveal>
+            <article class="dress-card dress-card--men">
+              <span class="dress-symbol" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 11 12 15 5 53l14 4 4-23 2 23h14l2-23 4 23 14-4-7-38-10-4-10 9-10-9Z"/><path d="m22 11 10 25 10-25M32 36v21m-4-36 4 6 4-6M23 11l9-4 10 4"/><path d="M32 31v1" stroke-width="2" /></svg>
+              </span>
+              <h3>Caballeros</h3>
+              <p>Traje negro</p>
+              <div class="dress-black" aria-label="Color negro"></div>
+            </article>
+            <article class="dress-card dress-card--women">
+              <span class="dress-symbol" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M26 8h12l3 10-5 11 15 25H13l15-25-5-11 3-10Z"/><path d="m26 8 6 8 6-8m-10 21h8m-13-11h18M32 16v11"/></svg>
+              </span>
+              <h3>Damas</h3>
+              <p>Vestido largo · tonos pastel</p>
+              <div class="dress-swatches" aria-label="Ejemplos de tonos pastel: lavanda, azul cielo, verde salvia, amarillo suave y lila">
+                <span class="swatch swatch--lavender" title="Lavanda"></span>
+                <span class="swatch swatch--blue" title="Azul cielo"></span>
+                <span class="swatch swatch--sage" title="Verde salvia"></span>
+                <span class="swatch swatch--yellow" title="Amarillo pastel"></span>
+                <span class="swatch swatch--lilac" title="Lila"></span>
+              </div>
+              <p class="dress-exception">Por favor, evitar el color rosa.</p>
+            </article>
+          </div>
+          <p class="dress-footnote" data-reveal>Gracias por acompañarnos vistiendo con tanto cariño para esta ocasión.</p>
+        </div>
+      </section>
+
+      <!-- DESPEDIDA -->
+      <section class="closing" aria-labelledby="closingHeading">
+        <picture class="closing-picture" aria-hidden="true">
+          <source srcset="/boda/3.webp" type="image/webp" />
+          <img src="/boda/3.jpeg" alt="" loading="lazy" width="960" height="1280" decoding="async" />
+        </picture>
+        <div class="closing-shade" aria-hidden="true"></div>
+        <div class="closing-content" data-reveal>
+          <span class="section-overline section-overline--light">GRACIAS POR FORMAR PARTE</span>
+          <div class="closing-symbol" aria-hidden="true">A<span>&</span>J</div>
+          <h2 id="closingHeading">Lo más bonito de este día<br/>será <em>compartirlo contigo.</em></h2>
+          <p>Te esperamos con todo nuestro amor.</p>
+          <span class="closing-names">Aranza & Bladimir</span>
+          <div class="closing-actions">
+            <a class="button button--light" href="/boda/Aranza-y-Bladimir.ics" download="Boda-Aranza-y-Bladimir.ics">Apartar la fecha <span aria-hidden="true">↗</span></a>
+            <button class="button button--ghost" id="shareInvitation" type="button">Compartir invitación <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wedding-footer">
+      <span>A <i>&</i> J</span>
+      <p>30 de enero de 2027 · Jardín Los Olivos</p>
+      <small>Hecho con amor, para compartir.</small>
+    </footer>
+
+    <audio id="weddingAudio" loop preload="none" playsinline>
+      <source src="/boda/naima.m4a" type="audio/mp4" />
+      Tu navegador no puede reproducir este audio.
+    </audio>
+
+    <button type="button" class="music-control" id="musicControl" aria-label="Activar música" aria-pressed="false" title="Activar música">
+      <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="music-label">MÚSICA</span>
+    </button>
+    <div class="toast" id="weddingToast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script>import "../scripts/ayj-boda.ts";</script>
+  </body>
+</html>

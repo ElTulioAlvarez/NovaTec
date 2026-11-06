@@ -14,5 +14,5 @@ export default defineConfig({
     host: true,
     port: 4321,
   },
-  site: 'https://novatec.vercel.app',
+  site: 'https://neotecmx.com',
 });

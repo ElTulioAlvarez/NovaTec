@@ -1,6 +1,6 @@
 export const site = {
-  name: "Novatec Business Solutions",
-  url: "https://example.com",
+  name: "NeoTec Business Solutions",
+  url: "https://neotecmx.com",
   ogImage: "/og-default.png",
   twitter: "@novatec",
 };

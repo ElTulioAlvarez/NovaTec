@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NeoTec//AyJ-Boda//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ayj-boda-20270130@neotecmx.com
+DTSTAMP:20261106T173739Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Boda de Aranza y Bladimir
+DESCRIPTION:Ceremonia 5:30 p. m.\nRecepción 6:30 p. m.\nCódigo de vestimenta: formal de noche.
+LOCATION:Jardín Los Olivos\, Cam. al Edén\, Tenencia Morelos\, 58341 Morelos\, Michoacán\, México
+URL:https://neotecmx.com/AyJ-Boda
+END:VEVENT
+END:VCALENDAR
