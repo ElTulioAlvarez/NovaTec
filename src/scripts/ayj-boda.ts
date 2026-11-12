@@ -177,3 +177,62 @@ shareButton?.addEventListener('click', async () => {
     showToast('Comparte este enlace: neotecmx.com/AyJ-Boda');
   }
 });
+
+
+// --- Mesa de regalos y RSVP ---
+const copyClabeButton = document.getElementById('copyClabe') as HTMLButtonElement | null;
+
+/** Copia desde HTTPS y ofrece respaldo para navegadores con permisos limitados. */
+async function copyToClipboard(value: string): Promise<boolean> {
+  try {
+    if (navigator.clipboard?.writeText && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+  } catch {
+    // Continuamos con el método tradicional, útil en algunos navegadores integrados.
+  }
+
+  const helper = document.createElement('textarea');
+  helper.value = value;
+  helper.setAttribute('readonly', '');
+  helper.style.position = 'fixed';
+  helper.style.opacity = '0';
+  helper.style.left = '-9999px';
+  document.body.appendChild(helper);
+  helper.select();
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  } finally {
+    helper.remove();
+  }
+  return copied;
+}
+
+copyClabeButton?.addEventListener('click', async () => {
+  const clabe = copyClabeButton.dataset.clabe;
+  if (!clabe) return;
+  const copied = await copyToClipboard(clabe);
+  showToast(copied ? 'CLABE de BBVA copiada correctamente.' : 'Selecciona la CLABE para copiarla manualmente.');
+});
+
+// Como no se proporcionó un contacto para RSVP, NO se simula un envío.
+// Estos botones únicamente copian el mensaje, y así lo indican explícitamente.
+const rsvpMessages: Record<string, string> = {
+  yes: 'Hola, Aranza y Bladimir. ¡Confirmo con mucho gusto mi asistencia a su boda del 30 de enero de 2027! Mi nombre es: ',
+  no: 'Hola, Aranza y Bladimir. Muchas gracias por invitarme. Lamentablemente no podré acompañarlos en su boda. Mi nombre es: ',
+};
+
+document.querySelectorAll<HTMLButtonElement>('[data-rsvp]').forEach((button) => {
+  button.addEventListener('click', async () => {
+    const message = rsvpMessages[button.dataset.rsvp ?? ''];
+    if (!message) return;
+    const copied = await copyToClipboard(message);
+    showToast(copied
+      ? 'Mensaje copiado. Envíalo a los novios y agrega tu nombre.'
+      : 'No se pudo copiar el mensaje. Inténtalo de nuevo.');
+  });
+});

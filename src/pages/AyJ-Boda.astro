@@ -17,6 +17,13 @@ const WEDDING = {
   address: "Cam. al Edén, Tenencia Morelos, 58341 Morelos, Mich., México",
 };
 
+// Datos entregados por los novios: la CLABE se muestra únicamente en la mesa de regalos.
+const GIFT = {
+  bank: "BBVA",
+  holder: "Aranza Alejandra Rovira Fierro",
+  clabe: "012470015628906005",
+};
+
 const canonical = new URL("/AyJ-Boda", Astro.site ?? "https://neotecmx.com").toString();
 const ogImage = new URL("/boda/ayj-og.jpg", Astro.site ?? "https://neotecmx.com").toString();
 const mapsUrl = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(`${WEDDING.venue}, ${WEDDING.address}`);
@@ -110,10 +117,37 @@ const oliveLeaf = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 70" 
         </div>
         <div class="hero-bottom">
           <span class="hero-location">Jardín Los Olivos <span aria-hidden="true">·</span> Morelia, Michoacán</span>
-          <a class="scroll-cue" href="#historia" aria-label="Desliza para conocer la invitación">
+          <a class="scroll-cue" href="#bendicion" aria-label="Desliza para conocer la invitación">
             <span>DESLIZA PARA DESCUBRIR</span>
             <svg viewBox="0 0 24 30" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 0v27m-7-7 7 7 7-7" /></svg>
           </a>
+        </div>
+      </section>
+
+
+      <!-- BENDICIÓN: intencionalmente sin nombres de los padres, tal como lo solicitaron. -->
+      <section class="blessing section-pad" id="bendicion" aria-labelledby="blessingHeading">
+        <div class="blessing-frame container" data-reveal>
+          <span class="section-overline"><span class="overline-rule"></span> UN NUEVO COMIENZO <span class="overline-rule"></span></span>
+          <div class="flourish" aria-hidden="true" set:html={oliveLeaf}></div>
+          <h2 id="blessingHeading" class="blessing-heading">Con la bendición de <em>Dios</em></h2>
+          <span class="blessing-join" aria-hidden="true">&</span>
+          <p class="blessing-parents">de <strong>nuestros padres</strong></p>
+          <div class="blessing-ornament" aria-hidden="true"><span></span> ✦ <span></span></div>
+        </div>
+      </section>
+
+      <!-- FRASE DE FAMILIA Y AMIGOS: redacción conservada como la enviaron. -->
+      <section class="family-quote section-pad" id="familia" aria-labelledby="familyHeading">
+        <div class="family-quote-inner container" data-reveal>
+          <span class="section-overline section-overline--light">LAS PERSONAS QUE AMAMOS</span>
+          <h2 id="familyHeading" class="visually-hidden">Nuestra familia y nuestros amigos</h2>
+          <div class="family-quote-mark" aria-hidden="true">“</div>
+          <blockquote>
+            <p>La vida no sería igual sin familia a los que llamar amigos, y amigos a los que llamar familia.</p>
+            <p>Nuestro amor merece una gran celebración y queremos que seáis parte de ella.</p>
+          </blockquote>
+          <div class="family-quote-footer" aria-hidden="true"><span></span> A &amp; J <span></span></div>
         </div>
       </section>
 
@@ -258,6 +292,78 @@ const oliveLeaf = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 70" 
         </div>
       </section>
 
+
+      <!-- MESA DE REGALOS -->
+      <section class="gifts section-pad" id="regalos" aria-labelledby="giftsHeading">
+        <div class="container gifts-container">
+          <header class="section-heading" data-reveal>
+            <span class="section-overline"><span class="overline-rule"></span> MESA DE REGALOS <span class="overline-rule"></span></span>
+            <h2 id="giftsHeading">El mejor regalo es<br/><em>compartir este día.</em></h2>
+            <p>Tu presencia es lo más importante para nosotros. Si además deseas obsequiarnos un detalle, hemos preparado estas opciones con mucho cariño.</p>
+          </header>
+          <div class="gift-options" data-reveal>
+            <article class="gift-card">
+              <span class="gift-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="11" y="21" width="42" height="31" rx="1"/><path d="M11 26 32 39l21-13M23 19v-6h18v6M27 13V8h10v5"/><path d="M32 25c-3-4-10 2 0 8 10-6 3-12 0-8Z"/>
+                </svg>
+              </span>
+              <span class="gift-card-overline">UN DETALLE EN PERSONA</span>
+              <h3>Regalo en efectivo</h3>
+              <p>Durante la recepción habrá sobres y una caja destinados a quienes deseen hacernos un obsequio en efectivo.</p>
+            </article>
+            <article class="gift-card gift-card--bank">
+              <span class="gift-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m8 24 24-14 24 14H8Zm5 5v21m10-21v21m18-21v21m10-21v21M8 55h48M8 50h48"/>
+                </svg>
+              </span>
+              <span class="gift-card-overline">SI PREFIERES UNA TRANSFERENCIA</span>
+              <h3>Regalo digital</h3>
+              <p>También puedes acompañarnos con un detalle mediante transferencia bancaria.</p>
+              <div class="gift-bank-details">
+                <span class="gift-bank-name">{GIFT.bank}</span>
+                <span class="gift-holder">{GIFT.holder}</span>
+                <span class="gift-clabe-label">CLABE interbancaria</span>
+                <code class="gift-clabe" id="giftClabe">{GIFT.clabe}</code>
+                <button type="button" class="button button--dark gift-copy" id="copyClabe" data-clabe={GIFT.clabe} aria-label="Copiar CLABE interbancaria de BBVA">
+                  Copiar CLABE
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONFIRMACIÓN DE ASISTENCIA -->
+      <section class="rsvp section-pad" id="confirmacion" aria-labelledby="rsvpHeading">
+        <div class="rsvp-container container" data-reveal>
+          <span class="section-overline section-overline--light">CONFIRMACIÓN DE ASISTENCIA</span>
+          <div class="flourish flourish--rsvp" aria-hidden="true" set:html={oliveLeaf}></div>
+          <h2 id="rsvpHeading">¿Nos <em>acompañas?</em></h2>
+          <p>Ojalá nos puedas acompañar en nuestro día especial. Esperamos tu confirmación a más tardar el <strong>15 de diciembre de 2026.</strong></p>
+          <div class="rsvp-actions">
+            <button type="button" class="button button--light" data-rsvp="yes">Copiar «Sí asistiré»</button>
+            <button type="button" class="button button--outline-light" data-rsvp="no">Copiar «No podré asistir»</button>
+          </div>
+          <p class="rsvp-instructions">Elige una respuesta, copia el mensaje y envíaselo a los novios por su medio de contacto habitual.</p>
+        </div>
+      </section>
+
+      <!-- FRASE BÍBLICA, CASI AL FINAL COMO LO SOLICITARON -->
+      <section class="bible-verse section-pad" id="versiculo" aria-labelledby="bibleHeading">
+        <div class="bible-verse-inner container" data-reveal>
+          <span class="section-overline"><span class="overline-rule"></span> EL AMOR NOS UNE <span class="overline-rule"></span></span>
+          <div class="flourish" aria-hidden="true" set:html={oliveLeaf}></div>
+          <h2 id="bibleHeading" class="visually-hidden">Palabras de amor</h2>
+          <blockquote>
+            <p>El amor es paciente,<br/>es bondadoso.<br/><em>El amor nunca deja de ser.</em></p>
+            <cite>1 Corintios 13:4, 8</cite>
+          </blockquote>
+        </div>
+      </section>
+
       <!-- DESPEDIDA -->
       <section class="closing" aria-labelledby="closingHeading">
         <picture class="closing-picture" aria-hidden="true">
@@ -286,7 +392,7 @@ const oliveLeaf = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 70" 
     </footer>
 
     <audio id="weddingAudio" loop preload="none" playsinline>
-      <source src="/boda/naima.m4a" type="audio/mp4" />
+      <source src="/boda/naima.mp3" type="audio/mp4" />
       Tu navegador no puede reproducir este audio.
     </audio>
 
